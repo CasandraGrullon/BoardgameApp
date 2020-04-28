@@ -3,10 +3,17 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BA3CDD7B977C9A26A3D52BB2 /* Pods_BoardgameApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF9C6CC426DC0CDDFF8C8655 /* Pods_BoardgameApp.framework */; };
+		C687024E2458D8970037F22D /* HomePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C687024D2458D8970037F22D /* HomePageViewController.swift */; };
+		C68702502458D8C30037F22D /* ExplorePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C687024F2458D8C30037F22D /* ExplorePageViewController.swift */; };
+		C68702522458D8E50037F22D /* ProfilePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68702512458D8E50037F22D /* ProfilePageViewController.swift */; };
+		C68702542458D8F50037F22D /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68702532458D8F50037F22D /* FilterViewController.swift */; };
+		C68702562458D9140037F22D /* GameDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68702552458D9140037F22D /* GameDetailViewController.swift */; };
+		C68702582458DB020037F22D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C68702572458DB020037F22D /* GoogleService-Info.plist */; };
 		C6C53CC52457551700F1F361 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C53CC42457551700F1F361 /* AppDelegate.swift */; };
 		C6C53CC72457551700F1F361 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C53CC62457551700F1F361 /* SceneDelegate.swift */; };
 		C6C53CC92457551700F1F361 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C53CC82457551700F1F361 /* LoginViewController.swift */; };
@@ -17,6 +24,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2A700813B432E85823C5E5B9 /* Pods-BoardgameApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BoardgameApp.debug.xcconfig"; path = "Target Support Files/Pods-BoardgameApp/Pods-BoardgameApp.debug.xcconfig"; sourceTree = "<group>"; };
+		38E47C788B31BB17FCAFAEE6 /* Pods-BoardgameApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BoardgameApp.release.xcconfig"; path = "Target Support Files/Pods-BoardgameApp/Pods-BoardgameApp.release.xcconfig"; sourceTree = "<group>"; };
+		C687024D2458D8970037F22D /* HomePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageViewController.swift; sourceTree = "<group>"; };
+		C687024F2458D8C30037F22D /* ExplorePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExplorePageViewController.swift; sourceTree = "<group>"; };
+		C68702512458D8E50037F22D /* ProfilePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePageViewController.swift; sourceTree = "<group>"; };
+		C68702532458D8F50037F22D /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
+		C68702552458D9140037F22D /* GameDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDetailViewController.swift; sourceTree = "<group>"; };
+		C68702572458DB020037F22D /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		C6C53CC12457551700F1F361 /* BoardgameApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BoardgameApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6C53CC42457551700F1F361 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C6C53CC62457551700F1F361 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -26,6 +41,7 @@
 		C6C53CD02457551A00F1F361 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C6C53CD22457551A00F1F361 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C6C53CD8245755A000F1F361 /* MainAppStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainAppStoryboard.storyboard; sourceTree = "<group>"; };
+		DF9C6CC426DC0CDDFF8C8655 /* Pods_BoardgameApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BoardgameApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,17 +49,59 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA3CDD7B977C9A26A3D52BB2 /* Pods_BoardgameApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		147659611C57C39A56137F2E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DF9C6CC426DC0CDDFF8C8655 /* Pods_BoardgameApp.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3AEEBB3D94339BD0B9804897 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2A700813B432E85823C5E5B9 /* Pods-BoardgameApp.debug.xcconfig */,
+				38E47C788B31BB17FCAFAEE6 /* Pods-BoardgameApp.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		C687024B2458D7B70037F22D /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				C6C53CC82457551700F1F361 /* LoginViewController.swift */,
+				C687024D2458D8970037F22D /* HomePageViewController.swift */,
+				C687024F2458D8C30037F22D /* ExplorePageViewController.swift */,
+				C68702512458D8E50037F22D /* ProfilePageViewController.swift */,
+				C68702532458D8F50037F22D /* FilterViewController.swift */,
+				C68702552458D9140037F22D /* GameDetailViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		C687024C2458D7D20037F22D /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				C6C53CCA2457551700F1F361 /* Main.storyboard */,
+				C6C53CD8245755A000F1F361 /* MainAppStoryboard.storyboard */,
+			);
+			name = Storyboards;
+			sourceTree = "<group>";
+		};
 		C6C53CB82457551700F1F361 = {
 			isa = PBXGroup;
 			children = (
 				C6C53CC32457551700F1F361 /* BoardgameApp */,
 				C6C53CC22457551700F1F361 /* Products */,
+				3AEEBB3D94339BD0B9804897 /* Pods */,
+				147659611C57C39A56137F2E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -60,11 +118,11 @@
 			children = (
 				C6C53CC42457551700F1F361 /* AppDelegate.swift */,
 				C6C53CC62457551700F1F361 /* SceneDelegate.swift */,
-				C6C53CC82457551700F1F361 /* LoginViewController.swift */,
-				C6C53CCA2457551700F1F361 /* Main.storyboard */,
-				C6C53CD8245755A000F1F361 /* MainAppStoryboard.storyboard */,
+				C687024B2458D7B70037F22D /* ViewControllers */,
+				C687024C2458D7D20037F22D /* Storyboards */,
 				C6C53CCD2457551A00F1F361 /* Assets.xcassets */,
 				C6C53CCF2457551A00F1F361 /* LaunchScreen.storyboard */,
+				C68702572458DB020037F22D /* GoogleService-Info.plist */,
 				C6C53CD22457551A00F1F361 /* Info.plist */,
 			);
 			path = BoardgameApp;
@@ -77,9 +135,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C6C53CD52457551A00F1F361 /* Build configuration list for PBXNativeTarget "BoardgameApp" */;
 			buildPhases = (
+				B271E9DAA7BF56C7E74886CD /* [CP] Check Pods Manifest.lock */,
 				C6C53CBD2457551700F1F361 /* Sources */,
 				C6C53CBE2457551700F1F361 /* Frameworks */,
 				C6C53CBF2457551700F1F361 /* Resources */,
+				06F03E3CC81E0131CEED93AB /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -130,6 +190,7 @@
 			files = (
 				C6C53CD12457551A00F1F361 /* LaunchScreen.storyboard in Resources */,
 				C6C53CCE2457551A00F1F361 /* Assets.xcassets in Resources */,
+				C68702582458DB020037F22D /* GoogleService-Info.plist in Resources */,
 				C6C53CD9245755A000F1F361 /* MainAppStoryboard.storyboard in Resources */,
 				C6C53CCC2457551700F1F361 /* Main.storyboard in Resources */,
 			);
@@ -137,12 +198,59 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		06F03E3CC81E0131CEED93AB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BoardgameApp/Pods-BoardgameApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BoardgameApp/Pods-BoardgameApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BoardgameApp/Pods-BoardgameApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B271E9DAA7BF56C7E74886CD /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BoardgameApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		C6C53CBD2457551700F1F361 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C68702542458D8F50037F22D /* FilterViewController.swift in Sources */,
+				C68702502458D8C30037F22D /* ExplorePageViewController.swift in Sources */,
+				C68702522458D8E50037F22D /* ProfilePageViewController.swift in Sources */,
+				C687024E2458D8970037F22D /* HomePageViewController.swift in Sources */,
 				C6C53CC92457551700F1F361 /* LoginViewController.swift in Sources */,
+				C68702562458D9140037F22D /* GameDetailViewController.swift in Sources */,
 				C6C53CC52457551700F1F361 /* AppDelegate.swift in Sources */,
 				C6C53CC72457551700F1F361 /* SceneDelegate.swift in Sources */,
 			);
@@ -286,6 +394,7 @@
 		};
 		C6C53CD62457551A00F1F361 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2A700813B432E85823C5E5B9 /* Pods-BoardgameApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -304,6 +413,7 @@
 		};
 		C6C53CD72457551A00F1F361 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 38E47C788B31BB17FCAFAEE6 /* Pods-BoardgameApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
