@@ -16,6 +16,7 @@
 		C670D7A724591D4400F556BE /* ShowAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = C670D7A624591D4400F556BE /* ShowAlert.swift */; };
 		C670D7A924591D8F00F556BE /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C670D7A824591D8F00F556BE /* DateFormatter.swift */; };
 		C670D7AB24591DAE00F556BE /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C670D7AA24591DAE00F556BE /* EmptyView.swift */; };
+		C670D7AD2459E5EF00F556BE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C670D7AC2459E5EE00F556BE /* GoogleService-Info.plist */; };
 		C687024E2458D8970037F22D /* HomePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C687024D2458D8970037F22D /* HomePageViewController.swift */; };
 		C68702502458D8C30037F22D /* ExplorePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C687024F2458D8C30037F22D /* ExplorePageViewController.swift */; };
 		C68702522458D8E50037F22D /* ProfilePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68702512458D8E50037F22D /* ProfilePageViewController.swift */; };
@@ -43,6 +44,7 @@
 		C670D7A624591D4400F556BE /* ShowAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowAlert.swift; sourceTree = "<group>"; };
 		C670D7A824591D8F00F556BE /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
 		C670D7AA24591DAE00F556BE /* EmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
+		C670D7AC2459E5EE00F556BE /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		C687024D2458D8970037F22D /* HomePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageViewController.swift; sourceTree = "<group>"; };
 		C687024F2458D8C30037F22D /* ExplorePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExplorePageViewController.swift; sourceTree = "<group>"; };
 		C68702512458D8E50037F22D /* ProfilePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePageViewController.swift; sourceTree = "<group>"; };
@@ -200,6 +202,7 @@
 				C687024C2458D7D20037F22D /* Storyboards */,
 				C6C53CCD2457551A00F1F361 /* Assets.xcassets */,
 				C6C53CCF2457551A00F1F361 /* LaunchScreen.storyboard */,
+				C670D7AC2459E5EE00F556BE /* GoogleService-Info.plist */,
 				C6C53CD22457551A00F1F361 /* Info.plist */,
 			);
 			path = BoardgameApp;
@@ -273,6 +276,7 @@
 			files = (
 				C6C53CD12457551A00F1F361 /* LaunchScreen.storyboard in Resources */,
 				C6C53CCE2457551A00F1F361 /* Assets.xcassets in Resources */,
+				C670D7AD2459E5EF00F556BE /* GoogleService-Info.plist in Resources */,
 				C6C53CD9245755A000F1F361 /* MainAppStoryboard.storyboard in Resources */,
 				C6C53CCC2457551700F1F361 /* Main.storyboard in Resources */,
 			);
