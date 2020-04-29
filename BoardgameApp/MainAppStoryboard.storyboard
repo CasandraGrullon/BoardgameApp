@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Explore Page View Controller-->
         <scene sceneID="MPJ-xV-EmV">
             <objects>
-                <viewController id="04X-IN-YpK" sceneMemberID="viewController">
+                <viewController id="04X-IN-YpK" customClass="ExplorePageViewController" customModule="BoardgameApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cbV-Ub-eHK">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -146,10 +146,10 @@
             </objects>
             <point key="canvasLocation" x="692.75362318840587" y="-293.30357142857139"/>
         </scene>
-        <!--View Controller-->
+        <!--Profile Page View Controller-->
         <scene sceneID="9NZ-Xc-pd2">
             <objects>
-                <viewController id="7E8-KU-yzz" sceneMemberID="viewController">
+                <viewController id="7E8-KU-yzz" customClass="ProfilePageViewController" customModule="BoardgameApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="95X-sP-yYN">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -262,10 +262,10 @@
             </objects>
             <point key="canvasLocation" x="-775" y="-223"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Home Page View Controller-->
         <scene sceneID="rxl-Qx-uaJ">
             <objects>
-                <tableViewController id="lHd-7d-f0D" sceneMemberID="viewController">
+                <tableViewController id="lHd-7d-f0D" customClass="HomePageViewController" customModule="BoardgameApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="Xe9-tk-mB1">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -492,10 +492,10 @@
             </objects>
             <point key="canvasLocation" x="27.536231884057973" y="-954.24107142857133"/>
         </scene>
-        <!--View Controller-->
+        <!--Game Detail View Controller-->
         <scene sceneID="cdv-tQ-Qso">
             <objects>
-                <viewController id="a0s-I0-bVk" sceneMemberID="viewController">
+                <viewController id="a0s-I0-bVk" customClass="GameDetailViewController" customModule="BoardgameApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="k8j-D7-C6z">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -717,7 +717,7 @@
         <!--Filter-->
         <scene sceneID="sEw-Mz-w2t">
             <objects>
-                <viewController id="crZ-dr-865" sceneMemberID="viewController">
+                <viewController id="crZ-dr-865" customClass="FilterViewController" customModule="BoardgameApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="N4r-Gi-TyB">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

@@ -3,17 +3,28 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		BA3CDD7B977C9A26A3D52BB2 /* Pods_BoardgameApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF9C6CC426DC0CDDFF8C8655 /* Pods_BoardgameApp.framework */; };
+		C670D79A24591C4900F556BE /* DatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C670D79924591C4900F556BE /* DatabaseService.swift */; };
+		C670D79C24591C6C00F556BE /* AuthenticationSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = C670D79B24591C6C00F556BE /* AuthenticationSession.swift */; };
+		C670D79E24591C7C00F556BE /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C670D79D24591C7C00F556BE /* StorageService.swift */; };
+		C670D7A124591CE400F556BE /* ImageKit in Frameworks */ = {isa = PBXBuildFile; productRef = C670D7A024591CE400F556BE /* ImageKit */; };
+		C670D7A324591CF300F556BE /* NetworkServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = C670D7A224591CF300F556BE /* NetworkServices.swift */; };
+		C670D7A724591D4400F556BE /* ShowAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = C670D7A624591D4400F556BE /* ShowAlert.swift */; };
+		C670D7A924591D8F00F556BE /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C670D7A824591D8F00F556BE /* DateFormatter.swift */; };
+		C670D7AB24591DAE00F556BE /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C670D7AA24591DAE00F556BE /* EmptyView.swift */; };
 		C687024E2458D8970037F22D /* HomePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C687024D2458D8970037F22D /* HomePageViewController.swift */; };
 		C68702502458D8C30037F22D /* ExplorePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C687024F2458D8C30037F22D /* ExplorePageViewController.swift */; };
 		C68702522458D8E50037F22D /* ProfilePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68702512458D8E50037F22D /* ProfilePageViewController.swift */; };
 		C68702542458D8F50037F22D /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68702532458D8F50037F22D /* FilterViewController.swift */; };
 		C68702562458D9140037F22D /* GameDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68702552458D9140037F22D /* GameDetailViewController.swift */; };
 		C68702582458DB020037F22D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C68702572458DB020037F22D /* GoogleService-Info.plist */; };
+		C687025E245917A70037F22D /* Games.swift in Sources */ = {isa = PBXBuildFile; fileRef = C687025D245917A70037F22D /* Games.swift */; };
+		C687026024591A770037F22D /* Reviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = C687025F24591A770037F22D /* Reviews.swift */; };
+		C687026224591B390037F22D /* Categories.swift in Sources */ = {isa = PBXBuildFile; fileRef = C687026124591B390037F22D /* Categories.swift */; };
 		C6C53CC52457551700F1F361 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C53CC42457551700F1F361 /* AppDelegate.swift */; };
 		C6C53CC72457551700F1F361 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C53CC62457551700F1F361 /* SceneDelegate.swift */; };
 		C6C53CC92457551700F1F361 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C53CC82457551700F1F361 /* LoginViewController.swift */; };
@@ -26,12 +37,22 @@
 /* Begin PBXFileReference section */
 		2A700813B432E85823C5E5B9 /* Pods-BoardgameApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BoardgameApp.debug.xcconfig"; path = "Target Support Files/Pods-BoardgameApp/Pods-BoardgameApp.debug.xcconfig"; sourceTree = "<group>"; };
 		38E47C788B31BB17FCAFAEE6 /* Pods-BoardgameApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BoardgameApp.release.xcconfig"; path = "Target Support Files/Pods-BoardgameApp/Pods-BoardgameApp.release.xcconfig"; sourceTree = "<group>"; };
+		C670D79924591C4900F556BE /* DatabaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseService.swift; sourceTree = "<group>"; };
+		C670D79B24591C6C00F556BE /* AuthenticationSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationSession.swift; sourceTree = "<group>"; };
+		C670D79D24591C7C00F556BE /* StorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
+		C670D7A224591CF300F556BE /* NetworkServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServices.swift; sourceTree = "<group>"; };
+		C670D7A624591D4400F556BE /* ShowAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowAlert.swift; sourceTree = "<group>"; };
+		C670D7A824591D8F00F556BE /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
+		C670D7AA24591DAE00F556BE /* EmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
 		C687024D2458D8970037F22D /* HomePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageViewController.swift; sourceTree = "<group>"; };
 		C687024F2458D8C30037F22D /* ExplorePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExplorePageViewController.swift; sourceTree = "<group>"; };
 		C68702512458D8E50037F22D /* ProfilePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePageViewController.swift; sourceTree = "<group>"; };
 		C68702532458D8F50037F22D /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
 		C68702552458D9140037F22D /* GameDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDetailViewController.swift; sourceTree = "<group>"; };
 		C68702572458DB020037F22D /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
+		C687025D245917A70037F22D /* Games.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Games.swift; sourceTree = "<group>"; };
+		C687025F24591A770037F22D /* Reviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reviews.swift; sourceTree = "<group>"; };
+		C687026124591B390037F22D /* Categories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Categories.swift; sourceTree = "<group>"; };
 		C6C53CC12457551700F1F361 /* BoardgameApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BoardgameApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6C53CC42457551700F1F361 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C6C53CC62457551700F1F361 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -50,6 +71,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BA3CDD7B977C9A26A3D52BB2 /* Pods_BoardgameApp.framework in Frameworks */,
+				C670D7A124591CE400F556BE /* ImageKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -71,6 +93,23 @@
 				38E47C788B31BB17FCAFAEE6 /* Pods-BoardgameApp.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		C670D7A424591CFE00F556BE /* NetworkServices */ = {
+			isa = PBXGroup;
+			children = (
+				C670D7A224591CF300F556BE /* NetworkServices.swift */,
+			);
+			path = NetworkServices;
+			sourceTree = "<group>";
+		};
+		C670D7A524591D1800F556BE /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				C6C53CC42457551700F1F361 /* AppDelegate.swift */,
+				C6C53CC62457551700F1F361 /* SceneDelegate.swift */,
+			);
+			path = SupportingFiles;
 			sourceTree = "<group>";
 		};
 		C687024B2458D7B70037F22D /* ViewControllers */ = {
@@ -95,6 +134,43 @@
 			name = Storyboards;
 			sourceTree = "<group>";
 		};
+		C68702592458DF3C0037F22D /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		C687025A2459158F0037F22D /* FirebaseServices */ = {
+			isa = PBXGroup;
+			children = (
+				C670D79B24591C6C00F556BE /* AuthenticationSession.swift */,
+				C670D79924591C4900F556BE /* DatabaseService.swift */,
+				C670D79D24591C7C00F556BE /* StorageService.swift */,
+			);
+			path = FirebaseServices;
+			sourceTree = "<group>";
+		};
+		C687025B2459159E0037F22D /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				C670D7A624591D4400F556BE /* ShowAlert.swift */,
+				C670D7A824591D8F00F556BE /* DateFormatter.swift */,
+				C670D7AA24591DAE00F556BE /* EmptyView.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		C687025C245915A70037F22D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				C687025D245917A70037F22D /* Games.swift */,
+				C687025F24591A770037F22D /* Reviews.swift */,
+				C687026124591B390037F22D /* Categories.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		C6C53CB82457551700F1F361 = {
 			isa = PBXGroup;
 			children = (
@@ -116,9 +192,13 @@
 		C6C53CC32457551700F1F361 /* BoardgameApp */ = {
 			isa = PBXGroup;
 			children = (
-				C6C53CC42457551700F1F361 /* AppDelegate.swift */,
-				C6C53CC62457551700F1F361 /* SceneDelegate.swift */,
+				C670D7A524591D1800F556BE /* SupportingFiles */,
+				C687025B2459159E0037F22D /* Extensions */,
+				C670D7A424591CFE00F556BE /* NetworkServices */,
+				C687025A2459158F0037F22D /* FirebaseServices */,
+				C687025C245915A70037F22D /* Models */,
 				C687024B2458D7B70037F22D /* ViewControllers */,
+				C68702592458DF3C0037F22D /* Cells */,
 				C687024C2458D7D20037F22D /* Storyboards */,
 				C6C53CCD2457551A00F1F361 /* Assets.xcassets */,
 				C6C53CCF2457551A00F1F361 /* LaunchScreen.storyboard */,
@@ -146,6 +226,9 @@
 			dependencies = (
 			);
 			name = BoardgameApp;
+			packageProductDependencies = (
+				C670D7A024591CE400F556BE /* ImageKit */,
+			);
 			productName = BoardgameApp;
 			productReference = C6C53CC12457551700F1F361 /* BoardgameApp.app */;
 			productType = "com.apple.product-type.application";
@@ -174,6 +257,9 @@
 				Base,
 			);
 			mainGroup = C6C53CB82457551700F1F361;
+			packageReferences = (
+				C670D79F24591CE400F556BE /* XCRemoteSwiftPackageReference "ImageKit" */,
+			);
 			productRefGroup = C6C53CC22457551700F1F361 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -245,14 +331,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C670D7A324591CF300F556BE /* NetworkServices.swift in Sources */,
 				C68702542458D8F50037F22D /* FilterViewController.swift in Sources */,
+				C687026024591A770037F22D /* Reviews.swift in Sources */,
+				C670D7A724591D4400F556BE /* ShowAlert.swift in Sources */,
+				C687025E245917A70037F22D /* Games.swift in Sources */,
 				C68702502458D8C30037F22D /* ExplorePageViewController.swift in Sources */,
 				C68702522458D8E50037F22D /* ProfilePageViewController.swift in Sources */,
+				C670D7A924591D8F00F556BE /* DateFormatter.swift in Sources */,
 				C687024E2458D8970037F22D /* HomePageViewController.swift in Sources */,
+				C670D79A24591C4900F556BE /* DatabaseService.swift in Sources */,
+				C670D7AB24591DAE00F556BE /* EmptyView.swift in Sources */,
+				C687026224591B390037F22D /* Categories.swift in Sources */,
 				C6C53CC92457551700F1F361 /* LoginViewController.swift in Sources */,
 				C68702562458D9140037F22D /* GameDetailViewController.swift in Sources */,
 				C6C53CC52457551700F1F361 /* AppDelegate.swift in Sources */,
 				C6C53CC72457551700F1F361 /* SceneDelegate.swift in Sources */,
+				C670D79C24591C6C00F556BE /* AuthenticationSession.swift in Sources */,
+				C670D79E24591C7C00F556BE /* StorageService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -452,6 +548,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		C670D79F24591CE400F556BE /* XCRemoteSwiftPackageReference "ImageKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/alexpaul/ImageKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.5;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		C670D7A024591CE400F556BE /* ImageKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C670D79F24591CE400F556BE /* XCRemoteSwiftPackageReference "ImageKit" */;
+			productName = ImageKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = C6C53CB92457551700F1F361 /* Project object */;
 }

@@ -6,8 +6,10 @@ target 'BoardgameApp' do
   use_frameworks!
 
   # Pods for BoardgameApp
-pod 'Firebase/Analytics'
+pod 'Firebase/Auth'
 pod 'Firebase/Firestore'
-pod 'Firebase'
+pod 'FirebaseFirestoreSwift'
+pod 'Firebase/Storage'
+pod 'Kingfisher'
 
 end
