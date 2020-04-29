@@ -21,7 +21,6 @@
 		C68702522458D8E50037F22D /* ProfilePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68702512458D8E50037F22D /* ProfilePageViewController.swift */; };
 		C68702542458D8F50037F22D /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68702532458D8F50037F22D /* FilterViewController.swift */; };
 		C68702562458D9140037F22D /* GameDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68702552458D9140037F22D /* GameDetailViewController.swift */; };
-		C68702582458DB020037F22D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C68702572458DB020037F22D /* GoogleService-Info.plist */; };
 		C687025E245917A70037F22D /* Games.swift in Sources */ = {isa = PBXBuildFile; fileRef = C687025D245917A70037F22D /* Games.swift */; };
 		C687026024591A770037F22D /* Reviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = C687025F24591A770037F22D /* Reviews.swift */; };
 		C687026224591B390037F22D /* Categories.swift in Sources */ = {isa = PBXBuildFile; fileRef = C687026124591B390037F22D /* Categories.swift */; };
@@ -49,7 +48,6 @@
 		C68702512458D8E50037F22D /* ProfilePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePageViewController.swift; sourceTree = "<group>"; };
 		C68702532458D8F50037F22D /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
 		C68702552458D9140037F22D /* GameDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDetailViewController.swift; sourceTree = "<group>"; };
-		C68702572458DB020037F22D /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		C687025D245917A70037F22D /* Games.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Games.swift; sourceTree = "<group>"; };
 		C687025F24591A770037F22D /* Reviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reviews.swift; sourceTree = "<group>"; };
 		C687026124591B390037F22D /* Categories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Categories.swift; sourceTree = "<group>"; };
@@ -202,7 +200,6 @@
 				C687024C2458D7D20037F22D /* Storyboards */,
 				C6C53CCD2457551A00F1F361 /* Assets.xcassets */,
 				C6C53CCF2457551A00F1F361 /* LaunchScreen.storyboard */,
-				C68702572458DB020037F22D /* GoogleService-Info.plist */,
 				C6C53CD22457551A00F1F361 /* Info.plist */,
 			);
 			path = BoardgameApp;
@@ -276,7 +273,6 @@
 			files = (
 				C6C53CD12457551A00F1F361 /* LaunchScreen.storyboard in Resources */,
 				C6C53CCE2457551A00F1F361 /* Assets.xcassets in Resources */,
-				C68702582458DB020037F22D /* GoogleService-Info.plist in Resources */,
 				C6C53CD9245755A000F1F361 /* MainAppStoryboard.storyboard in Resources */,
 				C6C53CCC2457551700F1F361 /* Main.storyboard in Resources */,
 			);
