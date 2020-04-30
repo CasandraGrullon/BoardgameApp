@@ -243,10 +243,10 @@
             </objects>
             <point key="canvasLocation" x="753.62318840579712" y="403.79464285714283"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Main App Tab Bar View Controller-->
         <scene sceneID="3Qr-U5-K4r">
             <objects>
-                <tabBarController id="Mlf-7d-ZHF" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="MainAppTabBarViewController" id="Mlf-7d-ZHF" customClass="MainAppTabBarViewController" customModule="BoardgameApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Hbn-Jn-Xzw">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
