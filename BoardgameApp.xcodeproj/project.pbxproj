@@ -28,6 +28,8 @@
 		C6C400B4245B132800846A31 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C400B3245B132800846A31 /* Secrets.swift */; };
 		C6C400B6245B5E8500846A31 /* ViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C400B5245B5E8500846A31 /* ViewController+Ext.swift */; };
 		C6C400B8245B5F7300846A31 /* MainAppTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C400B7245B5F7300846A31 /* MainAppTabBarViewController.swift */; };
+		C6C400BA245B6F2F00846A31 /* GameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C400B9245B6F2F00846A31 /* GameCell.swift */; };
+		C6C400BC245B719F00846A31 /* FilterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C400BB245B719F00846A31 /* FilterCell.swift */; };
 		C6C53CC52457551700F1F361 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C53CC42457551700F1F361 /* AppDelegate.swift */; };
 		C6C53CC72457551700F1F361 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C53CC62457551700F1F361 /* SceneDelegate.swift */; };
 		C6C53CC92457551700F1F361 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C53CC82457551700F1F361 /* LoginViewController.swift */; };
@@ -59,6 +61,8 @@
 		C6C400B3245B132800846A31 /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
 		C6C400B5245B5E8500846A31 /* ViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+Ext.swift"; sourceTree = "<group>"; };
 		C6C400B7245B5F7300846A31 /* MainAppTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAppTabBarViewController.swift; sourceTree = "<group>"; };
+		C6C400B9245B6F2F00846A31 /* GameCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCell.swift; sourceTree = "<group>"; };
+		C6C400BB245B719F00846A31 /* FilterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterCell.swift; sourceTree = "<group>"; };
 		C6C53CC12457551700F1F361 /* BoardgameApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BoardgameApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6C53CC42457551700F1F361 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C6C53CC62457551700F1F361 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -144,6 +148,8 @@
 		C68702592458DF3C0037F22D /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				C6C400B9245B6F2F00846A31 /* GameCell.swift */,
+				C6C400BB245B719F00846A31 /* FilterCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -359,9 +365,11 @@
 				C670D7A924591D8F00F556BE /* DateFormatter.swift in Sources */,
 				C6C400B8245B5F7300846A31 /* MainAppTabBarViewController.swift in Sources */,
 				C687024E2458D8970037F22D /* HomePageViewController.swift in Sources */,
+				C6C400BA245B6F2F00846A31 /* GameCell.swift in Sources */,
 				C670D79A24591C4900F556BE /* DatabaseService.swift in Sources */,
 				C670D7AB24591DAE00F556BE /* EmptyView.swift in Sources */,
 				C687026224591B390037F22D /* Categories.swift in Sources */,
+				C6C400BC245B719F00846A31 /* FilterCell.swift in Sources */,
 				C6C53CC92457551700F1F361 /* LoginViewController.swift in Sources */,
 				C6C400B6245B5E8500846A31 /* ViewController+Ext.swift in Sources */,
 				C68702562458D9140037F22D /* GameDetailViewController.swift in Sources */,

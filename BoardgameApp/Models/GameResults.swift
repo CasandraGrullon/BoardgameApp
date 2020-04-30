@@ -14,7 +14,7 @@ struct GameResults: Codable {
 struct Game: Codable {
     let id: String
     let name: String
-    let yearPublished: Int
+    let yearPublished: Int?
     let minPlayers: Int
     let maxPlayers: Int
     let minPlaytime: Int
@@ -24,10 +24,10 @@ struct Game: Codable {
     let imageURL: String
     let thumbURL: String
     let price: String
-    let primaryPublisher: String
+    let primaryPublisher: String?
     let categories: [GameCategories]
     let averageUserRating: Double
-    let rulesURL: String
+    let rulesURL: String?
     
     enum CodingKeys: String, CodingKey {
         case id
