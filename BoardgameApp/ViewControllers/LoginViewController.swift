@@ -15,7 +15,7 @@ enum AccountState {
 }
 
 class LoginViewController: UIViewController {
-
+    
     @IBOutlet weak var emailTextfield: UITextField!
     @IBOutlet weak var passwordTextfield: UITextField!
     
@@ -27,9 +27,10 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        emailTextfield.delegate = self
+        passwordTextfield.delegate = self
     }
-
+    
     @IBAction func loginButtonPressed(_ sender: UIButton) {
         guard let email = emailTextfield.text, !email.isEmpty,
             let password = passwordTextfield.text, !password.isEmpty else {
@@ -40,6 +41,32 @@ class LoginViewController: UIViewController {
         }
         continueLoginFlow(email: email, password: password)
     }
+    
+    
+    @IBAction func signUpHereButtonPressed(_ sender: UIButton) {
+        accountState = accountState == .existingUser ? .newUser : .existingUser
+        if accountState == .existingUser {
+            loginButton.setTitle("Login", for: .normal)
+            promptLabel.text = "Don't have an account?"
+            signUpHereButton.setTitle("Sign up here", for: .normal)
+        } else {
+            loginButton.setTitle("Create Account", for: .normal)
+            promptLabel.text = "Already have an account?"
+            signUpHereButton.setTitle("Login here", for: .normal)
+        }
+        
+    }
+    
+}
+
+extension LoginViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+}
+
+extension LoginViewController { //login and sign up functions
     private func continueLoginFlow(email: String, password: String) {
         if accountState == .existingUser {
             AuthenticationSession.shared.signInExistingUser(email: email, password: password) { [weak self] (result) in
@@ -61,9 +88,9 @@ class LoginViewController: UIViewController {
                     DispatchQueue.main.async {
                         self?.showAlert(title: "Sign Up Error", message: "Unable to sign up at this time error: \(error.localizedDescription)")
                     }
-                case .success:
+                case .success(let authDataResult):
                     DispatchQueue.main.async {
-                        self?.navigateToMainApp()
+                        self?.createUser(authDataResult: authDataResult)
                     }
                 }
             }
@@ -73,22 +100,15 @@ class LoginViewController: UIViewController {
         UIViewController.showViewController(storyboardName: "MainAppStoryboard", viewcontrollerID: "MainAppTabBarViewController")
     }
     private func createUser(authDataResult: AuthDataResult) {
-        //database service
-    }
-    
-    @IBAction func signUpHereButtonPressed(_ sender: UIButton) {
-        accountState = accountState == .existingUser ? .newUser : .existingUser
-        if accountState == .existingUser {
-            loginButton.titleLabel?.text = "Login"
-            promptLabel.text = "Don't have an account?"
-            signUpHereButton.titleLabel?.text = "Sign Up Here"
-        } else {
-            loginButton.titleLabel?.text = "Sign Up"
-            promptLabel.text = "Already have an account?"
-            signUpHereButton.titleLabel?.text = "Login Here"
+        DatabaseService.shared.createAppUser(authDataResult: authDataResult) { [weak self] (result) in
+            switch result {
+            case .failure(let error):
+                print("unable to create user on database error: \(error.localizedDescription)")
+            case .success:
+                DispatchQueue.main.async {
+                    self?.navigateToMainApp()
+                }
+            }
         }
-        
     }
-    
 }
-
