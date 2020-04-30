@@ -37,7 +37,7 @@ struct BoardGameAPIClient {
         
     }
     
-    static func getReviews(gameId: String, completion: @escaping (Result<[Reviews], AppError>) -> ()) {
+    static func getReviews(gameId: String, completion: @escaping (Result<[GameReview], AppError>) -> ()) {
         let endpointURL = "https://www.boardgameatlas.com/api/reviews?pretty=true&client_id=\(Secrets.clientId)&game_id=\(gameId)"
         guard let url = URL(string: endpointURL) else {
             completion(.failure(.badURL(endpointURL)))
@@ -50,8 +50,8 @@ struct BoardGameAPIClient {
                 completion(.failure(.networkClientError(getReviewsError)))
             case .success(let data):
                 do {
-                    let results = try JSONDecoder().decode([Reviews].self, from: data)
-                    completion(.success(results))
+                    let results = try JSONDecoder().decode(Reviews.self, from: data)
+                    completion(.success(results.reviews))
                 } catch {
                     completion(.failure(.decodingError(error)))
                 }

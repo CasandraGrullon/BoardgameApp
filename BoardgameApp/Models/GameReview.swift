@@ -9,7 +9,11 @@
 import Foundation
 
 struct Reviews: Codable {
-    let date: Date
+    let reviews: [GameReview]
+}
+
+struct GameReview: Codable {
+    let date: String
     let rating: Int
     let title: String?
     let description: String?

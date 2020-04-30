@@ -87,6 +87,12 @@ extension ExplorePageViewController: UICollectionViewDataSource {
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let game = games[indexPath.row]
+        guard let detailVC = storyboard?.instantiateViewController(identifier: "GameDetailViewController") as? GameDetailViewController else {
+            print("could not segue to GameDetailViewController")
+            return
+        }
+        detailVC.game = game
+        navigationController?.pushViewController(detailVC, animated: true)
         
     }
     
