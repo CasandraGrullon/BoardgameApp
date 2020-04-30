@@ -27,6 +27,13 @@ class ExplorePageViewController: UIViewController {
             self.getGames(search: searchQuery)
         }
     }
+    private var filters = [String]() {
+        didSet {
+//            for filter in filters {
+//                games.filter {$0.}
+//            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,12 +61,15 @@ class ExplorePageViewController: UIViewController {
 }
 extension ExplorePageViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let itemSpacing: CGFloat = 8
+        let itemSpacing: CGFloat = 10
         let maxSize: CGFloat = UIScreen.main.bounds.size.width
         let numberOfItems: CGFloat = 2
         let totalSpace: CGFloat = (numberOfItems * itemSpacing) * 2.5
         let itemWidth: CGFloat = (maxSize - totalSpace) / numberOfItems
         return CGSize(width: itemWidth, height: itemWidth)
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
     }
 }
 extension ExplorePageViewController: UICollectionViewDataSource {
@@ -74,6 +84,10 @@ extension ExplorePageViewController: UICollectionViewDataSource {
         let game = games[indexPath.row]
         cell.configureCell(game: game)
         return cell
+    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let game = games[indexPath.row]
+        
     }
     
     

@@ -664,6 +664,17 @@
                         <barButtonItem key="rightBarButtonItem" title="Item" image="plus" catalog="system" id="iwR-5u-brz"/>
                     </navigationItem>
                     <size key="freeformSize" width="414" height="896"/>
+                    <connections>
+                        <outlet property="ageLabel" destination="hUh-48-Qzh" id="wO3-Q4-ImI"/>
+                        <outlet property="averageRatingLabel" destination="2bL-La-6Do" id="oQo-ZK-GPF"/>
+                        <outlet property="categoriesLabel" destination="L7H-gf-Zgl" id="WN9-Y1-Hy5"/>
+                        <outlet property="gameDescription" destination="9M5-II-V2s" id="LdN-Nu-EhJ"/>
+                        <outlet property="gameImageView" destination="Soe-qu-MHy" id="IR5-Vr-NVe"/>
+                        <outlet property="nameLabel" destination="lBg-6y-44K" id="S8a-HO-7ai"/>
+                        <outlet property="numberofPlayerLabel" destination="M6S-Sj-CyU" id="Qhz-Tn-9Fh"/>
+                        <outlet property="playtimeLabel" destination="HU9-Oh-EoB" id="Axn-yG-8oi"/>
+                        <outlet property="priceLabel" destination="pGs-xC-8Bf" id="uUv-7D-GYQ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CVP-Yg-7ZL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -693,7 +704,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="raK-Ej-Akq">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="genreCell" id="raK-Ej-Akq" customClass="GenreCell" customModule="BoardgameApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="DZP-3p-7s0">
@@ -776,14 +787,17 @@
                                 </segments>
                             </segmentedControl>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qXW-FI-M6S">
-                                <rect key="frame" x="334" y="749" width="60" height="44"/>
+                                <rect key="frame" x="304" y="749" width="90" height="44"/>
                                 <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="60" id="NXH-TN-uUG"/>
+                                    <constraint firstAttribute="width" constant="90" id="NXH-TN-uUG"/>
                                     <constraint firstAttribute="height" constant="44" id="yT9-CE-zLh"/>
                                 </constraints>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="add filters"/>
+                                <connections>
+                                    <action selector="addFiltersButtonPressed:" destination="crZ-dr-865" eventType="touchUpInside" id="wPT-DH-rUP"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -819,6 +833,13 @@
                         <viewLayoutGuide key="safeArea" id="tF2-2q-leK"/>
                     </view>
                     <navigationItem key="navigationItem" title="Filter" id="j8B-F5-mS2"/>
+                    <connections>
+                        <outlet property="addFiltersButton" destination="qXW-FI-M6S" id="uun-bF-Ib4"/>
+                        <outlet property="ageSegment" destination="4rT-xP-MDR" id="4uD-7l-ZS8"/>
+                        <outlet property="genreCollectionView" destination="4he-xo-dSG" id="Zb4-Sh-yR9"/>
+                        <outlet property="playersSegment" destination="xIM-EP-Dhk" id="5eb-cS-vK3"/>
+                        <outlet property="priceSegement" destination="S28-aq-dOi" id="DO3-AC-YWE"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jQ5-Tj-XbH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
