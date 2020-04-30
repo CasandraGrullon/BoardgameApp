@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Games: Codable {
+struct GameResults: Codable {
     let games: [Game]
 }
 struct Game: Codable {

@@ -12,7 +12,7 @@
 		C670D79C24591C6C00F556BE /* AuthenticationSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = C670D79B24591C6C00F556BE /* AuthenticationSession.swift */; };
 		C670D79E24591C7C00F556BE /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C670D79D24591C7C00F556BE /* StorageService.swift */; };
 		C670D7A124591CE400F556BE /* ImageKit in Frameworks */ = {isa = PBXBuildFile; productRef = C670D7A024591CE400F556BE /* ImageKit */; };
-		C670D7A324591CF300F556BE /* NetworkServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = C670D7A224591CF300F556BE /* NetworkServices.swift */; };
+		C670D7A324591CF300F556BE /* BoardGameAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C670D7A224591CF300F556BE /* BoardGameAPIClient.swift */; };
 		C670D7A724591D4400F556BE /* ShowAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = C670D7A624591D4400F556BE /* ShowAlert.swift */; };
 		C670D7A924591D8F00F556BE /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C670D7A824591D8F00F556BE /* DateFormatter.swift */; };
 		C670D7AB24591DAE00F556BE /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C670D7AA24591DAE00F556BE /* EmptyView.swift */; };
@@ -22,9 +22,10 @@
 		C68702522458D8E50037F22D /* ProfilePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68702512458D8E50037F22D /* ProfilePageViewController.swift */; };
 		C68702542458D8F50037F22D /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68702532458D8F50037F22D /* FilterViewController.swift */; };
 		C68702562458D9140037F22D /* GameDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68702552458D9140037F22D /* GameDetailViewController.swift */; };
-		C687025E245917A70037F22D /* Games.swift in Sources */ = {isa = PBXBuildFile; fileRef = C687025D245917A70037F22D /* Games.swift */; };
+		C687025E245917A70037F22D /* GameResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = C687025D245917A70037F22D /* GameResults.swift */; };
 		C687026024591A770037F22D /* Reviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = C687025F24591A770037F22D /* Reviews.swift */; };
 		C687026224591B390037F22D /* Categories.swift in Sources */ = {isa = PBXBuildFile; fileRef = C687026124591B390037F22D /* Categories.swift */; };
+		C6C400B4245B132800846A31 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C400B3245B132800846A31 /* Secrets.swift */; };
 		C6C53CC52457551700F1F361 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C53CC42457551700F1F361 /* AppDelegate.swift */; };
 		C6C53CC72457551700F1F361 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C53CC62457551700F1F361 /* SceneDelegate.swift */; };
 		C6C53CC92457551700F1F361 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C53CC82457551700F1F361 /* LoginViewController.swift */; };
@@ -40,7 +41,7 @@
 		C670D79924591C4900F556BE /* DatabaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseService.swift; sourceTree = "<group>"; };
 		C670D79B24591C6C00F556BE /* AuthenticationSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationSession.swift; sourceTree = "<group>"; };
 		C670D79D24591C7C00F556BE /* StorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
-		C670D7A224591CF300F556BE /* NetworkServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServices.swift; sourceTree = "<group>"; };
+		C670D7A224591CF300F556BE /* BoardGameAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardGameAPIClient.swift; sourceTree = "<group>"; };
 		C670D7A624591D4400F556BE /* ShowAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowAlert.swift; sourceTree = "<group>"; };
 		C670D7A824591D8F00F556BE /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
 		C670D7AA24591DAE00F556BE /* EmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
@@ -50,9 +51,10 @@
 		C68702512458D8E50037F22D /* ProfilePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePageViewController.swift; sourceTree = "<group>"; };
 		C68702532458D8F50037F22D /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
 		C68702552458D9140037F22D /* GameDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDetailViewController.swift; sourceTree = "<group>"; };
-		C687025D245917A70037F22D /* Games.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Games.swift; sourceTree = "<group>"; };
+		C687025D245917A70037F22D /* GameResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameResults.swift; sourceTree = "<group>"; };
 		C687025F24591A770037F22D /* Reviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reviews.swift; sourceTree = "<group>"; };
 		C687026124591B390037F22D /* Categories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Categories.swift; sourceTree = "<group>"; };
+		C6C400B3245B132800846A31 /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
 		C6C53CC12457551700F1F361 /* BoardgameApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BoardgameApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6C53CC42457551700F1F361 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C6C53CC62457551700F1F361 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -98,7 +100,7 @@
 		C670D7A424591CFE00F556BE /* NetworkServices */ = {
 			isa = PBXGroup;
 			children = (
-				C670D7A224591CF300F556BE /* NetworkServices.swift */,
+				C670D7A224591CF300F556BE /* BoardGameAPIClient.swift */,
 			);
 			path = NetworkServices;
 			sourceTree = "<group>";
@@ -164,11 +166,19 @@
 		C687025C245915A70037F22D /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				C687025D245917A70037F22D /* Games.swift */,
+				C687025D245917A70037F22D /* GameResults.swift */,
 				C687025F24591A770037F22D /* Reviews.swift */,
 				C687026124591B390037F22D /* Categories.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		C6C400B1245B130E00846A31 /* Secrets */ = {
+			isa = PBXGroup;
+			children = (
+				C6C400B3245B132800846A31 /* Secrets.swift */,
+			);
+			path = Secrets;
 			sourceTree = "<group>";
 		};
 		C6C53CB82457551700F1F361 = {
@@ -194,6 +204,7 @@
 			children = (
 				C670D7A524591D1800F556BE /* SupportingFiles */,
 				C687025B2459159E0037F22D /* Extensions */,
+				C6C400B1245B130E00846A31 /* Secrets */,
 				C670D7A424591CFE00F556BE /* NetworkServices */,
 				C687025A2459158F0037F22D /* FirebaseServices */,
 				C687025C245915A70037F22D /* Models */,
@@ -331,11 +342,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C670D7A324591CF300F556BE /* NetworkServices.swift in Sources */,
+				C6C400B4245B132800846A31 /* Secrets.swift in Sources */,
+				C670D7A324591CF300F556BE /* BoardGameAPIClient.swift in Sources */,
 				C68702542458D8F50037F22D /* FilterViewController.swift in Sources */,
 				C687026024591A770037F22D /* Reviews.swift in Sources */,
 				C670D7A724591D4400F556BE /* ShowAlert.swift in Sources */,
-				C687025E245917A70037F22D /* Games.swift in Sources */,
+				C687025E245917A70037F22D /* GameResults.swift in Sources */,
 				C68702502458D8C30037F22D /* ExplorePageViewController.swift in Sources */,
 				C68702522458D8E50037F22D /* ProfilePageViewController.swift in Sources */,
 				C670D7A924591D8F00F556BE /* DateFormatter.swift in Sources */,
