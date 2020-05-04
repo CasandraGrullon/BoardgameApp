@@ -65,7 +65,7 @@ class HomePageViewController: UITableViewController {
             case .success(let games):
                 self?.featuredGames = games.filter {$0.minAge == 10}
                 self?.newGames = games.filter {$0.yearPublished == 2019}
-                self?.popularGames = games.filter {$0.averageUserRating > 3}
+                self?.popularGames = games.filter {$0.averageUserRating > 3.5}
             }
         }
     }
@@ -73,7 +73,7 @@ class HomePageViewController: UITableViewController {
 }
 extension HomePageViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let itemSpacing: CGFloat = 5
+        let itemSpacing: CGFloat = 4
         let maxSize: CGFloat = UIScreen.main.bounds.size.width
         let numberOfItems: CGFloat = 2
         let totalSpace: CGFloat = (numberOfItems * itemSpacing) * 2.5
@@ -113,6 +113,23 @@ extension HomePageViewController: UICollectionViewDataSource {
         }
         return cell
     }
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let detailVC = storyboard?.instantiateViewController(identifier: "GameDetailViewController") as? GameDetailViewController else {
+            print("could not segue to GameDetailViewController")
+            return
+        }
+        if collectionView == newCollectionView {
+            let game = newGames[indexPath.row]
+            detailVC.game = game
+        } else if collectionView == featuredCollectionView {
+            let game = featuredGames[indexPath.row]
+            detailVC.game = game
+        } else if collectionView == popularCollectionView {
+            let game = popularGames [indexPath.row]
+            detailVC.game = game
+        }
+        navigationController?.pushViewController(detailVC, animated: true)
+        
+    }
     
 }
