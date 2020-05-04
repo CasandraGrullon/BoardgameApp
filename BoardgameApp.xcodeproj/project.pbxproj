@@ -25,6 +25,7 @@
 		C687025E245917A70037F22D /* GameResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = C687025D245917A70037F22D /* GameResults.swift */; };
 		C687026024591A770037F22D /* GameReview.swift in Sources */ = {isa = PBXBuildFile; fileRef = C687025F24591A770037F22D /* GameReview.swift */; };
 		C687026224591B390037F22D /* Categories.swift in Sources */ = {isa = PBXBuildFile; fileRef = C687026124591B390037F22D /* Categories.swift */; };
+		C6BCC2F62460BC63003DFED3 /* GameCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C6BCC2F52460BC62003DFED3 /* GameCell.xib */; };
 		C6C400B4245B132800846A31 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C400B3245B132800846A31 /* Secrets.swift */; };
 		C6C400B6245B5E8500846A31 /* ViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C400B5245B5E8500846A31 /* ViewController+Ext.swift */; };
 		C6C400B8245B5F7300846A31 /* MainAppTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C400B7245B5F7300846A31 /* MainAppTabBarViewController.swift */; };
@@ -61,6 +62,7 @@
 		C687025D245917A70037F22D /* GameResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameResults.swift; sourceTree = "<group>"; };
 		C687025F24591A770037F22D /* GameReview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameReview.swift; sourceTree = "<group>"; };
 		C687026124591B390037F22D /* Categories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Categories.swift; sourceTree = "<group>"; };
+		C6BCC2F52460BC62003DFED3 /* GameCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GameCell.xib; sourceTree = "<group>"; };
 		C6C400B3245B132800846A31 /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
 		C6C400B5245B5E8500846A31 /* ViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+Ext.swift"; sourceTree = "<group>"; };
 		C6C400B7245B5F7300846A31 /* MainAppTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAppTabBarViewController.swift; sourceTree = "<group>"; };
@@ -155,6 +157,7 @@
 			isa = PBXGroup;
 			children = (
 				C6C400B9245B6F2F00846A31 /* GameCell.swift */,
+				C6BCC2F52460BC62003DFED3 /* GameCell.xib */,
 				C6C400BB245B719F00846A31 /* FilterCell.swift */,
 				C6C400BD245B773100846A31 /* GenreCell.swift */,
 				C6C400BF245B818B00846A31 /* ReviewCell.swift */,
@@ -309,6 +312,7 @@
 				C6C53CD12457551A00F1F361 /* LaunchScreen.storyboard in Resources */,
 				C6C53CCE2457551A00F1F361 /* Assets.xcassets in Resources */,
 				C670D7AD2459E5EF00F556BE /* GoogleService-Info.plist in Resources */,
+				C6BCC2F62460BC63003DFED3 /* GameCell.xib in Resources */,
 				C6C53CD9245755A000F1F361 /* MainAppStoryboard.storyboard in Resources */,
 				C6C53CCC2457551700F1F361 /* Main.storyboard in Resources */,
 				C6C61603245B8A040070F648 /* ReviewCell.xib in Resources */,

@@ -43,6 +43,7 @@ class ExplorePageViewController: UIViewController {
     private func configureCollectionView() {
         gamesCollectionView.delegate = self
         gamesCollectionView.dataSource = self
+        gamesCollectionView.register(UINib(nibName: "GameCell", bundle: nil), forCellWithReuseIdentifier: "gameCell")
     }
     
     private func getGames(search: String) {
@@ -78,7 +79,7 @@ extension ExplorePageViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = gamesCollectionView.dequeueReusableCell(withReuseIdentifier: "exploreCell", for: indexPath) as? GameCell else {
+        guard let cell = gamesCollectionView.dequeueReusableCell(withReuseIdentifier: "gameCell", for: indexPath) as? GameCell else {
             fatalError("could not cast to GameCell")
         }
         let game = games[indexPath.row]

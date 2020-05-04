@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SafariServices
 
 class GameDetailViewController: UIViewController {
 
@@ -24,6 +25,9 @@ class GameDetailViewController: UIViewController {
     @IBOutlet weak var star3Button: UIButton!
     @IBOutlet weak var star4Button: UIButton!
     @IBOutlet weak var star5Button: UIButton!
+    @IBOutlet weak var rulesButton: UIButton!
+    @IBOutlet weak var addToCollection: UIBarButtonItem!
+    
     public var game: Game?
     public var categories = [Category]()
     public var reviews = [GameReview]() {
@@ -51,7 +55,8 @@ class GameDetailViewController: UIViewController {
         gameImageView.kf.setImage(with: URL(string: game.imageURL))
         nameLabel.text = game.name
         priceLabel.text = "$\(game.price)"
-        gameDescription.text = game.description
+        let gameDes = game.description.replacingOccurrences(of: "<p>", with: "\n").replacingOccurrences(of: "</p>", with: "").replacingOccurrences(of: "<br />", with: "").replacingOccurrences(of: "</h4>", with: "").replacingOccurrences(of: "<h4>", with: " ").replacingOccurrences(of: "<em>", with: "").replacingOccurrences(of: "</em>", with: "")
+        gameDescription.text = gameDes
         ageLabel.text = "Age: \(game.minAge)+"
         numberofPlayerLabel.text = "\(game.minPlayers) - \(game.maxPlayers) players"
         playtimeLabel.text = "Average Game Time: \t\(game.minPlaytime) - \(game.maxPlaytime) minutes"
@@ -115,11 +120,27 @@ class GameDetailViewController: UIViewController {
             case .failure(let error):
                 print("unable to get user reviews \(error)")
             case .success(let reviews):
-                self?.reviews = reviews
+                self?.reviews = reviews.filter {($0.title != nil) && $0.description != nil}
             }
         }
     }
-
+    
+    @IBAction func gameRulesButtonPressed(_ sender: UIButton) {
+        guard let rulesURL = game?.rulesURL else {
+            rulesButton.isHidden = true
+            return
+        }
+        guard let url = URL(string: rulesURL) else {
+            return
+        }
+        let safariPage = SFSafariViewController(url: url)
+        present(safariPage, animated: true)
+    }
+    
+    @IBAction func addToCollectionButtonPressed(_ sender: UIBarButtonItem) {
+        //save to user collection on firebase and profile view
+        
+    }
 }
 extension GameDetailViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -139,6 +160,12 @@ extension GameDetailViewController: UITableViewDataSource {
 }
 extension GameDetailViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 180
+        let review = reviews[indexPath.row]
+        if review.description == nil || review.title == nil {
+            return 100
+        } else {
+           return 190
+        }
+       
     }
 }
