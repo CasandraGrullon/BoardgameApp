@@ -13,14 +13,17 @@ class GameDetailViewController: UIViewController {
     @IBOutlet weak var gameImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
-    @IBOutlet weak var averageRatingLabel: UILabel!
     @IBOutlet weak var gameDescription: UITextView!
     @IBOutlet weak var categoriesLabel: UILabel!
     @IBOutlet weak var ageLabel: UILabel!
     @IBOutlet weak var numberofPlayerLabel: UILabel!
     @IBOutlet weak var playtimeLabel: UILabel!
     @IBOutlet weak var reviewsTableView: UITableView!
-    
+    @IBOutlet weak var star1Button: UIButton!
+    @IBOutlet weak var star2Button: UIButton!
+    @IBOutlet weak var star3Button: UIButton!
+    @IBOutlet weak var star4Button: UIButton!
+    @IBOutlet weak var star5Button: UIButton!
     public var game: Game?
     public var categories = [Category]()
     public var reviews = [GameReview]() {
@@ -35,7 +38,6 @@ class GameDetailViewController: UIViewController {
         super.viewDidLoad()
         configureTableView()
         updateUI()
-        
     }
     private func configureTableView() {
         reviewsTableView.delegate = self
@@ -48,12 +50,49 @@ class GameDetailViewController: UIViewController {
         getGameReviews(gameId: game.id)
         gameImageView.kf.setImage(with: URL(string: game.imageURL))
         nameLabel.text = game.name
-        priceLabel.text = game.price
+        priceLabel.text = "$\(game.price)"
         gameDescription.text = game.description
         ageLabel.text = "Age: \(game.minAge)+"
         numberofPlayerLabel.text = "\(game.minPlayers) - \(game.maxPlayers) players"
         playtimeLabel.text = "Average Game Time: \t\(game.minPlaytime) - \(game.maxPlaytime) minutes"
-        averageRatingLabel.text = "Rated \(game.averageUserRating)/10"
+        if game.averageUserRating >= 5 {
+            star1Button.setImage(UIImage(systemName: "star.fill"), for: .normal)
+            star2Button.setImage(UIImage(systemName: "star.fill"), for: .normal)
+            star3Button.setImage(UIImage(systemName: "star.fill"), for: .normal)
+            star4Button.setImage(UIImage(systemName: "star.fill"), for: .normal)
+            star5Button.setImage(UIImage(systemName: "star.fill"), for: .normal)
+        } else if game.averageUserRating >= 4 && game.averageUserRating < 5 {
+            star1Button.setImage(UIImage(systemName: "star.fill"), for: .normal)
+            star2Button.setImage(UIImage(systemName: "star.fill"), for: .normal)
+            star3Button.setImage(UIImage(systemName: "star.fill"), for: .normal)
+            star4Button.setImage(UIImage(systemName: "star.fill"), for: .normal)
+            star5Button.setImage(UIImage(systemName: "star"), for: .normal)
+        } else if game.averageUserRating >= 3 && game.averageUserRating < 4 {
+            star1Button.setImage(UIImage(systemName: "star.fill"), for: .normal)
+            star2Button.setImage(UIImage(systemName: "star.fill"), for: .normal)
+            star3Button.setImage(UIImage(systemName: "star.fill"), for: .normal)
+            star4Button.setImage(UIImage(systemName: "star"), for: .normal)
+            star5Button.setImage(UIImage(systemName: "star"), for: .normal)
+        } else if game.averageUserRating >= 2 && game.averageUserRating < 3 {
+            star1Button.setImage(UIImage(systemName: "star.fill"), for: .normal)
+            star2Button.setImage(UIImage(systemName: "star.fill"), for: .normal)
+            star3Button.setImage(UIImage(systemName: "star"), for: .normal)
+            star4Button.setImage(UIImage(systemName: "star"), for: .normal)
+            star5Button.setImage(UIImage(systemName: "star"), for: .normal)
+        } else if game.averageUserRating >= 1 && game.averageUserRating < 2{
+            star1Button.setImage(UIImage(systemName: "star.fill"), for: .normal)
+            star2Button.setImage(UIImage(systemName: "star"), for: .normal)
+            star3Button.setImage(UIImage(systemName: "star"), for: .normal)
+            star4Button.setImage(UIImage(systemName: "star"), for: .normal)
+            star5Button.setImage(UIImage(systemName: "star"), for: .normal)
+        } else {
+            star1Button.setImage(UIImage(systemName: "star"), for: .normal)
+            star2Button.setImage(UIImage(systemName: "star"), for: .normal)
+            star3Button.setImage(UIImage(systemName: "star"), for: .normal)
+            star4Button.setImage(UIImage(systemName: "star"), for: .normal)
+            star5Button.setImage(UIImage(systemName: "star"), for: .normal)
+        }
+        
     }
     private func getCategories() {
         BoardGameAPIClient.getGameCategories { [weak self] (result) in
