@@ -9,7 +9,7 @@
 import UIKit
 import SafariServices
 
-class GameDetailViewController: UIViewController {
+class GameDetailViewController: UITableViewController {
 
     @IBOutlet weak var gameImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
@@ -142,30 +142,30 @@ class GameDetailViewController: UIViewController {
         
     }
 }
-extension GameDetailViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return reviews.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = reviewsTableView.dequeueReusableCell(withIdentifier: "reviewCell", for: indexPath) as? ReviewCell else {
-            fatalError("could not cast to ReviewCell")
-        }
-        let review = reviews[indexPath.row]
-        cell.configureCell(review: review)
-        return cell
-    }
-    
-    
-}
-extension GameDetailViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let review = reviews[indexPath.row]
-        if review.description == nil || review.title == nil {
-            return 100
-        } else {
-           return 190
-        }
-       
-    }
-}
+//extension GameDetailViewController: UITableViewDataSource {
+//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        return reviews.count
+//    }
+//    
+//    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        guard let cell = reviewsTableView.dequeueReusableCell(withIdentifier: "reviewCell", for: indexPath) as? ReviewCell else {
+//            fatalError("could not cast to ReviewCell")
+//        }
+//        let review = reviews[indexPath.row]
+//        cell.configureCell(review: review)
+//        return cell
+//    }
+//    
+//    
+//}
+//extension GameDetailViewController: UITableViewDelegate {
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        let review = reviews[indexPath.row]
+//        if review.description == nil || review.title == nil {
+//            return 100
+//        } else {
+//           return 190
+//        }
+//       
+//    }
+//}
