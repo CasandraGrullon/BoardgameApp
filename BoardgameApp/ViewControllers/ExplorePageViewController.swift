@@ -9,7 +9,7 @@
 import UIKit
 
 class ExplorePageViewController: UIViewController {
-
+    
     
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var filtersCollectionView: UICollectionView!
@@ -27,11 +27,9 @@ class ExplorePageViewController: UIViewController {
             self.getGames(search: searchQuery)
         }
     }
-    private var filters = [String]() {
+    public var addedFilters = [String]() {
         didSet {
-//            for filter in filters {
-//                games.filter {$0.}
-//            }
+            filtersCollectionView.reloadData()
         }
     }
     
@@ -44,6 +42,8 @@ class ExplorePageViewController: UIViewController {
         gamesCollectionView.delegate = self
         gamesCollectionView.dataSource = self
         gamesCollectionView.register(UINib(nibName: "GameCell", bundle: nil), forCellWithReuseIdentifier: "gameCell")
+        filtersCollectionView.delegate = self
+        filtersCollectionView.dataSource = self
     }
     
     private func getGames(search: String) {
@@ -58,7 +58,15 @@ class ExplorePageViewController: UIViewController {
             }
         }
     }
-
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let filterVC = segue.destination as? FilterViewController else {
+            fatalError("could not segue to FilterVC")
+        }
+        filterVC.delegate = self
+    }
+    
+    
 }
 extension ExplorePageViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -75,16 +83,31 @@ extension ExplorePageViewController: UICollectionViewDelegateFlowLayout {
 }
 extension ExplorePageViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return games.count
+        if collectionView == gamesCollectionView {
+             return games.count
+        } else {
+            return addedFilters.count
+        }
+       
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = gamesCollectionView.dequeueReusableCell(withReuseIdentifier: "gameCell", for: indexPath) as? GameCell else {
-            fatalError("could not cast to GameCell")
+        if collectionView == gamesCollectionView {
+            guard let cell = gamesCollectionView.dequeueReusableCell(withReuseIdentifier: "gameCell", for: indexPath) as? GameCell else {
+                fatalError("could not cast to GameCell")
+            }
+            let game = games[indexPath.row]
+            cell.configureCell(game: game)
+            return cell
+        } else {
+            guard let cell = filtersCollectionView.dequeueReusableCell(withReuseIdentifier: "filterCell", for: indexPath) as? FilterCell else {
+                fatalError("could not cast to filter cell")
+            }
+            let filter = addedFilters[indexPath.row]
+            cell.filterNameLabel.text = filter
+            return cell
         }
-        let game = games[indexPath.row]
-        cell.configureCell(game: game)
-        return cell
+        
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let game = games[indexPath.row]
@@ -95,6 +118,13 @@ extension ExplorePageViewController: UICollectionViewDataSource {
         detailVC.game = game
         navigationController?.pushViewController(detailVC, animated: true)
         
+    }
+    
+    
+}
+extension ExplorePageViewController: FiltersAdded {
+    func didAddFilters(filters: [String], vc: FilterViewController) {
+        addedFilters = filters
     }
     
     

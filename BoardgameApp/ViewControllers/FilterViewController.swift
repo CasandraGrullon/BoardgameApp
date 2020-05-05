@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol FiltersAdded {
+    func didAddFilters(filters: [String], vc: FilterViewController)
+}
+
 class FilterViewController: UIViewController {
     
     @IBOutlet weak var genreCollectionView: UICollectionView!
@@ -16,12 +20,101 @@ class FilterViewController: UIViewController {
     @IBOutlet weak var priceSegement: UISegmentedControl!
     @IBOutlet weak var addFiltersButton: UIButton!
     
+    public var delegate: FiltersAdded?
+    public var filters = [String]()
+    public var genres = [Category]() {
+        didSet {
+            DispatchQueue.main.async {
+                self.genreCollectionView.reloadData()
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        getCategories()
+        configureCollectionView()
     }
-
+    private func configureCollectionView() {
+        genreCollectionView.delegate = self
+        genreCollectionView.dataSource = self
+    }
+    private func getCategories() {
+        BoardGameAPIClient.getGameCategories { [weak self] (result) in
+            switch result {
+            case .failure(let error):
+                print("could not get back categories from api \(error.localizedDescription)")
+            case .success(let categories):
+                self?.genres = categories
+                //fix this with firebase info:
+                //  let firebaseCategories = ["Adventure", "Aliens", "Animals", "Card Game", "City Building", "Civilization", "Children's Game", "Cooperative", "Dice", "Drinking", "Educational", "Family Game", "Fantasy", "Fighting", "Finance", "Food", "Horror", "Humor", "Mafia", "Medical", "Medieval", "Party Game", "Puzzle", "Queer", "RPG", "Romance", "Sci-Fi", "Sports", "Strategy", "Superhero", "Tech", "Transportation", "Travel", "Trivia", "War", "Western", "viking", "Zombies"]
+            }
+        }
+    }
+    
+    @IBAction func ageSegmentSelected(_ sender: UISegmentedControl) {
+        if sender.selectedSegmentIndex == 0 {
+            filters.append("all ages")
+        } else if sender.selectedSegmentIndex == 1 {
+            filters.append("ages 5 - 10")
+        } else if sender.selectedSegmentIndex == 2 {
+            filters.append("ages 10 +")
+        } else if sender.selectedSegmentIndex == 3 {
+            filters.append("ages 18 +")
+        }
+    }
+    
+    @IBAction func playersSegmentSelected(_ sender: UISegmentedControl) {
+        if sender.selectedSegmentIndex == 0 {
+            filters.append("2 - 4 players")
+        } else if sender.selectedSegmentIndex == 1 {
+            filters.append("5 - 6 players")
+        } else if sender.selectedSegmentIndex == 2 {
+            filters.append("6 + players")
+        }
+    }
+    @IBAction func priceSegmentSelected(_ sender: UISegmentedControl) {
+        if sender.selectedSegmentIndex == 0 {
+            filters.append("$")
+        } else if sender.selectedSegmentIndex == 1 {
+            filters.append("$$")
+        } else if sender.selectedSegmentIndex == 2 {
+            filters.append("$$$")
+        }
+    }
     @IBAction func addFiltersButtonPressed(_ sender: UIButton) {
-        
+        delegate?.didAddFilters(filters: filters, vc: self)
+        dismiss(animated: true)
     }
+    
+    
+}
+extension FilterViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let itemSpacing: CGFloat = 4
+        let maxSize: CGFloat = UIScreen.main.bounds.size.width
+        let numberOfItems: CGFloat = 2
+        let totalSpace: CGFloat = (numberOfItems * itemSpacing) * 2.5
+        let itemWidth: CGFloat = (maxSize - totalSpace) / numberOfItems
+        return CGSize(width: itemWidth, height: itemWidth)
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 5, left: 0, bottom: 5, right: 5)
+    }
+}
+extension FilterViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return genres.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = genreCollectionView.dequeueReusableCell(withReuseIdentifier: "genreCell", for: indexPath) as? GenreCell else {
+            fatalError("could not cast to genre cell")
+        }
+        let genre = genres[indexPath.row]
+        cell.configureCell(category: genre)
+        return cell
+    }
+    
+    
 }

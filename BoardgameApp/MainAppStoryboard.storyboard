@@ -122,7 +122,7 @@
                     <navigationItem key="navigationItem" title="Explore" id="dsO-Kp-5Cy">
                         <barButtonItem key="rightBarButtonItem" title="Item" image="slider.horizontal.3" catalog="system" id="9W9-n9-7kx">
                             <connections>
-                                <segue destination="crZ-dr-865" kind="show" id="dOQ-Ao-5s9"/>
+                                <segue destination="crZ-dr-865" kind="presentation" id="thV-px-0iQ"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -749,19 +749,19 @@
             <objects>
                 <viewController id="crZ-dr-865" customClass="FilterViewController" customModule="BoardgameApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="N4r-Gi-TyB">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="genre" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N5Z-IN-MGs">
-                                <rect key="frame" x="10" y="108" width="394" height="21"/>
+                                <rect key="frame" x="10" y="20" width="394" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="4he-xo-dSG">
-                                <rect key="frame" x="10" y="137" width="394" height="134.5"/>
+                                <rect key="frame" x="10" y="49" width="394" height="126.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Hjs-rR-Uew">
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Hjs-rR-Uew">
                                     <size key="itemSize" width="128" height="128"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -769,7 +769,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="genreCell" id="raK-Ej-Akq" customClass="GenreCell" customModule="BoardgameApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                        <rect key="frame" x="0.0" y="-1" width="128" height="128"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="DZP-3p-7s0">
                                             <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
@@ -804,63 +804,75 @@
                                                 <constraint firstItem="KBa-hv-vgt" firstAttribute="centerY" secondItem="DZP-3p-7s0" secondAttribute="centerY" id="sTD-1u-piM"/>
                                             </constraints>
                                         </collectionViewCellContentView>
+                                        <connections>
+                                            <outlet property="genreImage" destination="fDu-Rq-OFv" id="d4J-mr-fON"/>
+                                            <outlet property="genreLabel" destination="KBa-hv-vgt" id="jRr-NV-feJ"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="number of players" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y6d-O3-1Gj">
-                                <rect key="frame" x="10" y="351.5" width="394" height="21"/>
+                                <rect key="frame" x="10" y="255.5" width="394" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="price range" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SqZ-ey-NuO">
-                                <rect key="frame" x="10" y="421.5" width="394" height="21"/>
+                                <rect key="frame" x="10" y="325.5" width="394" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="age restrictions" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nJm-wv-vSx">
-                                <rect key="frame" x="10" y="281.5" width="414" height="21"/>
+                                <rect key="frame" x="10" y="185.5" width="414" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="4rT-xP-MDR">
-                                <rect key="frame" x="10" y="310.5" width="394" height="32"/>
+                                <rect key="frame" x="10" y="214.5" width="394" height="32"/>
                                 <segments>
                                     <segment title="All Ages"/>
                                     <segment title="5 - 10"/>
                                     <segment title="11 - 15"/>
                                     <segment title="18 +"/>
                                 </segments>
+                                <connections>
+                                    <action selector="ageSegmentSelected:" destination="crZ-dr-865" eventType="valueChanged" id="RcA-51-w3z"/>
+                                </connections>
                             </segmentedControl>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="xIM-EP-Dhk">
-                                <rect key="frame" x="10" y="380.5" width="394" height="32"/>
+                                <rect key="frame" x="10" y="284.5" width="394" height="32"/>
                                 <segments>
                                     <segment title="2 - 4"/>
                                     <segment title="5 - 6"/>
                                     <segment title="6 +"/>
                                 </segments>
+                                <connections>
+                                    <action selector="playersSegmentSelected:" destination="crZ-dr-865" eventType="valueChanged" id="Q1j-Dp-Tni"/>
+                                </connections>
                             </segmentedControl>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="S28-aq-dOi">
-                                <rect key="frame" x="10" y="450.5" width="394" height="32"/>
+                                <rect key="frame" x="10" y="354.5" width="394" height="32"/>
                                 <segments>
                                     <segment title="$"/>
                                     <segment title="$$"/>
                                     <segment title="$$$"/>
                                 </segments>
+                                <connections>
+                                    <action selector="priceSegmentSelected:" destination="crZ-dr-865" eventType="valueChanged" id="wmv-pF-S77"/>
+                                </connections>
                             </segmentedControl>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qXW-FI-M6S">
-                                <rect key="frame" x="304" y="749" width="90" height="44"/>
+                                <rect key="frame" x="304" y="435.5" width="90" height="30"/>
                                 <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="90" id="NXH-TN-uUG"/>
-                                    <constraint firstAttribute="height" constant="44" id="yT9-CE-zLh"/>
+                                    <constraint firstAttribute="width" constant="90" id="cbs-D9-DFg"/>
                                 </constraints>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title="add filters"/>
+                                <state key="normal" title="Add Filters"/>
                                 <connections>
-                                    <action selector="addFiltersButtonPressed:" destination="crZ-dr-865" eventType="touchUpInside" id="wPT-DH-rUP"/>
+                                    <action selector="addFiltersButtonPressed:" destination="crZ-dr-865" eventType="touchUpInside" id="sW2-QJ-5FN"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -879,19 +891,19 @@
                             <constraint firstItem="SqZ-ey-NuO" firstAttribute="leading" secondItem="tF2-2q-leK" secondAttribute="leading" constant="10" id="W9P-yH-nge"/>
                             <constraint firstItem="nJm-wv-vSx" firstAttribute="leading" secondItem="tF2-2q-leK" secondAttribute="leading" constant="10" id="XEG-mp-00F"/>
                             <constraint firstItem="N5Z-IN-MGs" firstAttribute="top" secondItem="tF2-2q-leK" secondAttribute="top" constant="20" id="YWR-Bs-vVj"/>
+                            <constraint firstItem="tF2-2q-leK" firstAttribute="trailing" secondItem="qXW-FI-M6S" secondAttribute="trailing" constant="20" id="ZaE-qC-e65"/>
                             <constraint firstItem="4rT-xP-MDR" firstAttribute="leading" secondItem="tF2-2q-leK" secondAttribute="leading" constant="10" id="bTD-O3-hh9"/>
                             <constraint firstItem="S28-aq-dOi" firstAttribute="leading" secondItem="tF2-2q-leK" secondAttribute="leading" constant="10" id="f6r-3m-ENt"/>
-                            <constraint firstItem="tF2-2q-leK" firstAttribute="trailing" secondItem="qXW-FI-M6S" secondAttribute="trailing" constant="20" id="fox-98-qtQ"/>
                             <constraint firstItem="N5Z-IN-MGs" firstAttribute="leading" secondItem="tF2-2q-leK" secondAttribute="leading" constant="10" id="gFO-Jy-vMp"/>
                             <constraint firstItem="tF2-2q-leK" firstAttribute="trailing" secondItem="S28-aq-dOi" secondAttribute="trailing" constant="10" id="hu0-PM-BXs"/>
                             <constraint firstItem="4he-xo-dSG" firstAttribute="leading" secondItem="tF2-2q-leK" secondAttribute="leading" constant="10" id="i1K-Qd-pop"/>
                             <constraint firstItem="tF2-2q-leK" firstAttribute="trailing" secondItem="4he-xo-dSG" secondAttribute="trailing" constant="10" id="jJN-a8-aqj"/>
-                            <constraint firstItem="tF2-2q-leK" firstAttribute="bottom" secondItem="qXW-FI-M6S" secondAttribute="bottom" constant="20" id="lbi-3X-Y8t"/>
                             <constraint firstItem="tF2-2q-leK" firstAttribute="trailing" secondItem="4rT-xP-MDR" secondAttribute="trailing" constant="10" id="msd-WZ-4Ey"/>
                             <constraint firstItem="4he-xo-dSG" firstAttribute="top" secondItem="N5Z-IN-MGs" secondAttribute="bottom" constant="8" id="pE2-hc-Pd4"/>
                             <constraint firstItem="tF2-2q-leK" firstAttribute="trailing" secondItem="y6d-O3-1Gj" secondAttribute="trailing" constant="10" id="pk6-BE-L5T"/>
                             <constraint firstItem="nJm-wv-vSx" firstAttribute="top" secondItem="4he-xo-dSG" secondAttribute="bottom" constant="10" id="puC-qu-GZM"/>
                             <constraint firstItem="nJm-wv-vSx" firstAttribute="trailing" secondItem="tF2-2q-leK" secondAttribute="trailing" constant="10" id="tGU-NF-Foa"/>
+                            <constraint firstItem="qXW-FI-M6S" firstAttribute="top" secondItem="S28-aq-dOi" secondAttribute="bottom" constant="50" id="tM9-Sa-gJb"/>
                             <constraint firstItem="y6d-O3-1Gj" firstAttribute="top" secondItem="4rT-xP-MDR" secondAttribute="bottom" constant="10" id="u7O-RI-uT1"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="tF2-2q-leK"/>
@@ -907,7 +919,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jQ5-Tj-XbH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1380" y="-293"/>
+            <point key="canvasLocation" x="1379.7101449275362" y="-293.30357142857139"/>
         </scene>
         <!--Home-->
         <scene sceneID="4Hf-91-wbN">

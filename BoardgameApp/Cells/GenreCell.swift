@@ -10,4 +10,11 @@ import UIKit
 
 class GenreCell: UICollectionViewCell {
     
+    @IBOutlet weak var genreImage: UIImageView!
+    @IBOutlet weak var genreLabel: UILabel!
+    
+    public func configureCell(category: Category) {
+        
+        genreLabel.text = category.name
+    }
 }
