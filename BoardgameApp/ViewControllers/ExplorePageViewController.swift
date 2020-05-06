@@ -66,19 +66,34 @@ class ExplorePageViewController: UIViewController {
         filterVC.delegate = self
     }
     
-    
 }
 extension ExplorePageViewController: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let itemSpacing: CGFloat = 10
-        let maxSize: CGFloat = UIScreen.main.bounds.size.width
-        let numberOfItems: CGFloat = 2
-        let totalSpace: CGFloat = (numberOfItems * itemSpacing) * 2.5
-        let itemWidth: CGFloat = (maxSize - totalSpace) / numberOfItems
-        return CGSize(width: itemWidth, height: itemWidth)
+    func collectionView(_ collectionView: UICollectionView, layout
+        collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        if collectionView == gamesCollectionView {
+            let itemSpacing: CGFloat = 10
+            let maxSize: CGFloat = UIScreen.main.bounds.size.width
+            let numberOfItems: CGFloat = 2
+            let totalSpace: CGFloat = (numberOfItems * itemSpacing) * 2.5
+            let itemWidth: CGFloat = (maxSize - totalSpace) / numberOfItems
+            return CGSize(width: itemWidth, height: itemWidth)
+        } else {
+            let itemSpacing: CGFloat = 2
+            let maxSize: CGFloat = UIScreen.main.bounds.size.width
+            let numberOfItems: CGFloat = 3
+            let totalSpace: CGFloat = (numberOfItems * itemSpacing) * 1.5
+            let itemWidth: CGFloat = (maxSize - totalSpace) / numberOfItems
+            return CGSize(width: itemWidth, height: itemWidth)
+        }
+        
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
+        if collectionView == gamesCollectionView {
+            return UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
+        } else {
+             return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        }
+        
     }
 }
 extension ExplorePageViewController: UICollectionViewDataSource {

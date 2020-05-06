@@ -41,6 +41,7 @@
 		C6C53CD12457551A00F1F361 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C6C53CCF2457551A00F1F361 /* LaunchScreen.storyboard */; };
 		C6C53CD9245755A000F1F361 /* MainAppStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C6C53CD8245755A000F1F361 /* MainAppStoryboard.storyboard */; };
 		C6C61603245B8A040070F648 /* ReviewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C6C61602245B8A040070F648 /* ReviewCell.xib */; };
+		C6E934EE2462662500269CAC /* Designable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6E934ED2462662500269CAC /* Designable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -80,6 +81,7 @@
 		C6C53CD22457551A00F1F361 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C6C53CD8245755A000F1F361 /* MainAppStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainAppStoryboard.storyboard; sourceTree = "<group>"; };
 		C6C61602245B8A040070F648 /* ReviewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReviewCell.xib; sourceTree = "<group>"; };
+		C6E934ED2462662500269CAC /* Designable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Designable.swift; sourceTree = "<group>"; };
 		DF9C6CC426DC0CDDFF8C8655 /* Pods_BoardgameApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BoardgameApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -183,6 +185,7 @@
 				C670D7A824591D8F00F556BE /* DateFormatter.swift */,
 				C670D7AA24591DAE00F556BE /* EmptyView.swift */,
 				C6C400B5245B5E8500846A31 /* ViewController+Ext.swift */,
+				C6E934ED2462662500269CAC /* Designable.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -387,6 +390,7 @@
 				C687026224591B390037F22D /* Categories.swift in Sources */,
 				C6C400BC245B719F00846A31 /* FilterCell.swift in Sources */,
 				C6C53CC92457551700F1F361 /* LoginViewController.swift in Sources */,
+				C6E934EE2462662500269CAC /* Designable.swift in Sources */,
 				C6C400B6245B5E8500846A31 /* ViewController+Ext.swift in Sources */,
 				C68702562458D9140037F22D /* GameDetailViewController.swift in Sources */,
 				C6C53CC52457551700F1F361 /* AppDelegate.swift in Sources */,
