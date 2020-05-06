@@ -19,7 +19,7 @@ class GameDetailViewController: UITableViewController {
     @IBOutlet weak var ageLabel: UILabel!
     @IBOutlet weak var numberofPlayerLabel: UILabel!
     @IBOutlet weak var playtimeLabel: UILabel!
-    @IBOutlet weak var reviewsTableView: UITableView!
+    @IBOutlet weak var reviewsCollectionView: UICollectionView!
     @IBOutlet weak var star1Button: UIButton!
     @IBOutlet weak var star2Button: UIButton!
     @IBOutlet weak var star3Button: UIButton!
@@ -33,20 +33,20 @@ class GameDetailViewController: UITableViewController {
     public var reviews = [GameReview]() {
         didSet {
             DispatchQueue.main.async {
-                self.reviewsTableView.reloadData()
+                self.reviewsCollectionView.reloadData()
             }
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureTableView()
+        configureCollectionView()
         updateUI()
     }
-    private func configureTableView() {
-        reviewsTableView.delegate = self
-        reviewsTableView.dataSource = self
-        reviewsTableView.register(UINib(nibName: "ReviewCell", bundle: nil), forCellReuseIdentifier: "reviewCell")
+    private func configureCollectionView() {
+        reviewsCollectionView.delegate = self
+        reviewsCollectionView.dataSource = self
+        reviewsCollectionView.register(UINib(nibName: "ReviewCell", bundle: nil), forCellWithReuseIdentifier: "reviewCell")
     }
     private func updateUI() {
         guard let game = game else {return}
@@ -142,43 +142,30 @@ class GameDetailViewController: UITableViewController {
         
     }
 }
-extension GameDetailViewController {
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        var count = Int()
-        if tableView == reviewsTableView {
-            count = reviews.count
-        }
-        return count
+
+extension GameDetailViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let itemSpacing: CGFloat = 4
+        let maxSize: CGFloat = UIScreen.main.bounds.size.width
+        let numberOfItems: CGFloat = 2
+        let totalSpace: CGFloat = (numberOfItems * itemSpacing) * 2.5
+        let itemWidth: CGFloat = (maxSize - totalSpace) / numberOfItems
+        return CGSize(width: itemWidth, height: itemWidth)
+    }
+}
+extension GameDetailViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return reviews.count
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = reviewsTableView.dequeueReusableCell(withIdentifier: "reviewCell", for: indexPath) as? ReviewCell else {
-            fatalError("could not cast to ReviewCell")
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = reviewsCollectionView.dequeueReusableCell(withReuseIdentifier: "reviewCell", for: indexPath) as? ReviewCell else {
+            fatalError("could not cast to review cell")
         }
-        if tableView == reviewsTableView {
-            
-            let review = reviews[indexPath.row]
-            cell.configureCell(review: review)
-            
-        }
+        let review = reviews[indexPath.row]
+        cell.configureCell(review: review)
         return cell
     }
     
     
-}
-extension GameDetailViewController {
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        var height = CGFloat()
-        if tableView == reviewsTableView {
-            let review = reviews[indexPath.row]
-            if review.description == nil || review.title == nil {
-                height = 100
-            } else {
-                height = 190
-            }
-        } else if tableView == self{
-            return 200
-        }
-        return height
-    }
 }
