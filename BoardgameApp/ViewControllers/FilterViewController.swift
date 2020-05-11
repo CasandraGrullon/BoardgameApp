@@ -135,7 +135,7 @@ extension FilterViewController: UICollectionViewDataSource {
         let genre = genres[indexPath.row]
         genreFilter.append(genre.id)
         filters.append(genre.name)
-        
+
         let cell = collectionView.cellForItem(at: indexPath)
         UIView.animate(withDuration: 0.3, delay: 0.0, usingSpringWithDamping: 1.0, initialSpringVelocity: 0.0, options: [], animations: {
             cell?.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
