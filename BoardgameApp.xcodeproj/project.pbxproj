@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		BA3CDD7B977C9A26A3D52BB2 /* Pods_BoardgameApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF9C6CC426DC0CDDFF8C8655 /* Pods_BoardgameApp.framework */; };
+		C650F1172469C8C50087179A /* Genre.swift in Sources */ = {isa = PBXBuildFile; fileRef = C650F1162469C8C50087179A /* Genre.swift */; };
 		C670D79A24591C4900F556BE /* DatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C670D79924591C4900F556BE /* DatabaseService.swift */; };
 		C670D79C24591C6C00F556BE /* AuthenticationSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = C670D79B24591C6C00F556BE /* AuthenticationSession.swift */; };
 		C670D79E24591C7C00F556BE /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C670D79D24591C7C00F556BE /* StorageService.swift */; };
@@ -47,6 +48,7 @@
 /* Begin PBXFileReference section */
 		2A700813B432E85823C5E5B9 /* Pods-BoardgameApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BoardgameApp.debug.xcconfig"; path = "Target Support Files/Pods-BoardgameApp/Pods-BoardgameApp.debug.xcconfig"; sourceTree = "<group>"; };
 		38E47C788B31BB17FCAFAEE6 /* Pods-BoardgameApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BoardgameApp.release.xcconfig"; path = "Target Support Files/Pods-BoardgameApp/Pods-BoardgameApp.release.xcconfig"; sourceTree = "<group>"; };
+		C650F1162469C8C50087179A /* Genre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Genre.swift; sourceTree = "<group>"; };
 		C670D79924591C4900F556BE /* DatabaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseService.swift; sourceTree = "<group>"; };
 		C670D79B24591C6C00F556BE /* AuthenticationSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationSession.swift; sourceTree = "<group>"; };
 		C670D79D24591C7C00F556BE /* StorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
@@ -196,6 +198,7 @@
 				C687025D245917A70037F22D /* GameResults.swift */,
 				C687025F24591A770037F22D /* GameReview.swift */,
 				C687026124591B390037F22D /* Categories.swift */,
+				C650F1162469C8C50087179A /* Genre.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -371,6 +374,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C650F1172469C8C50087179A /* Genre.swift in Sources */,
 				C6C400B4245B132800846A31 /* Secrets.swift in Sources */,
 				C6C400C0245B818B00846A31 /* ReviewCell.swift in Sources */,
 				C670D7A324591CF300F556BE /* BoardGameAPIClient.swift in Sources */,

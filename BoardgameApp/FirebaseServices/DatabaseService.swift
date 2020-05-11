@@ -10,10 +10,11 @@ import Foundation
 import FirebaseAuth
 import FirebaseFirestore
 
-private let firestore = Firestore.firestore()
+private let db = Firestore.firestore()
 
 class DatabaseService {
     static let appUsers = "appUsers"
+    static let genres = "genres"
     
     private init() {}
     
@@ -22,7 +23,7 @@ class DatabaseService {
     public func createAppUser(authDataResult: AuthDataResult, completion: @escaping (Result<Bool, Error>) -> ()) {
         
         guard let email = authDataResult.user.email else { return }
-        firestore.collection(DatabaseService.appUsers).document(authDataResult.user.uid).setData(["userId": authDataResult.user.uid, "userEmail": email]) { (error) in
+        db.collection(DatabaseService.appUsers).document(authDataResult.user.uid).setData(["userId": authDataResult.user.uid, "userEmail": email]) { (error) in
             if let error = error {
                 completion(.failure(error))
             } else {
@@ -31,4 +32,16 @@ class DatabaseService {
             
         }
     }
+    
+    public func getGenres(completion: @escaping(Result<[Genre], Error>) -> ()) {
+        db.collection(DatabaseService.genres).getDocuments { (snapshot, error) in
+            if let error = error {
+                completion(.failure(error))
+            } else if let snapshot = snapshot {
+                let genres = snapshot.documents.compactMap {Genre ($0.data())}
+                completion(.success(genres))
+            }
+        }
+    }
+    
 }
