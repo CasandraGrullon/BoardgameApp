@@ -739,13 +739,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="genre" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N5Z-IN-MGs">
-                                <rect key="frame" x="10" y="20" width="394" height="21"/>
+                                <rect key="frame" x="10" y="20" width="394" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="4he-xo-dSG">
-                                <rect key="frame" x="10" y="49" width="394" height="126.5"/>
+                                <rect key="frame" x="10" y="48.5" width="394" height="252.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Hjs-rR-Uew">
                                     <size key="itemSize" width="128" height="128"/>
@@ -755,7 +755,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="genreCell" id="raK-Ej-Akq" customClass="GenreCell" customModule="BoardgameApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="-1" width="128" height="128"/>
+                                        <rect key="frame" x="0.0" y="62.5" width="128" height="128"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="DZP-3p-7s0">
                                             <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
@@ -774,7 +774,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Genre" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KBa-hv-vgt">
-                                                    <rect key="frame" x="8" y="53.5" width="112" height="21"/>
+                                                    <rect key="frame" x="8" y="54" width="112" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -803,110 +803,175 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="age restrictions" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nJm-wv-vSx">
+                                <rect key="frame" x="10" y="321" width="394" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="7pp-KJ-Mjo">
+                                <rect key="frame" x="10" y="351.5" width="394" height="30"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iPf-pH-kCz">
+                                        <rect key="frame" x="0.0" y="0.0" width="98.5" height="30"/>
+                                        <color key="backgroundColor" red="0.49218898799999999" green="0.87989768400000001" blue="0.66050312330000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <state key="normal" title="All Ages"/>
+                                        <connections>
+                                            <action selector="AgeButtonPressed:" destination="crZ-dr-865" eventType="touchUpInside" id="2S0-JM-1YS"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="loz-JR-rmA">
+                                        <rect key="frame" x="98.5" y="0.0" width="98.5" height="30"/>
+                                        <color key="backgroundColor" red="1" green="0.81588847900000006" blue="0.36930056300000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <state key="normal" title="Children"/>
+                                        <connections>
+                                            <action selector="AgeButtonPressed:" destination="crZ-dr-865" eventType="touchUpInside" id="78i-xE-sb3"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8of-kf-b0G">
+                                        <rect key="frame" x="197" y="0.0" width="98.5" height="30"/>
+                                        <color key="backgroundColor" red="0.49218898799999999" green="0.87989768400000001" blue="0.66050312330000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <state key="normal" title="Teens"/>
+                                        <connections>
+                                            <action selector="AgeButtonPressed:" destination="crZ-dr-865" eventType="touchUpInside" id="apM-8y-B77"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kDp-CJ-IBC">
+                                        <rect key="frame" x="295.5" y="0.0" width="98.5" height="30"/>
+                                        <color key="backgroundColor" red="1" green="0.81588847900000006" blue="0.36930056300000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <state key="normal" title="Adults"/>
+                                        <connections>
+                                            <action selector="AgeButtonPressed:" destination="crZ-dr-865" eventType="touchUpInside" id="h8w-Be-BL3"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="number of players" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y6d-O3-1Gj">
-                                <rect key="frame" x="10" y="255.5" width="394" height="21"/>
+                                <rect key="frame" x="10" y="401.5" width="394" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="price range" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SqZ-ey-NuO">
-                                <rect key="frame" x="10" y="325.5" width="394" height="21"/>
+                                <rect key="frame" x="10" y="482" width="394" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="age restrictions" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nJm-wv-vSx">
-                                <rect key="frame" x="10" y="185.5" width="414" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="4rT-xP-MDR">
-                                <rect key="frame" x="10" y="214.5" width="394" height="32"/>
-                                <segments>
-                                    <segment title="All Ages"/>
-                                    <segment title="Children"/>
-                                    <segment title="Teens"/>
-                                    <segment title="Adults"/>
-                                </segments>
-                                <connections>
-                                    <action selector="ageSegmentSelected:" destination="crZ-dr-865" eventType="valueChanged" id="RcA-51-w3z"/>
-                                </connections>
-                            </segmentedControl>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="xIM-EP-Dhk">
-                                <rect key="frame" x="10" y="284.5" width="394" height="32"/>
-                                <segments>
-                                    <segment title="2 - 4"/>
-                                    <segment title="5 - 6"/>
-                                    <segment title="6 +"/>
-                                </segments>
-                                <connections>
-                                    <action selector="playersSegmentSelected:" destination="crZ-dr-865" eventType="valueChanged" id="Q1j-Dp-Tni"/>
-                                </connections>
-                            </segmentedControl>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="S28-aq-dOi">
-                                <rect key="frame" x="10" y="354.5" width="394" height="32"/>
-                                <segments>
-                                    <segment title="$"/>
-                                    <segment title="$$"/>
-                                    <segment title="$$$"/>
-                                </segments>
-                                <connections>
-                                    <action selector="priceSegmentSelected:" destination="crZ-dr-865" eventType="valueChanged" id="wmv-pF-S77"/>
-                                </connections>
-                            </segmentedControl>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qXW-FI-M6S">
-                                <rect key="frame" x="304" y="435.5" width="90" height="30"/>
+                                <rect key="frame" x="320" y="572.5" width="74" height="30"/>
                                 <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="90" id="cbs-D9-DFg"/>
-                                </constraints>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Add Filters"/>
                                 <connections>
                                     <action selector="addFiltersButtonPressed:" destination="crZ-dr-865" eventType="touchUpInside" id="sW2-QJ-5FN"/>
                                 </connections>
                             </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="76S-UQ-GPZ">
+                                <rect key="frame" x="10" y="432" width="394" height="30"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IXI-m7-DZe">
+                                        <rect key="frame" x="0.0" y="0.0" width="131.5" height="30"/>
+                                        <color key="backgroundColor" red="0.49218898799999999" green="0.87989768400000001" blue="0.66050312330000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <state key="normal" title="2 - 4"/>
+                                        <connections>
+                                            <action selector="numberPlayersButtonPressed:" destination="crZ-dr-865" eventType="touchUpInside" id="ZUs-Ye-KFW"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hKr-M6-L6X">
+                                        <rect key="frame" x="131.5" y="0.0" width="131" height="30"/>
+                                        <color key="backgroundColor" red="1" green="0.81588847900000006" blue="0.36930056300000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <state key="normal" title="4 - 6"/>
+                                        <connections>
+                                            <action selector="numberPlayersButtonPressed:" destination="crZ-dr-865" eventType="touchUpInside" id="kOq-U3-3UK"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JLP-O5-snY">
+                                        <rect key="frame" x="262.5" y="0.0" width="131.5" height="30"/>
+                                        <color key="backgroundColor" red="0.49218898799999999" green="0.87989768400000001" blue="0.66050312330000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <state key="normal" title="6 +"/>
+                                        <connections>
+                                            <action selector="numberPlayersButtonPressed:" destination="crZ-dr-865" eventType="touchUpInside" id="2KL-Sa-d37"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Msk-Yk-dOp">
+                                <rect key="frame" x="10" y="512.5" width="394" height="30"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lMN-9q-LbW">
+                                        <rect key="frame" x="0.0" y="0.0" width="131.5" height="30"/>
+                                        <color key="backgroundColor" red="0.49218898799999999" green="0.87989768400000001" blue="0.66050312330000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <state key="normal" title="$"/>
+                                        <connections>
+                                            <action selector="priceButtonPressed:" destination="crZ-dr-865" eventType="touchUpInside" id="DRP-gQ-P88"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="okk-Iu-kKQ">
+                                        <rect key="frame" x="131.5" y="0.0" width="131" height="30"/>
+                                        <color key="backgroundColor" red="1" green="0.81588847900000006" blue="0.36930056300000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <state key="normal" title="$$"/>
+                                        <connections>
+                                            <action selector="priceButtonPressed:" destination="crZ-dr-865" eventType="touchUpInside" id="q30-dh-uLW"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FH1-Xu-lSp">
+                                        <rect key="frame" x="262.5" y="0.0" width="131.5" height="30"/>
+                                        <color key="backgroundColor" red="0.49218898799999999" green="0.87989768400000001" blue="0.66050312330000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <state key="normal" title="$$$"/>
+                                        <connections>
+                                            <action selector="priceButtonPressed:" destination="crZ-dr-865" eventType="touchUpInside" id="n2A-iR-GX9"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="y6d-O3-1Gj" firstAttribute="leading" secondItem="tF2-2q-leK" secondAttribute="leading" constant="10" id="1lO-JD-Wdk"/>
-                            <constraint firstItem="SqZ-ey-NuO" firstAttribute="top" secondItem="xIM-EP-Dhk" secondAttribute="bottom" constant="10" id="4dW-8J-I7M"/>
-                            <constraint firstItem="S28-aq-dOi" firstAttribute="top" secondItem="SqZ-ey-NuO" secondAttribute="bottom" constant="8" id="5cg-Eh-kef"/>
-                            <constraint firstItem="xIM-EP-Dhk" firstAttribute="leading" secondItem="tF2-2q-leK" secondAttribute="leading" constant="10" id="5h2-Gl-wUD"/>
                             <constraint firstItem="tF2-2q-leK" firstAttribute="trailing" secondItem="N5Z-IN-MGs" secondAttribute="trailing" constant="10" id="8EM-E3-T6y"/>
-                            <constraint firstItem="4he-xo-dSG" firstAttribute="height" secondItem="N4r-Gi-TyB" secondAttribute="height" multiplier="0.15" id="EVr-1N-GLN"/>
-                            <constraint firstItem="4rT-xP-MDR" firstAttribute="top" secondItem="nJm-wv-vSx" secondAttribute="bottom" constant="8" id="NLH-iR-bhZ"/>
-                            <constraint firstItem="tF2-2q-leK" firstAttribute="trailing" secondItem="SqZ-ey-NuO" secondAttribute="trailing" constant="10" id="Pj3-Gh-Aal"/>
-                            <constraint firstItem="tF2-2q-leK" firstAttribute="trailing" secondItem="xIM-EP-Dhk" secondAttribute="trailing" constant="10" id="Snj-cz-r8T"/>
-                            <constraint firstItem="xIM-EP-Dhk" firstAttribute="top" secondItem="y6d-O3-1Gj" secondAttribute="bottom" constant="8" id="W8Z-po-ZAP"/>
-                            <constraint firstItem="SqZ-ey-NuO" firstAttribute="leading" secondItem="tF2-2q-leK" secondAttribute="leading" constant="10" id="W9P-yH-nge"/>
-                            <constraint firstItem="nJm-wv-vSx" firstAttribute="leading" secondItem="tF2-2q-leK" secondAttribute="leading" constant="10" id="XEG-mp-00F"/>
+                            <constraint firstItem="7pp-KJ-Mjo" firstAttribute="top" secondItem="nJm-wv-vSx" secondAttribute="bottom" constant="10" id="8x5-GZ-sYU"/>
+                            <constraint firstItem="tF2-2q-leK" firstAttribute="trailing" secondItem="76S-UQ-GPZ" secondAttribute="trailing" constant="10" id="900-6t-Rc5"/>
+                            <constraint firstItem="4he-xo-dSG" firstAttribute="height" secondItem="N4r-Gi-TyB" secondAttribute="height" multiplier="0.3" id="EVr-1N-GLN"/>
+                            <constraint firstItem="qXW-FI-M6S" firstAttribute="top" secondItem="Msk-Yk-dOp" secondAttribute="bottom" constant="30" id="F9G-Yh-Riu"/>
+                            <constraint firstItem="tF2-2q-leK" firstAttribute="trailing" secondItem="7pp-KJ-Mjo" secondAttribute="trailing" constant="10" id="Gsg-rv-eY1"/>
+                            <constraint firstItem="y6d-O3-1Gj" firstAttribute="top" secondItem="7pp-KJ-Mjo" secondAttribute="bottom" constant="20" id="Iub-aj-JCf"/>
+                            <constraint firstItem="76S-UQ-GPZ" firstAttribute="top" secondItem="y6d-O3-1Gj" secondAttribute="bottom" constant="10" id="Nnj-D6-adm"/>
+                            <constraint firstItem="tF2-2q-leK" firstAttribute="trailing" secondItem="SqZ-ey-NuO" secondAttribute="trailing" constant="10" id="STV-pP-Cuh"/>
+                            <constraint firstItem="76S-UQ-GPZ" firstAttribute="leading" secondItem="tF2-2q-leK" secondAttribute="leading" constant="10" id="WEN-AQ-bFA"/>
+                            <constraint firstItem="tF2-2q-leK" firstAttribute="trailing" secondItem="y6d-O3-1Gj" secondAttribute="trailing" constant="10" id="WEm-Xe-nzh"/>
                             <constraint firstItem="N5Z-IN-MGs" firstAttribute="top" secondItem="tF2-2q-leK" secondAttribute="top" constant="20" id="YWR-Bs-vVj"/>
-                            <constraint firstItem="tF2-2q-leK" firstAttribute="trailing" secondItem="qXW-FI-M6S" secondAttribute="trailing" constant="20" id="ZaE-qC-e65"/>
-                            <constraint firstItem="4rT-xP-MDR" firstAttribute="leading" secondItem="tF2-2q-leK" secondAttribute="leading" constant="10" id="bTD-O3-hh9"/>
-                            <constraint firstItem="S28-aq-dOi" firstAttribute="leading" secondItem="tF2-2q-leK" secondAttribute="leading" constant="10" id="f6r-3m-ENt"/>
+                            <constraint firstItem="Msk-Yk-dOp" firstAttribute="leading" secondItem="tF2-2q-leK" secondAttribute="leading" constant="10" id="ap5-cq-fNU"/>
+                            <constraint firstItem="nJm-wv-vSx" firstAttribute="top" secondItem="4he-xo-dSG" secondAttribute="bottom" constant="20" id="boP-nt-cW7"/>
+                            <constraint firstItem="SqZ-ey-NuO" firstAttribute="top" secondItem="76S-UQ-GPZ" secondAttribute="bottom" constant="20" id="ctf-x3-XKK"/>
+                            <constraint firstAttribute="trailing" secondItem="nJm-wv-vSx" secondAttribute="trailing" constant="10" id="dTO-Cl-xxP"/>
+                            <constraint firstItem="Msk-Yk-dOp" firstAttribute="top" secondItem="SqZ-ey-NuO" secondAttribute="bottom" constant="10" id="ekC-kg-2Xm"/>
                             <constraint firstItem="N5Z-IN-MGs" firstAttribute="leading" secondItem="tF2-2q-leK" secondAttribute="leading" constant="10" id="gFO-Jy-vMp"/>
-                            <constraint firstItem="tF2-2q-leK" firstAttribute="trailing" secondItem="S28-aq-dOi" secondAttribute="trailing" constant="10" id="hu0-PM-BXs"/>
                             <constraint firstItem="4he-xo-dSG" firstAttribute="leading" secondItem="tF2-2q-leK" secondAttribute="leading" constant="10" id="i1K-Qd-pop"/>
+                            <constraint firstItem="7pp-KJ-Mjo" firstAttribute="leading" secondItem="tF2-2q-leK" secondAttribute="leading" constant="10" id="iel-AC-P8B"/>
                             <constraint firstItem="tF2-2q-leK" firstAttribute="trailing" secondItem="4he-xo-dSG" secondAttribute="trailing" constant="10" id="jJN-a8-aqj"/>
-                            <constraint firstItem="tF2-2q-leK" firstAttribute="trailing" secondItem="4rT-xP-MDR" secondAttribute="trailing" constant="10" id="msd-WZ-4Ey"/>
+                            <constraint firstItem="tF2-2q-leK" firstAttribute="trailing" secondItem="Msk-Yk-dOp" secondAttribute="trailing" constant="10" id="mGO-0y-nMD"/>
+                            <constraint firstItem="SqZ-ey-NuO" firstAttribute="leading" secondItem="tF2-2q-leK" secondAttribute="leading" constant="10" id="my5-ya-LJt"/>
                             <constraint firstItem="4he-xo-dSG" firstAttribute="top" secondItem="N5Z-IN-MGs" secondAttribute="bottom" constant="8" id="pE2-hc-Pd4"/>
-                            <constraint firstItem="tF2-2q-leK" firstAttribute="trailing" secondItem="y6d-O3-1Gj" secondAttribute="trailing" constant="10" id="pk6-BE-L5T"/>
-                            <constraint firstItem="nJm-wv-vSx" firstAttribute="top" secondItem="4he-xo-dSG" secondAttribute="bottom" constant="10" id="puC-qu-GZM"/>
-                            <constraint firstItem="nJm-wv-vSx" firstAttribute="trailing" secondItem="tF2-2q-leK" secondAttribute="trailing" constant="10" id="tGU-NF-Foa"/>
-                            <constraint firstItem="qXW-FI-M6S" firstAttribute="top" secondItem="S28-aq-dOi" secondAttribute="bottom" constant="50" id="tM9-Sa-gJb"/>
-                            <constraint firstItem="y6d-O3-1Gj" firstAttribute="top" secondItem="4rT-xP-MDR" secondAttribute="bottom" constant="10" id="u7O-RI-uT1"/>
+                            <constraint firstItem="nJm-wv-vSx" firstAttribute="leading" secondItem="tF2-2q-leK" secondAttribute="leading" constant="10" id="sIw-F7-RLk"/>
+                            <constraint firstItem="tF2-2q-leK" firstAttribute="trailing" secondItem="qXW-FI-M6S" secondAttribute="trailing" constant="20" id="uou-6r-GmH"/>
+                            <constraint firstItem="y6d-O3-1Gj" firstAttribute="leading" secondItem="tF2-2q-leK" secondAttribute="leading" constant="10" id="z9K-k4-Zgy"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="tF2-2q-leK"/>
                     </view>
                     <navigationItem key="navigationItem" title="Filter" id="j8B-F5-mS2"/>
                     <connections>
                         <outlet property="addFiltersButton" destination="qXW-FI-M6S" id="uun-bF-Ib4"/>
-                        <outlet property="ageSegment" destination="4rT-xP-MDR" id="4uD-7l-ZS8"/>
+                        <outlet property="adultsButton" destination="kDp-CJ-IBC" id="aJ4-Kk-yVi"/>
+                        <outlet property="allAgesButton" destination="iPf-pH-kCz" id="Iw9-Dd-KD6"/>
+                        <outlet property="cheapButton" destination="lMN-9q-LbW" id="raM-d8-iW0"/>
+                        <outlet property="childrenButton" destination="loz-JR-rmA" id="doh-Rw-eEK"/>
+                        <outlet property="expensiveButton" destination="FH1-Xu-lSp" id="FXi-L6-95e"/>
+                        <outlet property="fourSixButton" destination="hKr-M6-L6X" id="lUa-kF-aDl"/>
                         <outlet property="genreCollectionView" destination="4he-xo-dSG" id="Zb4-Sh-yR9"/>
-                        <outlet property="playersSegment" destination="xIM-EP-Dhk" id="5eb-cS-vK3"/>
-                        <outlet property="priceSegement" destination="S28-aq-dOi" id="DO3-AC-YWE"/>
+                        <outlet property="middleButton" destination="okk-Iu-kKQ" id="6nY-KP-psH"/>
+                        <outlet property="sixPlusButton" destination="JLP-O5-snY" id="U8o-Ut-WTY"/>
+                        <outlet property="teensButton" destination="8of-kf-b0G" id="0zA-a3-csM"/>
+                        <outlet property="twoFourButton" destination="IXI-m7-DZe" id="qsN-SF-DQH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jQ5-Tj-XbH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

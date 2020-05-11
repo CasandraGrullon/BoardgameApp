@@ -151,10 +151,23 @@ extension ExplorePageViewController: FiltersAdded {
     func didAddFilters(filters: [String], ageFilter: [String], numberOfPlayersFilter: [String], priceFilter: [String], genreFilter: [String], vc: FilterViewController) {
         addedFilters = filters
         
-        if let genre = genreFilter.first, let age = Int(ageFilter.first ?? "0"), let minPlayers = Int(numberOfPlayersFilter.first ?? "2"), let price = priceFilter.first  {
-            games = games.filter {$0.categories.first?.id == genre}.filter {$0.minAge == age}.filter {$0.minPlayers == minPlayers}.filter {$0.price == price}
+        var gamesFiltered = [Game]()
+        
+        if let genre = genreFilter.first {
+            gamesFiltered = games.filter {$0.categories.first?.id == genre}
+        }
+        if let age = Int(ageFilter.first ?? "0") {
+            gamesFiltered = games.filter {$0.minAge == age}
+        }
+        if let maxPlayers = Int(numberOfPlayersFilter.first ?? "6") {
+            gamesFiltered = games.filter {$0.maxPlayers == maxPlayers}
+        }
+        if let price = priceFilter.first {
+            gamesFiltered = games.filter {Double($0.price) ?? 0 <= Double(price) ?? 0}
+            print(gamesFiltered.first?.price)
         }
         
+        games = gamesFiltered
         
     }
     

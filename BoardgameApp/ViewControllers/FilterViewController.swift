@@ -15,10 +15,17 @@ protocol FiltersAdded {
 class FilterViewController: UIViewController {
     
     @IBOutlet weak var genreCollectionView: UICollectionView!
-    @IBOutlet weak var ageSegment: UISegmentedControl!
-    @IBOutlet weak var playersSegment: UISegmentedControl!
-    @IBOutlet weak var priceSegement: UISegmentedControl!
     @IBOutlet weak var addFiltersButton: UIButton!
+    @IBOutlet weak var allAgesButton: UIButton!
+    @IBOutlet weak var childrenButton: UIButton!
+    @IBOutlet weak var teensButton: UIButton!
+    @IBOutlet weak var adultsButton: UIButton!
+    @IBOutlet weak var twoFourButton: UIButton!
+    @IBOutlet weak var fourSixButton: UIButton!
+    @IBOutlet weak var sixPlusButton: UIButton!
+    @IBOutlet weak var cheapButton: UIButton!
+    @IBOutlet weak var middleButton: UIButton!
+    @IBOutlet weak var expensiveButton: UIButton!
     
     public var delegate: FiltersAdded?
     public var filters = [String]()
@@ -38,6 +45,7 @@ class FilterViewController: UIViewController {
         super.viewDidLoad()
         getCategories()
         configureCollectionView()
+        
     }
     private func configureCollectionView() {
         genreCollectionView.delegate = self
@@ -54,50 +62,46 @@ class FilterViewController: UIViewController {
         }
     }
     
-    @IBAction func ageSegmentSelected(_ sender: UISegmentedControl) {
-        if sender.selectedSegmentIndex == 0 {
-            filters.append("all ages")
-            ageFilter.append("0")
-        } else if sender.selectedSegmentIndex == 1 {
+    @IBAction func AgeButtonPressed(_ sender: UIButton) {
+        if sender == allAgesButton {
+            return
+        } else if sender == childrenButton {
             filters.append("children")
             ageFilter.append("5")
-            ageFilter.append("10")
-        } else if sender.selectedSegmentIndex == 2 {
+        } else if sender == teensButton {
             filters.append("teen")
-            ageFilter.append("11")
+            ageFilter.append("12")
+        } else if sender == adultsButton {
+            filters.append("adults")
             ageFilter.append("17")
-        } else if sender.selectedSegmentIndex == 3 {
-            filters.append("adult")
-            ageFilter.append("18")
         }
     }
     
-    @IBAction func playersSegmentSelected(_ sender: UISegmentedControl) {
-        if sender.selectedSegmentIndex == 0 {
+    @IBAction func numberPlayersButtonPressed(_ sender: UIButton) {
+        if sender == twoFourButton {
             filters.append("2 - 4 players")
-            numberOfPlayersFilter.append("2")
             numberOfPlayersFilter.append("4")
-        } else if sender.selectedSegmentIndex == 1 {
-            filters.append("5 - 6 players")
-            numberOfPlayersFilter.append("5")
+        } else if sender == fourSixButton {
+            filters.append("4 - 6 players")
             numberOfPlayersFilter.append("6")
-        } else if sender.selectedSegmentIndex == 2 {
+        } else if sender == sixPlusButton {
             filters.append("6 + players")
-            numberOfPlayersFilter.append("6")
+            numberOfPlayersFilter.append("10")
         }
     }
-    @IBAction func priceSegmentSelected(_ sender: UISegmentedControl) {
-        if sender.selectedSegmentIndex == 0 {
+    @IBAction func priceButtonPressed(_ sender: UIButton) {
+        if sender == cheapButton {
             filters.append("$")
             priceFilter.append("10")
-        } else if sender.selectedSegmentIndex == 1 {
+        } else if sender == middleButton {
             filters.append("$$")
-            priceFilter.append("20")
-        } else if sender.selectedSegmentIndex == 2 {
+            priceFilter.append("30")
+        } else if sender == expensiveButton {
             filters.append("$$$")
-            priceFilter.append("40")
+            priceFilter.append("50")
         }
     }
+
     @IBAction func addFiltersButtonPressed(_ sender: UIButton) {
         delegate?.didAddFilters(filters: filters, ageFilter: ageFilter, numberOfPlayersFilter: numberOfPlayersFilter, priceFilter: priceFilter, genreFilter: genreFilter, vc: self)
         dismiss(animated: true)
