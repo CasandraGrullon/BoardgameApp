@@ -32,12 +32,15 @@ class ExplorePageViewController: UIViewController {
             filtersCollectionView.reloadData()
         }
     }
-    
+    private var refreshControl: UIRefreshControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         getGames(search: "")
         configureCollectionView()
+        refreshControl = UIRefreshControl()
+        gamesCollectionView.refreshControl = refreshControl
+        refreshControl.addTarget(self, action: #selector(loadData), for: .valueChanged)
     }
     private func configureCollectionView() {
         gamesCollectionView.delegate = self
@@ -46,16 +49,23 @@ class ExplorePageViewController: UIViewController {
         filtersCollectionView.delegate = self
         filtersCollectionView.dataSource = self
     }
-    
+    @objc private func loadData() {
+        getGames(search: "")
+        addedFilters.removeAll()
+    }
     private func getGames(search: String) {
         BoardGameAPIClient.getGames(searchQuery: search) { [weak self] (result) in
             switch result {
             case .failure(let appError):
                 DispatchQueue.main.async {
                     self?.showAlert(title: "Unable to get data", message: "issue loading data from api \(appError)")
+                    self?.refreshControl.endRefreshing()
                 }
             case .success(let games):
                 self?.games = games
+                DispatchQueue.main.async {
+                    self?.refreshControl.endRefreshing()
+                }
             }
         }
     }
@@ -141,8 +151,8 @@ extension ExplorePageViewController: FiltersAdded {
     func didAddFilters(filters: [String], ageFilter: [String], numberOfPlayersFilter: [String], priceFilter: [String], genreFilter: [String], vc: FilterViewController) {
         addedFilters = filters
         
-        if let genre = genreFilter.first {
-            games = games.filter {$0.categories.first?.id == genre}
+        if let genre = genreFilter.first, let age = Int(ageFilter.first ?? "0"), let minPlayers = Int(numberOfPlayersFilter.first ?? "2"), let price = priceFilter.first  {
+            games = games.filter {$0.categories.first?.id == genre}.filter {$0.minAge == age}.filter {$0.minPlayers == minPlayers}.filter {$0.price == price}
         }
         
         
