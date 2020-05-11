@@ -12,6 +12,7 @@ class GenreCell: UICollectionViewCell {
     
     @IBOutlet weak var genreImage: UIImageView!
     @IBOutlet weak var genreLabel: UILabel!
+    @IBOutlet weak var backdropColor: UIView!
     
     public func configureCell(genre: Genre) {
         genreImage.kf.setImage(with: URL(string: genre.image))

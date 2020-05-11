@@ -33,6 +33,7 @@ class ExplorePageViewController: UIViewController {
         }
     }
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         getGames(search: "")
@@ -132,14 +133,21 @@ extension ExplorePageViewController: UICollectionViewDataSource {
         }
         detailVC.game = game
         navigationController?.pushViewController(detailVC, animated: true)
-        
     }
     
     
 }
 extension ExplorePageViewController: FiltersAdded {
-    func didAddFilters(filters: [String], vc: FilterViewController) {
+    func didAddFilters(filters: [String], ageFilter: [String], numberOfPlayersFilter: [String], priceFilter: [String], genreFilter: [String], vc: FilterViewController) {
         addedFilters = filters
+        guard let minAge = Int(ageFilter.first ?? "0"),
+            let minPlayers = Int(numberOfPlayersFilter.first ?? "2"), let maxPlayers = Int(numberOfPlayersFilter.last ?? "6"),
+            let price = Double(priceFilter.first ?? "10.00"),
+            let genre = genreFilter.first else {
+            return
+        }
+        games = games.filter {$0.minAge == minAge}.filter {$0.minPlayers == minPlayers}.filter {$0.maxPlayers == maxPlayers}.filter {$0.categories.first?.id == genre}
+        
     }
     
     

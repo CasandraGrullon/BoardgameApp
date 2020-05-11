@@ -81,7 +81,7 @@ extension HomePageViewController: UICollectionViewDelegateFlowLayout {
         return CGSize(width: itemWidth, height: itemWidth)
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 5, left: 0, bottom: 5, right: 5)
+        return UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
     }
 }
 extension HomePageViewController: UICollectionViewDataSource {

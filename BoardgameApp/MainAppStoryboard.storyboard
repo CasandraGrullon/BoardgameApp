@@ -377,7 +377,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="e7f-HK-1r5">
-                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="180"/>
+                                                    <rect key="frame" x="20" y="11" width="374" height="158"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Wel-a4-AUO">
                                                         <size key="itemSize" width="215" height="149"/>
@@ -387,7 +387,7 @@
                                                     </collectionViewFlowLayout>
                                                     <cells>
                                                         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="" id="xqz-g7-ohg">
-                                                            <rect key="frame" x="0.0" y="15.5" width="215" height="149"/>
+                                                            <rect key="frame" x="0.0" y="4.5" width="215" height="149"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Tfd-vQ-cTc">
                                                                 <rect key="frame" x="0.0" y="0.0" width="215" height="149"/>
@@ -419,10 +419,10 @@
                                                 </collectionView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="e7f-HK-1r5" secondAttribute="trailing" id="8nT-Ew-BjH"/>
-                                                <constraint firstAttribute="bottom" secondItem="e7f-HK-1r5" secondAttribute="bottom" id="9iH-CM-a2V"/>
-                                                <constraint firstItem="e7f-HK-1r5" firstAttribute="leading" secondItem="09e-tU-1PH" secondAttribute="leading" id="Odt-Hn-rbK"/>
-                                                <constraint firstItem="e7f-HK-1r5" firstAttribute="top" secondItem="09e-tU-1PH" secondAttribute="top" id="qUC-7d-C7c"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="e7f-HK-1r5" secondAttribute="trailing" id="2qH-vf-Sx5"/>
+                                                <constraint firstItem="e7f-HK-1r5" firstAttribute="top" secondItem="09e-tU-1PH" secondAttribute="topMargin" id="NUH-6n-hkn"/>
+                                                <constraint firstItem="e7f-HK-1r5" firstAttribute="bottom" secondItem="09e-tU-1PH" secondAttribute="bottomMargin" id="mlE-F4-1tw"/>
+                                                <constraint firstItem="e7f-HK-1r5" firstAttribute="leading" secondItem="09e-tU-1PH" secondAttribute="leadingMargin" id="tLN-bC-fV1"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -764,7 +764,7 @@
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fDu-Rq-OFv">
                                                     <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                                 </imageView>
-                                                <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wsc-uF-XqX" customClass="DesignableView" customModule="BoardgameApp" customModuleProvider="target">
+                                                <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wsc-uF-XqX">
                                                     <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                     <userDefinedRuntimeAttributes>
@@ -796,6 +796,7 @@
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <connections>
+                                            <outlet property="backdropColor" destination="wsc-uF-XqX" id="aJ0-7b-G6q"/>
                                             <outlet property="genreImage" destination="fDu-Rq-OFv" id="d4J-mr-fON"/>
                                             <outlet property="genreLabel" destination="KBa-hv-vgt" id="jRr-NV-feJ"/>
                                         </connections>
@@ -824,9 +825,9 @@
                                 <rect key="frame" x="10" y="214.5" width="394" height="32"/>
                                 <segments>
                                     <segment title="All Ages"/>
-                                    <segment title="5 - 10"/>
-                                    <segment title="11 - 15"/>
-                                    <segment title="18 +"/>
+                                    <segment title="Children"/>
+                                    <segment title="Teens"/>
+                                    <segment title="Adults"/>
                                 </segments>
                                 <connections>
                                     <action selector="ageSegmentSelected:" destination="crZ-dr-865" eventType="valueChanged" id="RcA-51-w3z"/>
