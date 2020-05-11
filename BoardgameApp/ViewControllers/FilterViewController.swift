@@ -22,7 +22,7 @@ class FilterViewController: UIViewController {
     
     public var delegate: FiltersAdded?
     public var filters = [String]()
-    public var genres = [Category]() {
+    public var genres = [Genre]() {
         didSet {
             DispatchQueue.main.async {
                 self.genreCollectionView.reloadData()
@@ -40,14 +40,12 @@ class FilterViewController: UIViewController {
         genreCollectionView.dataSource = self
     }
     private func getCategories() {
-        BoardGameAPIClient.getGameCategories { [weak self] (result) in
+        DatabaseService.shared.getGenres { [weak self] (result) in
             switch result {
-            case .failure(let error):
-                print("could not get back categories from api \(error.localizedDescription)")
-            case .success(let categories):
-                self?.genres = categories
-                //fix this with firebase info:
-                //  let firebaseCategories = ["Adventure", "Aliens", "Animals", "Card Game", "City Building", "Civilization", "Children's Game", "Cooperative", "Dice", "Drinking", "Educational", "Family Game", "Fantasy", "Fighting", "Finance", "Food", "Horror", "Humor", "Mafia", "Medical", "Medieval", "Party Game", "Puzzle", "Queer", "RPG", "Romance", "Sci-Fi", "Sports", "Strategy", "Superhero", "Tech", "Transportation", "Travel", "Trivia", "War", "Western", "viking", "Zombies"]
+            case .failure(let genreError):
+                print("could not get genres from firebase \(genreError.localizedDescription)")
+            case .success(let genres):
+                self?.genres = genres.sorted {$0.name < $1.name}
             }
         }
     }
@@ -112,7 +110,7 @@ extension FilterViewController: UICollectionViewDataSource {
             fatalError("could not cast to genre cell")
         }
         let genre = genres[indexPath.row]
-        cell.configureCell(category: genre)
+        cell.configureCell(genre: genre)
         return cell
     }
     
