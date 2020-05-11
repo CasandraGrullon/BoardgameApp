@@ -64,16 +64,24 @@ class FilterViewController: UIViewController {
     
     @IBAction func AgeButtonPressed(_ sender: UIButton) {
         if sender == allAgesButton {
+            allAgesButton.backgroundColor = #colorLiteral(red: 1, green: 0.2932110727, blue: 0, alpha: 1)
+            allAgesButton.tintColor = .white
             return
         } else if sender == childrenButton {
             filters.append("children")
             ageFilter.append("5")
+            childrenButton.backgroundColor = #colorLiteral(red: 1, green: 0.2932110727, blue: 0, alpha: 1)
+            childrenButton.tintColor = .white
         } else if sender == teensButton {
             filters.append("teen")
             ageFilter.append("12")
+            teensButton.backgroundColor = #colorLiteral(red: 1, green: 0.2932110727, blue: 0, alpha: 1)
+            teensButton.tintColor = .white
         } else if sender == adultsButton {
             filters.append("adults")
             ageFilter.append("17")
+            adultsButton.backgroundColor = #colorLiteral(red: 1, green: 0.2932110727, blue: 0, alpha: 1)
+            adultsButton.tintColor = .white
         }
     }
     
@@ -81,24 +89,36 @@ class FilterViewController: UIViewController {
         if sender == twoFourButton {
             filters.append("2 - 4 players")
             numberOfPlayersFilter.append("4")
+            twoFourButton.backgroundColor = #colorLiteral(red: 1, green: 0.2932110727, blue: 0, alpha: 1)
+            twoFourButton.tintColor = .white
         } else if sender == fourSixButton {
             filters.append("4 - 6 players")
             numberOfPlayersFilter.append("6")
+            fourSixButton.backgroundColor = #colorLiteral(red: 1, green: 0.2932110727, blue: 0, alpha: 1)
+            fourSixButton.tintColor = .white
         } else if sender == sixPlusButton {
             filters.append("6 + players")
             numberOfPlayersFilter.append("10")
+            sixPlusButton.backgroundColor = #colorLiteral(red: 1, green: 0.2932110727, blue: 0, alpha: 1)
+            sixPlusButton.tintColor = .white
         }
     }
     @IBAction func priceButtonPressed(_ sender: UIButton) {
         if sender == cheapButton {
             filters.append("$")
             priceFilter.append("10")
+            cheapButton.backgroundColor = #colorLiteral(red: 1, green: 0.2932110727, blue: 0, alpha: 1)
+            cheapButton.tintColor = .white
         } else if sender == middleButton {
             filters.append("$$")
             priceFilter.append("30")
+            middleButton.backgroundColor = #colorLiteral(red: 1, green: 0.2932110727, blue: 0, alpha: 1)
+            middleButton.tintColor = .white
         } else if sender == expensiveButton {
             filters.append("$$$")
             priceFilter.append("50")
+            expensiveButton.backgroundColor = #colorLiteral(red: 1, green: 0.2932110727, blue: 0, alpha: 1)
+            expensiveButton.tintColor = .white
         }
     }
 
@@ -147,7 +167,7 @@ extension FilterViewController: UICollectionViewDataSource {
             UIView.animate(withDuration: 0.3, delay: 0.0, usingSpringWithDamping: 1.0, initialSpringVelocity: 0.0, options: [], animations: {
                 cell?.transform = CGAffineTransform.identity
                 cell?.clipsToBounds = true
-                cell?.layer.borderColor = .init(srgbRed: 0, green: 0, blue: 3, alpha: 1)
+                cell?.layer.borderColor = .init(srgbRed: 3, green: 0, blue: 0, alpha: 1)
                 cell?.layer.borderWidth = 5
             })
         }

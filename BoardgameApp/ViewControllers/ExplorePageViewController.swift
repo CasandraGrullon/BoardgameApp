@@ -38,6 +38,8 @@ class ExplorePageViewController: UIViewController {
         super.viewDidLoad()
         getGames(search: "")
         configureCollectionView()
+    }
+    private func configureRefresh() {
         refreshControl = UIRefreshControl()
         gamesCollectionView.refreshControl = refreshControl
         refreshControl.addTarget(self, action: #selector(loadData), for: .valueChanged)
@@ -46,6 +48,7 @@ class ExplorePageViewController: UIViewController {
         gamesCollectionView.delegate = self
         gamesCollectionView.dataSource = self
         gamesCollectionView.register(UINib(nibName: "GameCell", bundle: nil), forCellWithReuseIdentifier: "gameCell")
+        
         filtersCollectionView.delegate = self
         filtersCollectionView.dataSource = self
     }
@@ -82,7 +85,7 @@ extension ExplorePageViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout
         collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if collectionView == gamesCollectionView {
-            let itemSpacing: CGFloat = 10
+            let itemSpacing: CGFloat = 5
             let maxSize: CGFloat = UIScreen.main.bounds.size.width
             let numberOfItems: CGFloat = 2
             let totalSpace: CGFloat = (numberOfItems * itemSpacing) * 2.5
@@ -100,7 +103,7 @@ extension ExplorePageViewController: UICollectionViewDelegateFlowLayout {
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         if collectionView == gamesCollectionView {
-            return UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
+            return UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
         } else {
              return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         }
@@ -152,7 +155,6 @@ extension ExplorePageViewController: FiltersAdded {
         addedFilters = filters
         
         var gamesFiltered = [Game]()
-        
         if let genre = genreFilter.first {
             gamesFiltered = games.filter {$0.categories.first?.id == genre}
         }
@@ -164,7 +166,6 @@ extension ExplorePageViewController: FiltersAdded {
         }
         if let price = priceFilter.first {
             gamesFiltered = games.filter {Double($0.price) ?? 0 <= Double(price) ?? 0}
-            print(gamesFiltered.first?.price)
         }
         
         games = gamesFiltered

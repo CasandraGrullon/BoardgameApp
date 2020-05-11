@@ -14,21 +14,21 @@ class HomePageViewController: UITableViewController {
     @IBOutlet weak var newCollectionView: UICollectionView!
     @IBOutlet weak var popularCollectionView: UICollectionView!
     
-    private var featuredGames = [Game]() { //random property?
+    private var featuredGames = [Game]() {
         didSet {
             DispatchQueue.main.async {
                 self.featuredCollectionView.reloadData()
             }
         }
     }
-    private var newGames = [Game]() { //by date
+    private var newGames = [Game]() {
         didSet {
             DispatchQueue.main.async {
                 self.newCollectionView.reloadData()
             }
         }
     }
-    private var popularGames = [Game]() { //highest rating
+    private var popularGames = [Game]() {
         didSet {
             DispatchQueue.main.async {
                 self.popularCollectionView.reloadData()
@@ -63,7 +63,7 @@ class HomePageViewController: UITableViewController {
                     self?.showAlert(title: "Unable to get data", message: "issue loading data from api \(appError)")
                 }
             case .success(let games):
-                self?.featuredGames = games.filter {$0.minAge == 10}
+                self?.featuredGames = games.filter {$0.minAge == 13}
                 self?.newGames = games.filter {$0.yearPublished == 2019}
                 self?.popularGames = games.filter {$0.averageUserRating > 3.5}
             }
@@ -73,7 +73,7 @@ class HomePageViewController: UITableViewController {
 }
 extension HomePageViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let itemSpacing: CGFloat = 4
+        let itemSpacing: CGFloat = 11
         let maxSize: CGFloat = UIScreen.main.bounds.size.width
         let numberOfItems: CGFloat = 2
         let totalSpace: CGFloat = (numberOfItems * itemSpacing) * 2.5
@@ -81,7 +81,7 @@ extension HomePageViewController: UICollectionViewDelegateFlowLayout {
         return CGSize(width: itemWidth, height: itemWidth)
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
+        return UIEdgeInsets(top: 5, left: 0, bottom: 5, right: 0)
     }
 }
 extension HomePageViewController: UICollectionViewDataSource {
