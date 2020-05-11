@@ -26,6 +26,7 @@ class FilterViewController: UIViewController {
     @IBOutlet weak var cheapButton: UIButton!
     @IBOutlet weak var middleButton: UIButton!
     @IBOutlet weak var expensiveButton: UIButton!
+    @IBOutlet weak var clearButton: UIButton!
     
     public var delegate: FiltersAdded?
     public var filters = [String]()
@@ -40,11 +41,13 @@ class FilterViewController: UIViewController {
             }
         }
     }
+    private var isCellSelected = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         getCategories()
         configureCollectionView()
+        clearButton.isHidden = true
         
     }
     private func configureCollectionView() {
@@ -63,61 +66,64 @@ class FilterViewController: UIViewController {
     }
     
     @IBAction func AgeButtonPressed(_ sender: UIButton) {
+        clearButton.isHidden = false
         if sender == allAgesButton {
-            allAgesButton.backgroundColor = #colorLiteral(red: 1, green: 0.2932110727, blue: 0, alpha: 1)
+            allAgesButton.backgroundColor = #colorLiteral(red: 0.6345325112, green: 0.3519191146, blue: 1, alpha: 1)
             allAgesButton.tintColor = .white
             return
         } else if sender == childrenButton {
             filters.append("children")
             ageFilter.append("5")
-            childrenButton.backgroundColor = #colorLiteral(red: 1, green: 0.2932110727, blue: 0, alpha: 1)
+            childrenButton.backgroundColor = #colorLiteral(red: 0.6345325112, green: 0.3519191146, blue: 1, alpha: 1)
             childrenButton.tintColor = .white
         } else if sender == teensButton {
             filters.append("teen")
             ageFilter.append("12")
-            teensButton.backgroundColor = #colorLiteral(red: 1, green: 0.2932110727, blue: 0, alpha: 1)
+            teensButton.backgroundColor = #colorLiteral(red: 0.6345325112, green: 0.3519191146, blue: 1, alpha: 1)
             teensButton.tintColor = .white
         } else if sender == adultsButton {
             filters.append("adults")
             ageFilter.append("17")
-            adultsButton.backgroundColor = #colorLiteral(red: 1, green: 0.2932110727, blue: 0, alpha: 1)
+            adultsButton.backgroundColor = #colorLiteral(red: 0.6345325112, green: 0.3519191146, blue: 1, alpha: 1)
             adultsButton.tintColor = .white
         }
     }
     
     @IBAction func numberPlayersButtonPressed(_ sender: UIButton) {
+        clearButton.isHidden = false
         if sender == twoFourButton {
             filters.append("2 - 4 players")
             numberOfPlayersFilter.append("4")
-            twoFourButton.backgroundColor = #colorLiteral(red: 1, green: 0.2932110727, blue: 0, alpha: 1)
+            twoFourButton.backgroundColor = #colorLiteral(red: 0.6345325112, green: 0.3519191146, blue: 1, alpha: 1)
             twoFourButton.tintColor = .white
         } else if sender == fourSixButton {
             filters.append("4 - 6 players")
             numberOfPlayersFilter.append("6")
-            fourSixButton.backgroundColor = #colorLiteral(red: 1, green: 0.2932110727, blue: 0, alpha: 1)
+            fourSixButton.backgroundColor = #colorLiteral(red: 0.6345325112, green: 0.3519191146, blue: 1, alpha: 1)
             fourSixButton.tintColor = .white
         } else if sender == sixPlusButton {
             filters.append("6 + players")
             numberOfPlayersFilter.append("10")
-            sixPlusButton.backgroundColor = #colorLiteral(red: 1, green: 0.2932110727, blue: 0, alpha: 1)
+            sixPlusButton.backgroundColor = #colorLiteral(red: 0.6345325112, green: 0.3519191146, blue: 1, alpha: 1)
             sixPlusButton.tintColor = .white
         }
     }
     @IBAction func priceButtonPressed(_ sender: UIButton) {
+        clearButton.isHidden = false
         if sender == cheapButton {
             filters.append("$")
             priceFilter.append("10")
-            cheapButton.backgroundColor = #colorLiteral(red: 1, green: 0.2932110727, blue: 0, alpha: 1)
+            cheapButton.backgroundColor = #colorLiteral(red: 0.6345325112, green: 0.3519191146, blue: 1, alpha: 1)
             cheapButton.tintColor = .white
         } else if sender == middleButton {
             filters.append("$$")
             priceFilter.append("30")
-            middleButton.backgroundColor = #colorLiteral(red: 1, green: 0.2932110727, blue: 0, alpha: 1)
+            middleButton.backgroundColor = #colorLiteral(red: 0.6345325112, green: 0.3519191146, blue: 1, alpha: 1)
             middleButton.tintColor = .white
         } else if sender == expensiveButton {
             filters.append("$$$")
             priceFilter.append("50")
-            expensiveButton.backgroundColor = #colorLiteral(red: 1, green: 0.2932110727, blue: 0, alpha: 1)
+            expensiveButton.backgroundColor = #colorLiteral(red: 0.6345325112, green: 0.3519191146, blue: 1, alpha: 1)
             expensiveButton.tintColor = .white
         }
     }
@@ -125,6 +131,35 @@ class FilterViewController: UIViewController {
     @IBAction func addFiltersButtonPressed(_ sender: UIButton) {
         delegate?.didAddFilters(filters: filters, ageFilter: ageFilter, numberOfPlayersFilter: numberOfPlayersFilter, priceFilter: priceFilter, genreFilter: genreFilter, vc: self)
         dismiss(animated: true)
+    }
+    
+    @IBAction func clearButtonPressed(_ sender: UIButton) {
+        filters.removeAll()
+        priceFilter.removeAll()
+        ageFilter.removeAll()
+        numberOfPlayersFilter.removeAll()
+        genreFilter.removeAll()
+        isCellSelected = false
+        expensiveButton.backgroundColor = .clear
+        expensiveButton.tintColor = #colorLiteral(red: 0.6345325112, green: 0.3519191146, blue: 1, alpha: 1)
+        middleButton.backgroundColor = .clear
+        middleButton.tintColor = #colorLiteral(red: 0.6345325112, green: 0.3519191146, blue: 1, alpha: 1)
+        cheapButton.backgroundColor = .clear
+        cheapButton.tintColor = #colorLiteral(red: 0.6345325112, green: 0.3519191146, blue: 1, alpha: 1)
+        twoFourButton.backgroundColor = .clear
+        twoFourButton.tintColor = #colorLiteral(red: 0.6345325112, green: 0.3519191146, blue: 1, alpha: 1)
+        fourSixButton.backgroundColor = .clear
+        fourSixButton.tintColor = #colorLiteral(red: 0.6345325112, green: 0.3519191146, blue: 1, alpha: 1)
+        sixPlusButton.backgroundColor = .clear
+        sixPlusButton.tintColor = #colorLiteral(red: 0.6345325112, green: 0.3519191146, blue: 1, alpha: 1)
+        allAgesButton.backgroundColor = .clear
+        allAgesButton.tintColor = #colorLiteral(red: 0.6345325112, green: 0.3519191146, blue: 1, alpha: 1)
+        childrenButton.backgroundColor = .clear
+        childrenButton.tintColor = #colorLiteral(red: 0.6345325112, green: 0.3519191146, blue: 1, alpha: 1)
+        teensButton.backgroundColor = .clear
+        teensButton.tintColor = #colorLiteral(red: 0.6345325112, green: 0.3519191146, blue: 1, alpha: 1)
+        adultsButton.backgroundColor = .clear
+        adultsButton.tintColor = #colorLiteral(red: 0.6345325112, green: 0.3519191146, blue: 1, alpha: 1)
     }
     
     
@@ -159,16 +194,24 @@ extension FilterViewController: UICollectionViewDataSource {
         let genre = genres[indexPath.row]
         genreFilter.append(genre.id)
         filters.append(genre.name)
-
+        isCellSelected = true
         let cell = collectionView.cellForItem(at: indexPath)
         UIView.animate(withDuration: 0.3, delay: 0.0, usingSpringWithDamping: 1.0, initialSpringVelocity: 0.0, options: [], animations: {
             cell?.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
         }) { (completed) in
             UIView.animate(withDuration: 0.3, delay: 0.0, usingSpringWithDamping: 1.0, initialSpringVelocity: 0.0, options: [], animations: {
-                cell?.transform = CGAffineTransform.identity
-                cell?.clipsToBounds = true
-                cell?.layer.borderColor = .init(srgbRed: 3, green: 0, blue: 0, alpha: 1)
-                cell?.layer.borderWidth = 5
+                if self.isCellSelected {
+                    cell?.transform = CGAffineTransform.identity
+                    cell?.clipsToBounds = true
+                    cell?.layer.borderColor = .init(srgbRed: 3, green: 0, blue: 3, alpha: 1)
+                    cell?.layer.borderWidth = 3
+                } else {
+                    cell?.transform = CGAffineTransform.identity
+                    cell?.clipsToBounds = true
+                    cell?.layer.borderColor = .init(srgbRed: 0, green: 0, blue: 0, alpha: 0)
+                    cell?.layer.borderWidth = 0
+                }
+                
             })
         }
         

@@ -38,6 +38,7 @@ class ExplorePageViewController: UIViewController {
         super.viewDidLoad()
         getGames(search: "")
         configureCollectionView()
+        configureRefresh()
     }
     private func configureRefresh() {
         refreshControl = UIRefreshControl()
