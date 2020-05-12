@@ -15,11 +15,11 @@ struct Game: Codable {
     let id: String
     let name: String
     let yearPublished: Int?
-    let minPlayers: Int
-    let maxPlayers: Int
-    let minPlaytime: Int
-    let maxPlaytime: Int
-    let minAge: Int
+    let minPlayers: Int?
+    let maxPlayers: Int?
+    let minPlaytime: Int?
+    let maxPlaytime: Int?
+    let minAge: Int?
     let description: String
     let imageURL: String
     let thumbURL: String

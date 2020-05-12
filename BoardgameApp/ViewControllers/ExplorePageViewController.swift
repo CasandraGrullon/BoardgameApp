@@ -14,9 +14,7 @@ class ExplorePageViewController: UIViewController {
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var filtersCollectionView: UICollectionView!
     @IBOutlet weak var gamesCollectionView: UICollectionView!
-    
     @IBOutlet weak var gamesCollectionTopAnchor: NSLayoutConstraint!
-    
     
     private var games = [Game]() {
         didSet {
@@ -47,6 +45,7 @@ class ExplorePageViewController: UIViewController {
         
     }
     private func configureRefresh() {
+        searchBar.delegate = self
         refreshControl = UIRefreshControl()
         gamesCollectionView.refreshControl = refreshControl
         refreshControl.addTarget(self, action: #selector(loadData), for: .valueChanged)
@@ -55,7 +54,6 @@ class ExplorePageViewController: UIViewController {
         gamesCollectionView.delegate = self
         gamesCollectionView.dataSource = self
         gamesCollectionView.register(UINib(nibName: "GameCell", bundle: nil), forCellWithReuseIdentifier: "gameCell")
-        
         filtersCollectionView.delegate = self
         filtersCollectionView.dataSource = self
     }
@@ -85,6 +83,20 @@ class ExplorePageViewController: UIViewController {
             fatalError("could not segue to FilterVC")
         }
         filterVC.delegate = self
+    }
+    
+}
+extension ExplorePageViewController: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchQuery = searchBar.text ?? ""
+        searchBar.resignFirstResponder()
+    }
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchBar.showsCancelButton = true
+    }
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+        searchBar.showsCancelButton = false
     }
     
 }
