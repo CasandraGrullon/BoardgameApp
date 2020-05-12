@@ -38,6 +38,18 @@
                                             <rect key="frame" x="0.0" y="0.0" width="170" height="81"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Oh-PN-rbM">
+                                                    <rect key="frame" x="116" y="10" width="44" height="44"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="44" id="JRr-Cj-a1k"/>
+                                                        <constraint firstAttribute="width" constant="44" id="NSo-YO-daX"/>
+                                                    </constraints>
+                                                    <color key="tintColor" red="0.43537168370000001" green="0.2114817558" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <state key="normal" image="x.circle" catalog="system"/>
+                                                    <connections>
+                                                        <action selector="removeButtonPressed:" destination="BuI-wy-H06" eventType="touchUpInside" id="jtd-3B-kCA"/>
+                                                    </connections>
+                                                </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Filter" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G11-ae-jCj">
                                                     <rect key="frame" x="10" y="30" width="150" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -46,9 +58,11 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="9Oh-PN-rbM" secondAttribute="trailing" constant="10" id="1og-NY-Rrt"/>
                                                 <constraint firstItem="G11-ae-jCj" firstAttribute="centerY" secondItem="hOM-BI-HAk" secondAttribute="centerY" id="Adc-Zp-Vo3"/>
                                                 <constraint firstItem="G11-ae-jCj" firstAttribute="centerX" secondItem="hOM-BI-HAk" secondAttribute="centerX" id="H3X-r3-wDg"/>
                                                 <constraint firstAttribute="trailing" secondItem="G11-ae-jCj" secondAttribute="trailing" constant="10" id="VM2-JE-GDZ"/>
+                                                <constraint firstItem="9Oh-PN-rbM" firstAttribute="top" secondItem="hOM-BI-HAk" secondAttribute="top" constant="10" id="og4-RZ-duv"/>
                                                 <constraint firstItem="G11-ae-jCj" firstAttribute="leading" secondItem="hOM-BI-HAk" secondAttribute="leading" constant="10" id="wDY-Mi-xf8"/>
                                             </constraints>
                                         </collectionViewCellContentView>
@@ -56,6 +70,7 @@
                                         <size key="customSize" width="170" height="81"/>
                                         <connections>
                                             <outlet property="filterNameLabel" destination="G11-ae-jCj" id="Krh-sn-NMO"/>
+                                            <outlet property="removeButton" destination="9Oh-PN-rbM" id="ta7-AN-cTn"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -104,31 +119,14 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aJt-bA-tGg" customClass="DesignableButton" customModule="BoardgameApp" customModuleProvider="target">
-                                <rect key="frame" x="360" y="154" width="44" height="44"/>
-                                <color key="backgroundColor" red="0.43537168370000001" green="0.2114817558" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="292-rL-Rqa"/>
-                                    <constraint firstAttribute="width" constant="44" id="V83-dn-Dci"/>
-                                </constraints>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title="clear"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="22"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="8Mo-Xz-UjW" firstAttribute="trailing" secondItem="gna-IS-hBS" secondAttribute="trailing" id="6QO-57-aPK"/>
                             <constraint firstItem="wt2-rp-fgZ" firstAttribute="trailing" secondItem="8Mo-Xz-UjW" secondAttribute="trailing" id="DYW-yL-P2X"/>
-                            <constraint firstItem="aJt-bA-tGg" firstAttribute="top" secondItem="wt2-rp-fgZ" secondAttribute="bottom" constant="10" id="FLn-9J-Mxn"/>
                             <constraint firstItem="nZ8-Tr-hXF" firstAttribute="leading" secondItem="8Mo-Xz-UjW" secondAttribute="leading" id="I0k-fM-1Z9"/>
                             <constraint firstItem="nZ8-Tr-hXF" firstAttribute="height" secondItem="cbV-Ub-eHK" secondAttribute="height" multiplier="0.1" id="IjK-xL-Ri2"/>
                             <constraint firstItem="wt2-rp-fgZ" firstAttribute="leading" secondItem="8Mo-Xz-UjW" secondAttribute="leading" id="LnX-Pi-tfG"/>
-                            <constraint firstItem="8Mo-Xz-UjW" firstAttribute="trailing" secondItem="aJt-bA-tGg" secondAttribute="trailing" constant="10" id="Qh0-Hx-3bS"/>
                             <constraint firstItem="wt2-rp-fgZ" firstAttribute="top" secondItem="8Mo-Xz-UjW" secondAttribute="top" id="jPQ-0j-7mX"/>
                             <constraint firstItem="gna-IS-hBS" firstAttribute="top" secondItem="nZ8-Tr-hXF" secondAttribute="bottom" constant="20" id="qCp-DX-fjI"/>
                             <constraint firstItem="nZ8-Tr-hXF" firstAttribute="top" secondItem="wt2-rp-fgZ" secondAttribute="bottom" id="tAI-Se-cXf"/>
@@ -148,6 +146,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="filtersCollectionView" destination="nZ8-Tr-hXF" id="tuK-Mt-YeG"/>
+                        <outlet property="gamesCollectionTopAnchor" destination="qCp-DX-fjI" id="w99-JT-dmm"/>
                         <outlet property="gamesCollectionView" destination="gna-IS-hBS" id="kOE-Lw-e4V"/>
                         <outlet property="searchBar" destination="wt2-rp-fgZ" id="PUC-VZ-3KF"/>
                     </connections>
@@ -1138,5 +1137,6 @@
         <image name="safari" catalog="system" width="128" height="121"/>
         <image name="slider.horizontal.3" catalog="system" width="128" height="100"/>
         <image name="star" catalog="system" width="128" height="116"/>
+        <image name="x.circle" catalog="system" width="128" height="121"/>
     </resources>
 </document>

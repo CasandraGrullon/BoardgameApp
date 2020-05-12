@@ -15,6 +15,9 @@ class ExplorePageViewController: UIViewController {
     @IBOutlet weak var filtersCollectionView: UICollectionView!
     @IBOutlet weak var gamesCollectionView: UICollectionView!
     
+    @IBOutlet weak var gamesCollectionTopAnchor: NSLayoutConstraint!
+    
+    
     private var games = [Game]() {
         didSet {
             DispatchQueue.main.async {
@@ -32,6 +35,7 @@ class ExplorePageViewController: UIViewController {
             filtersCollectionView.reloadData()
         }
     }
+    
     private var refreshControl: UIRefreshControl!
     
     override func viewDidLoad() {
@@ -39,6 +43,8 @@ class ExplorePageViewController: UIViewController {
         getGames(search: "")
         configureCollectionView()
         configureRefresh()
+        filtersCollectionView.isHidden = true
+        
     }
     private func configureRefresh() {
         refreshControl = UIRefreshControl()
@@ -135,6 +141,8 @@ extension ExplorePageViewController: UICollectionViewDataSource {
             }
             let filter = addedFilters[indexPath.row]
             cell.filterNameLabel.text = filter
+            cell.filter = filter
+            cell.delegate = self
             return cell
         }
         
@@ -153,9 +161,11 @@ extension ExplorePageViewController: UICollectionViewDataSource {
 }
 extension ExplorePageViewController: FiltersAdded {
     func didAddFilters(filters: [String], ageFilter: [String], numberOfPlayersFilter: [String], priceFilter: [String], genreFilter: [String], vc: FilterViewController) {
-        addedFilters = filters
         
+        addedFilters = filters
+        filtersCollectionView.isHidden = false
         var gamesFiltered = [Game]()
+        
         if let genre = genreFilter.first {
             gamesFiltered = games.filter {$0.categories.first?.id == genre}
         }
@@ -173,5 +183,18 @@ extension ExplorePageViewController: FiltersAdded {
         
     }
     
+    
+}
+extension ExplorePageViewController: RemoveFilter {
+    func tappedRemoveButton(cell: FilterCell, filter: String) {
+        for (index, filters) in addedFilters.enumerated() {
+            if filters == filter {
+                addedFilters.remove(at: index)
+            }
+        }
+        // TODO: need to add functionality
+        //removes the filter from the filters collection view, but that will not update the games collectionview
+        
+    }
     
 }

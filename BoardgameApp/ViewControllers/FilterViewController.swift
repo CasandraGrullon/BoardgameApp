@@ -48,7 +48,6 @@ class FilterViewController: UIViewController {
         getCategories()
         configureCollectionView()
         clearButton.isHidden = true
-        
     }
     private func configureCollectionView() {
         genreCollectionView.delegate = self

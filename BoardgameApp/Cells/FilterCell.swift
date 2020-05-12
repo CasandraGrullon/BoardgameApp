@@ -7,8 +7,20 @@
 //
 
 import UIKit
+protocol RemoveFilter: NSObject {
+    func tappedRemoveButton(cell: FilterCell, filter: String)
+}
 
 class FilterCell: UICollectionViewCell {
     @IBOutlet weak var filterNameLabel: UILabel!
+    @IBOutlet weak var removeButton: UIButton!
+    weak var delegate: RemoveFilter?
     
+    public var filter: String?
+    
+    @IBAction func removeButtonPressed(_ sender: UIButton) {
+        if let filter = filter {
+            delegate?.tappedRemoveButton(cell: self, filter: filter)
+        }
+    }
 }
