@@ -42,6 +42,7 @@ class GameDetailViewController: UITableViewController {
         super.viewDidLoad()
         configureCollectionView()
         updateUI()
+         
     }
     private func configureCollectionView() {
         reviewsCollectionView.delegate = self
@@ -55,11 +56,12 @@ class GameDetailViewController: UITableViewController {
         gameImageView.kf.setImage(with: URL(string: game.imageURL))
         nameLabel.text = game.name
         priceLabel.text = "$\(game.price)"
-        let gameDes = game.description.replacingOccurrences(of: "<p>", with: "\n").replacingOccurrences(of: "</p>", with: "").replacingOccurrences(of: "<br />", with: "").replacingOccurrences(of: "</h4>", with: "").replacingOccurrences(of: "<h4>", with: " ").replacingOccurrences(of: "<em>", with: "").replacingOccurrences(of: "</em>", with: "")
+        let gameDes = game.description.replacingOccurrences(of: "<p>", with: "\n").replacingOccurrences(of: "</p>", with: "").replacingOccurrences(of: "<br />", with: "").replacingOccurrences(of: "</h4>", with: "").replacingOccurrences(of: "<h4>", with: " ").replacingOccurrences(of: "<em>", with: "").replacingOccurrences(of: "</em>", with: "").replacingOccurrences(of: "<strong>", with: "").replacingOccurrences(of: "</strong>", with: "").replacingOccurrences(of: "<ul>", with: "").replacingOccurrences(of: "<li>", with: "").replacingOccurrences(of: "</ul>", with: "").replacingOccurrences(of: "</li>", with: "")
         gameDescription.text = gameDes
-        ageLabel.text = "Age: \(game.minAge)+"
-        numberofPlayerLabel.text = "\(game.minPlayers) - \(game.maxPlayers) players"
-        playtimeLabel.text = "Average Game Time: \t\(game.minPlaytime) - \(game.maxPlaytime) minutes"
+        guard let age = game.minAge, let minPlayers = game.minPlayers, let maxPlayers = game.maxPlayers, let minPlaytime = game.minPlaytime, let maxPlaytime = game.maxPlaytime else {return}
+        ageLabel.text = "Age: \(age)+"
+        numberofPlayerLabel.text = "\(minPlayers) - \(maxPlayers) players"
+        playtimeLabel.text = "Average Game Time: \t\(minPlaytime) - \(maxPlaytime) minutes"
         if game.averageUserRating >= 5 {
             star1Button.setImage(UIImage(systemName: "star.fill"), for: .normal)
             star2Button.setImage(UIImage(systemName: "star.fill"), for: .normal)
@@ -120,7 +122,7 @@ class GameDetailViewController: UITableViewController {
             case .failure(let error):
                 print("unable to get user reviews \(error)")
             case .success(let reviews):
-                self?.reviews = reviews.filter {($0.title != nil) && $0.description != nil}
+                self?.reviews = reviews.filter {$0.description != nil}
             }
         }
     }
@@ -145,7 +147,7 @@ class GameDetailViewController: UITableViewController {
 
 extension GameDetailViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let itemSpacing: CGFloat = 4
+        let itemSpacing: CGFloat = 10
         let maxSize: CGFloat = UIScreen.main.bounds.size.width
         let numberOfItems: CGFloat = 2
         let totalSpace: CGFloat = (numberOfItems * itemSpacing) * 2.5
