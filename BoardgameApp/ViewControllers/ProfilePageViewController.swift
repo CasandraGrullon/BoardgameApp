@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class ProfilePageViewController: UIViewController {
 
@@ -16,11 +17,17 @@ class ProfilePageViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        updateUI()
+    }
+    private func updateUI() {
+        guard let user = Auth.auth().currentUser else {return}
+        userNameLabel.text = user.displayName
+        userEmailLabel.text = user.email
     }
 
-
+    @IBAction func editProfileButtonPressed(_ sender: UIBarButtonItem) {
+    }
+    
 }

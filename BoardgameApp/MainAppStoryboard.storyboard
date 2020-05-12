@@ -164,25 +164,25 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ga4-94-aHV">
-                                <rect key="frame" x="20" y="108" width="374" height="21"/>
+                                <rect key="frame" x="113" y="108" width="281" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p9a-Ef-YYb">
-                                <rect key="frame" x="20" y="139" width="374" height="21"/>
+                                <rect key="frame" x="113" y="139" width="281" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="KFt-bW-Iqo">
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="KFt-bW-Iqo">
                                 <rect key="frame" x="20" y="260" width="374" height="32"/>
                                 <segments>
                                     <segment title="Your Games"/>
                                     <segment title="Wishlist"/>
                                 </segments>
                             </segmentedControl>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="8C1-4m-zJA">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="8C1-4m-zJA">
                                 <rect key="frame" x="0.0" y="291" width="414" height="522"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="NfD-mV-ADR">
@@ -203,27 +203,40 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YUL-bF-gO0">
+                                <rect key="frame" x="20" y="98" width="83" height="83"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="YUL-bF-gO0" secondAttribute="height" multiplier="1:1" id="IdM-cN-8Zp"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="8C1-4m-zJA" firstAttribute="leading" secondItem="53Y-0i-EcC" secondAttribute="leading" id="69v-ul-Cxw"/>
                             <constraint firstItem="53Y-0i-EcC" firstAttribute="trailing" secondItem="KFt-bW-Iqo" secondAttribute="trailing" constant="20" id="DqG-Pp-Zao"/>
-                            <constraint firstItem="53Y-0i-EcC" firstAttribute="trailing" secondItem="Ga4-94-aHV" secondAttribute="trailing" constant="20" id="H7h-vd-Zd8"/>
-                            <constraint firstItem="p9a-Ef-YYb" firstAttribute="leading" secondItem="53Y-0i-EcC" secondAttribute="leading" constant="20" id="IHy-PK-eei"/>
-                            <constraint firstItem="Ga4-94-aHV" firstAttribute="top" secondItem="53Y-0i-EcC" secondAttribute="top" constant="20" id="L8T-TP-une"/>
+                            <constraint firstItem="YUL-bF-gO0" firstAttribute="leading" secondItem="53Y-0i-EcC" secondAttribute="leading" constant="20" id="HS7-xr-N1P"/>
+                            <constraint firstItem="53Y-0i-EcC" firstAttribute="trailing" secondItem="p9a-Ef-YYb" secondAttribute="trailing" constant="20" id="MlS-Hw-491"/>
+                            <constraint firstItem="53Y-0i-EcC" firstAttribute="trailing" secondItem="Ga4-94-aHV" secondAttribute="trailing" constant="20" id="Qt0-DY-HnG"/>
+                            <constraint firstItem="YUL-bF-gO0" firstAttribute="top" secondItem="53Y-0i-EcC" secondAttribute="top" constant="10" id="RvT-ee-8BB"/>
                             <constraint firstItem="8C1-4m-zJA" firstAttribute="top" secondItem="KFt-bW-Iqo" secondAttribute="bottom" id="Wfe-Kj-BwW"/>
-                            <constraint firstItem="p9a-Ef-YYb" firstAttribute="top" secondItem="Ga4-94-aHV" secondAttribute="bottom" constant="10" id="Zhv-lL-pcF"/>
-                            <constraint firstItem="KFt-bW-Iqo" firstAttribute="top" secondItem="p9a-Ef-YYb" secondAttribute="bottom" constant="100" id="abY-g7-Wfo"/>
-                            <constraint firstItem="53Y-0i-EcC" firstAttribute="trailing" secondItem="p9a-Ef-YYb" secondAttribute="trailing" constant="20" id="gJ2-s5-MBo"/>
                             <constraint firstItem="53Y-0i-EcC" firstAttribute="trailing" secondItem="8C1-4m-zJA" secondAttribute="trailing" id="hEy-Du-u3n"/>
-                            <constraint firstItem="Ga4-94-aHV" firstAttribute="leading" secondItem="53Y-0i-EcC" secondAttribute="leading" constant="20" id="hnx-z2-y0w"/>
+                            <constraint firstItem="p9a-Ef-YYb" firstAttribute="leading" secondItem="YUL-bF-gO0" secondAttribute="trailing" constant="10" id="ip8-NW-Yj9"/>
                             <constraint firstItem="KFt-bW-Iqo" firstAttribute="leading" secondItem="53Y-0i-EcC" secondAttribute="leading" constant="20" id="qxa-Ag-cnm"/>
+                            <constraint firstItem="YUL-bF-gO0" firstAttribute="width" secondItem="95X-sP-yYN" secondAttribute="width" multiplier="0.2" id="sxm-5R-ubI"/>
+                            <constraint firstItem="Ga4-94-aHV" firstAttribute="top" secondItem="53Y-0i-EcC" secondAttribute="top" constant="20" id="wGg-VO-KZ7"/>
+                            <constraint firstItem="Ga4-94-aHV" firstAttribute="leading" secondItem="YUL-bF-gO0" secondAttribute="trailing" constant="10" id="xex-ca-EVw"/>
+                            <constraint firstItem="p9a-Ef-YYb" firstAttribute="top" secondItem="Ga4-94-aHV" secondAttribute="bottom" constant="10" id="xsE-Ua-GBR"/>
                             <constraint firstItem="53Y-0i-EcC" firstAttribute="bottom" secondItem="8C1-4m-zJA" secondAttribute="bottom" id="z2G-46-QmS"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="53Y-0i-EcC"/>
                     </view>
                     <navigationItem key="navigationItem" title="Profile" id="mPu-s9-EbD">
-                        <barButtonItem key="rightBarButtonItem" title="Item" image="gear" catalog="system" id="Nlu-9o-5pz"/>
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="gear" catalog="system" id="Nlu-9o-5pz">
+                            <connections>
+                                <action selector="editProfileButtonPressed:" destination="7E8-KU-yzz" id="zW1-Zy-Ijz"/>
+                                <segue destination="GM2-vH-bwH" kind="show" id="cfS-L4-DSc"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="8C1-4m-zJA" id="JUu-aw-CWb"/>
@@ -235,6 +248,88 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XM8-1W-uwG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="753.62318840579712" y="403.79464285714283"/>
+        </scene>
+        <!--Edit Profile-->
+        <scene sceneID="XtB-Mn-qt3">
+            <objects>
+                <viewController id="GM2-vH-bwH" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Wko-Yi-zjD">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="woK-Zd-ygi">
+                                <rect key="frame" x="20" y="348" width="374" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Update Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7q8-hx-zZa">
+                                <rect key="frame" x="20" y="317" width="374" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iq4-XF-ktZ">
+                                <rect key="frame" x="117.5" y="108" width="179" height="179"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="iq4-XF-ktZ" secondAttribute="height" multiplier="1:1" id="f0P-E2-qGt"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FZU-ur-Veg">
+                                <rect key="frame" x="276.5" y="243.5" width="44" height="43"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="44" id="8N8-Wx-efm"/>
+                                    <constraint firstAttribute="height" constant="44" id="b75-Su-GvU"/>
+                                </constraints>
+                                <color key="tintColor" red="0.70895537275499665" green="0.4785822102133801" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <state key="normal" backgroundImage="plus.circle.fill" catalog="system">
+                                    <color key="titleShadowColor" red="0.43537168370000001" green="0.2114817558" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Display Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="94E-dV-OUF">
+                                <rect key="frame" x="20" y="402" width="101" height="31"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="dDu-v3-YQg">
+                                <rect key="frame" x="161" y="402" width="233" height="32"/>
+                                <color key="backgroundColor" red="0.70895537279999998" green="0.47858221020000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <segments>
+                                    <segment title="Yes"/>
+                                    <segment title="No"/>
+                                </segments>
+                                <color key="selectedSegmentTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </segmentedControl>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="FZU-ur-Veg" firstAttribute="leading" secondItem="iq4-XF-ktZ" secondAttribute="trailing" constant="-20" id="0Fm-QP-OMS"/>
+                            <constraint firstItem="Q2a-ua-Xgb" firstAttribute="trailing" secondItem="7q8-hx-zZa" secondAttribute="trailing" constant="20" id="1ZN-eX-BkE"/>
+                            <constraint firstItem="Q2a-ua-Xgb" firstAttribute="trailing" secondItem="woK-Zd-ygi" secondAttribute="trailing" constant="20" id="7ly-G8-pB6"/>
+                            <constraint firstItem="FZU-ur-Veg" firstAttribute="bottom" secondItem="iq4-XF-ktZ" secondAttribute="bottom" id="8rf-YJ-qKS"/>
+                            <constraint firstItem="iq4-XF-ktZ" firstAttribute="top" secondItem="Q2a-ua-Xgb" secondAttribute="top" constant="20" id="GLM-J2-hzV"/>
+                            <constraint firstItem="iq4-XF-ktZ" firstAttribute="centerX" secondItem="Q2a-ua-Xgb" secondAttribute="centerX" id="JKg-wa-2GL"/>
+                            <constraint firstItem="7q8-hx-zZa" firstAttribute="top" secondItem="iq4-XF-ktZ" secondAttribute="bottom" constant="30" id="YqM-HA-lL9"/>
+                            <constraint firstItem="iq4-XF-ktZ" firstAttribute="height" secondItem="Wko-Yi-zjD" secondAttribute="height" multiplier="0.2" id="czf-py-f3i"/>
+                            <constraint firstItem="woK-Zd-ygi" firstAttribute="leading" secondItem="Q2a-ua-Xgb" secondAttribute="leading" constant="20" id="ddM-qQ-0em"/>
+                            <constraint firstItem="woK-Zd-ygi" firstAttribute="top" secondItem="7q8-hx-zZa" secondAttribute="bottom" constant="10" id="eLk-2t-2Il"/>
+                            <constraint firstItem="dDu-v3-YQg" firstAttribute="top" secondItem="woK-Zd-ygi" secondAttribute="bottom" constant="20" id="hm9-qA-fNE"/>
+                            <constraint firstItem="94E-dV-OUF" firstAttribute="leading" secondItem="Q2a-ua-Xgb" secondAttribute="leading" constant="20" id="lyC-iV-Jsj"/>
+                            <constraint firstItem="94E-dV-OUF" firstAttribute="top" secondItem="woK-Zd-ygi" secondAttribute="bottom" constant="20" id="mbZ-Pq-IgH"/>
+                            <constraint firstItem="dDu-v3-YQg" firstAttribute="centerY" secondItem="94E-dV-OUF" secondAttribute="centerY" id="oWz-Zc-X5q"/>
+                            <constraint firstItem="dDu-v3-YQg" firstAttribute="leading" secondItem="94E-dV-OUF" secondAttribute="trailing" constant="40" id="pVm-gF-eQX"/>
+                            <constraint firstItem="7q8-hx-zZa" firstAttribute="leading" secondItem="Q2a-ua-Xgb" secondAttribute="leading" constant="20" id="rQY-RB-3SX"/>
+                            <constraint firstItem="Q2a-ua-Xgb" firstAttribute="trailing" secondItem="dDu-v3-YQg" secondAttribute="trailing" constant="20" id="t73-qS-CKQ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Q2a-ua-Xgb"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Edit Profile" id="YsU-qt-que">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="checkmark" catalog="system" id="b8n-fJ-f61"/>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1vv-S0-fA3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1434" y="402"/>
         </scene>
         <!--Main App Tab Bar View Controller-->
         <scene sceneID="3Qr-U5-K4r">
@@ -1128,12 +1223,14 @@
         </scene>
     </scenes>
     <resources>
+        <image name="checkmark" catalog="system" width="128" height="114"/>
         <image name="gear" catalog="system" width="128" height="119"/>
         <image name="house" catalog="system" width="128" height="110"/>
         <image name="house.fill" catalog="system" width="128" height="106"/>
         <image name="person" catalog="system" width="128" height="117"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>
         <image name="plus" catalog="system" width="128" height="113"/>
+        <image name="plus.circle.fill" catalog="system" width="128" height="121"/>
         <image name="safari" catalog="system" width="128" height="121"/>
         <image name="slider.horizontal.3" catalog="system" width="128" height="100"/>
         <image name="star" catalog="system" width="128" height="116"/>
