@@ -51,6 +51,7 @@ class GameDetailViewController: UITableViewController {
     }
     private func updateUI() {
         guard let game = game else {return}
+        navigationItem.title = game.name
         getCategories()
         getGameReviews(gameId: game.id)
         gameImageView.kf.setImage(with: URL(string: game.imageURL))

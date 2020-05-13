@@ -67,23 +67,23 @@ class FilterViewController: UIViewController {
     @IBAction func AgeButtonPressed(_ sender: UIButton) {
         clearButton.isHidden = false
         if sender == allAgesButton {
-            allAgesButton.backgroundColor = #colorLiteral(red: 0.6345325112, green: 0.3519191146, blue: 1, alpha: 1)
+            allAgesButton.backgroundColor = #colorLiteral(red: 0, green: 0.641186893, blue: 1, alpha: 1)
             allAgesButton.tintColor = .white
             return
         } else if sender == childrenButton {
             filters.append("children")
             ageFilter.append("5")
-            childrenButton.backgroundColor = #colorLiteral(red: 0.6345325112, green: 0.3519191146, blue: 1, alpha: 1)
+            childrenButton.backgroundColor = #colorLiteral(red: 0, green: 0.641186893, blue: 1, alpha: 1)
             childrenButton.tintColor = .white
         } else if sender == teensButton {
             filters.append("teen")
             ageFilter.append("12")
-            teensButton.backgroundColor = #colorLiteral(red: 0.6345325112, green: 0.3519191146, blue: 1, alpha: 1)
+            teensButton.backgroundColor = #colorLiteral(red: 0, green: 0.641186893, blue: 1, alpha: 1)
             teensButton.tintColor = .white
         } else if sender == adultsButton {
             filters.append("adults")
             ageFilter.append("17")
-            adultsButton.backgroundColor = #colorLiteral(red: 0.6345325112, green: 0.3519191146, blue: 1, alpha: 1)
+            adultsButton.backgroundColor = #colorLiteral(red: 0, green: 0.641186893, blue: 1, alpha: 1)
             adultsButton.tintColor = .white
         }
     }
@@ -93,17 +93,17 @@ class FilterViewController: UIViewController {
         if sender == twoFourButton {
             filters.append("2 - 4 players")
             numberOfPlayersFilter.append("4")
-            twoFourButton.backgroundColor = #colorLiteral(red: 0.6345325112, green: 0.3519191146, blue: 1, alpha: 1)
+            twoFourButton.backgroundColor = #colorLiteral(red: 0, green: 0.641186893, blue: 1, alpha: 1)
             twoFourButton.tintColor = .white
         } else if sender == fourSixButton {
             filters.append("4 - 6 players")
             numberOfPlayersFilter.append("6")
-            fourSixButton.backgroundColor = #colorLiteral(red: 0.6345325112, green: 0.3519191146, blue: 1, alpha: 1)
+            fourSixButton.backgroundColor = #colorLiteral(red: 0, green: 0.641186893, blue: 1, alpha: 1)
             fourSixButton.tintColor = .white
         } else if sender == sixPlusButton {
             filters.append("6 + players")
             numberOfPlayersFilter.append("10")
-            sixPlusButton.backgroundColor = #colorLiteral(red: 0.6345325112, green: 0.3519191146, blue: 1, alpha: 1)
+            sixPlusButton.backgroundColor = #colorLiteral(red: 0, green: 0.641186893, blue: 1, alpha: 1)
             sixPlusButton.tintColor = .white
         }
     }
@@ -112,17 +112,17 @@ class FilterViewController: UIViewController {
         if sender == cheapButton {
             filters.append("$")
             priceFilter.append("10")
-            cheapButton.backgroundColor = #colorLiteral(red: 0.6345325112, green: 0.3519191146, blue: 1, alpha: 1)
+            cheapButton.backgroundColor = #colorLiteral(red: 0, green: 0.641186893, blue: 1, alpha: 1)
             cheapButton.tintColor = .white
         } else if sender == middleButton {
             filters.append("$$")
             priceFilter.append("30")
-            middleButton.backgroundColor = #colorLiteral(red: 0.6345325112, green: 0.3519191146, blue: 1, alpha: 1)
+            middleButton.backgroundColor = #colorLiteral(red: 0, green: 0.641186893, blue: 1, alpha: 1)
             middleButton.tintColor = .white
         } else if sender == expensiveButton {
             filters.append("$$$")
             priceFilter.append("50")
-            expensiveButton.backgroundColor = #colorLiteral(red: 0.6345325112, green: 0.3519191146, blue: 1, alpha: 1)
+            expensiveButton.backgroundColor = #colorLiteral(red: 0, green: 0.641186893, blue: 1, alpha: 1)
             expensiveButton.tintColor = .white
         }
     }
@@ -140,25 +140,25 @@ class FilterViewController: UIViewController {
         genreFilter.removeAll()
         isCellSelected = false
         expensiveButton.backgroundColor = .clear
-        expensiveButton.tintColor = #colorLiteral(red: 0.6345325112, green: 0.3519191146, blue: 1, alpha: 1)
+        expensiveButton.tintColor = #colorLiteral(red: 0, green: 0.641186893, blue: 1, alpha: 1)
         middleButton.backgroundColor = .clear
-        middleButton.tintColor = #colorLiteral(red: 0.6345325112, green: 0.3519191146, blue: 1, alpha: 1)
+        middleButton.tintColor = #colorLiteral(red: 0, green: 0.641186893, blue: 1, alpha: 1)
         cheapButton.backgroundColor = .clear
-        cheapButton.tintColor = #colorLiteral(red: 0.6345325112, green: 0.3519191146, blue: 1, alpha: 1)
+        cheapButton.tintColor = #colorLiteral(red: 0, green: 0.641186893, blue: 1, alpha: 1)
         twoFourButton.backgroundColor = .clear
-        twoFourButton.tintColor = #colorLiteral(red: 0.6345325112, green: 0.3519191146, blue: 1, alpha: 1)
+        twoFourButton.tintColor = #colorLiteral(red: 0, green: 0.641186893, blue: 1, alpha: 1)
         fourSixButton.backgroundColor = .clear
-        fourSixButton.tintColor = #colorLiteral(red: 0.6345325112, green: 0.3519191146, blue: 1, alpha: 1)
+        fourSixButton.tintColor = #colorLiteral(red: 0, green: 0.641186893, blue: 1, alpha: 1)
         sixPlusButton.backgroundColor = .clear
-        sixPlusButton.tintColor = #colorLiteral(red: 0.6345325112, green: 0.3519191146, blue: 1, alpha: 1)
+        sixPlusButton.tintColor = #colorLiteral(red: 0, green: 0.641186893, blue: 1, alpha: 1)
         allAgesButton.backgroundColor = .clear
-        allAgesButton.tintColor = #colorLiteral(red: 0.6345325112, green: 0.3519191146, blue: 1, alpha: 1)
+        allAgesButton.tintColor = #colorLiteral(red: 0, green: 0.641186893, blue: 1, alpha: 1)
         childrenButton.backgroundColor = .clear
-        childrenButton.tintColor = #colorLiteral(red: 0.6345325112, green: 0.3519191146, blue: 1, alpha: 1)
+        childrenButton.tintColor = #colorLiteral(red: 0, green: 0.641186893, blue: 1, alpha: 1)
         teensButton.backgroundColor = .clear
-        teensButton.tintColor = #colorLiteral(red: 0.6345325112, green: 0.3519191146, blue: 1, alpha: 1)
+        teensButton.tintColor = #colorLiteral(red: 0, green: 0.641186893, blue: 1, alpha: 1)
         adultsButton.backgroundColor = .clear
-        adultsButton.tintColor = #colorLiteral(red: 0.6345325112, green: 0.3519191146, blue: 1, alpha: 1)
+        adultsButton.tintColor = #colorLiteral(red: 0, green: 0.641186893, blue: 1, alpha: 1)
     }
     
     

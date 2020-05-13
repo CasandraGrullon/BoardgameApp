@@ -18,6 +18,7 @@ class ProfilePageViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var profileImageView: DesignableImageView!
     
+    
     private var listener: ListenerRegistration?
     
     private var collectedGames = [CollectedGame]() {
@@ -38,6 +39,7 @@ class ProfilePageViewController: UIViewController {
         super.viewDidLoad()
         updateUI()
         configureCollectionView()
+        segmentController.selectedSegmentIndex = 0
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
@@ -82,11 +84,14 @@ class ProfilePageViewController: UIViewController {
     @IBAction func segmentPressed(_ sender: UISegmentedControl) {
         if sender.selectedSegmentIndex == 0 {
             userOwned = true
-        } else {
+        } else if sender.selectedSegmentIndex == 1 {
             userOwned = false
         }
     }
     
+    @IBAction func signOutButtonPressed(_ sender: UIBarButtonItem) {
+        UIViewController.showViewController(storyboardName: "Main", viewcontrollerID: "LoginViewController")
+    }
     
     
 }
