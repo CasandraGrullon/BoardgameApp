@@ -70,7 +70,7 @@ class DatabaseService {
     }
     public func getCollection(userOwned: Bool, completion: @escaping (Result<[CollectedGame], Error>) -> () ) {
         guard let user = Auth.auth().currentUser else { return }
-        if userOwned == true {
+        if userOwned {
             db.collection(DatabaseService.appUsers).document(user.uid).collection(DatabaseService.userGamesCollection).getDocuments { (snapshot, error) in
                 if let error = error {
                     completion(.failure(error))
@@ -92,11 +92,61 @@ class DatabaseService {
         }
         
     }
-    public func removeFromCollection() {
+    public func removeFromCollection(userOwned: Bool, collectedGame: CollectedGame, completion: @escaping (Result<Bool, Error>) -> ()) {
+        guard let user = Auth.auth().currentUser else {return}
+        
+        if userOwned {
+            db.collection(DatabaseService.appUsers).document(user.uid).collection(DatabaseService.userGamesCollection).document(collectedGame.gameId).delete() { (error) in
+                if let error = error {
+                    completion(.failure(error))
+                } else {
+                    completion(.success(true))
+                }
+            }
+            
+        } else {
+            db.collection(DatabaseService.appUsers).document(user.uid).collection(DatabaseService.userWishlistCollection).document(collectedGame.gameId).delete() { (error) in
+                if let error = error {
+                    completion(.failure(error))
+                } else {
+                    completion(.success(true))
+                }
+            }
+        }
+        
         
     }
-    public func isInCollection() {
+    public func isInCollection(userOwned: Bool, collectedGame: CollectedGame, completion: @escaping (Result<Bool, Error>) -> ()) {
+        guard let user = Auth.auth().currentUser else {return}
         
+        if userOwned {
+            db.collection(DatabaseService.appUsers).document(user.uid).collection(DatabaseService.userGamesCollection).whereField("gameId", isEqualTo: collectedGame.gameId).getDocuments { (snapshot, error) in
+                if let error = error {
+                    completion(.failure(error))
+                } else if let snapshot = snapshot {
+                    let count = snapshot.documents.count
+                    if count > 0 {
+                        completion(.success(true))
+                    } else {
+                        completion(.success(false))
+                    }
+                }
+            }
+            
+        } else {
+           db.collection(DatabaseService.appUsers).document(user.uid).collection(DatabaseService.userWishlistCollection).whereField("gameId", isEqualTo: collectedGame.gameId).getDocuments { (snapshot, error) in
+                if let error = error {
+                    completion(.failure(error))
+                } else if let snapshot = snapshot {
+                    let count = snapshot.documents.count
+                    if count > 0 {
+                        completion(.success(true))
+                    } else {
+                        completion(.success(false))
+                    }
+                }
+            }
+        }
     }
     
     
