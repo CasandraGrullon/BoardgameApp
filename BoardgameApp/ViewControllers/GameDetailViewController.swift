@@ -147,9 +147,9 @@ class GameDetailViewController: UITableViewController {
 
 extension GameDetailViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let itemSpacing: CGFloat = 10
+        let itemSpacing: CGFloat = 11
         let maxSize: CGFloat = UIScreen.main.bounds.size.width
-        let numberOfItems: CGFloat = 2
+        let numberOfItems: CGFloat = 1
         let totalSpace: CGFloat = (numberOfItems * itemSpacing) * 2.5
         let itemWidth: CGFloat = (maxSize - totalSpace) / numberOfItems
         return CGSize(width: itemWidth, height: itemWidth)

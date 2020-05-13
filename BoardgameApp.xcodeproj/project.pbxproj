@@ -44,6 +44,8 @@
 		C6C61603245B8A040070F648 /* ReviewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C6C61602245B8A040070F648 /* ReviewCell.xib */; };
 		C6E934EE2462662500269CAC /* Designable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6E934ED2462662500269CAC /* Designable.swift */; };
 		C6ED73FD246C45B300FBA65C /* CollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6ED73FC246C45B300FBA65C /* CollectionCell.swift */; };
+		C6ED73FF246C462A00FBA65C /* AddToCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6ED73FE246C462A00FBA65C /* AddToCollectionViewController.swift */; };
+		C6ED7401246C499D00FBA65C /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6ED7400246C499D00FBA65C /* EditProfileViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -86,6 +88,8 @@
 		C6C61602245B8A040070F648 /* ReviewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReviewCell.xib; sourceTree = "<group>"; };
 		C6E934ED2462662500269CAC /* Designable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Designable.swift; sourceTree = "<group>"; };
 		C6ED73FC246C45B300FBA65C /* CollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionCell.swift; sourceTree = "<group>"; };
+		C6ED73FE246C462A00FBA65C /* AddToCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToCollectionViewController.swift; sourceTree = "<group>"; };
+		C6ED7400246C499D00FBA65C /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		DF9C6CC426DC0CDDFF8C8655 /* Pods_BoardgameApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BoardgameApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -144,8 +148,10 @@
 				C687024D2458D8970037F22D /* HomePageViewController.swift */,
 				C687024F2458D8C30037F22D /* ExplorePageViewController.swift */,
 				C68702512458D8E50037F22D /* ProfilePageViewController.swift */,
+				C6ED7400246C499D00FBA65C /* EditProfileViewController.swift */,
 				C68702532458D8F50037F22D /* FilterViewController.swift */,
 				C68702552458D9140037F22D /* GameDetailViewController.swift */,
+				C6ED73FE246C462A00FBA65C /* AddToCollectionViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -385,7 +391,9 @@
 				C687026024591A770037F22D /* GameReview.swift in Sources */,
 				C670D7A724591D4400F556BE /* ShowAlert.swift in Sources */,
 				C687025E245917A70037F22D /* GameResults.swift in Sources */,
+				C6ED7401246C499D00FBA65C /* EditProfileViewController.swift in Sources */,
 				C68702502458D8C30037F22D /* ExplorePageViewController.swift in Sources */,
+				C6ED73FF246C462A00FBA65C /* AddToCollectionViewController.swift in Sources */,
 				C68702522458D8E50037F22D /* ProfilePageViewController.swift in Sources */,
 				C670D7A924591D8F00F556BE /* DateFormatter.swift in Sources */,
 				C6ED73FD246C45B300FBA65C /* CollectionCell.swift in Sources */,

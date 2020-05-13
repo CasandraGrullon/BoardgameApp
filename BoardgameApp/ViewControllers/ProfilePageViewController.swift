@@ -27,7 +27,5 @@ class ProfilePageViewController: UIViewController {
         userEmailLabel.text = user.email
     }
 
-    @IBAction func editProfileButtonPressed(_ sender: UIBarButtonItem) {
-    }
     
 }
