@@ -25,7 +25,7 @@
                         </userDefinedRuntimeAttributes>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HGv-6A-e7Y">
-                        <rect key="frame" x="10" y="311.5" width="522" height="17"/>
+                        <rect key="frame" x="10" y="311.5" width="522" height="109.5"/>
                         <fontDescription key="fontDescription" name="HiraginoSans-W3" family="Hiragino Sans" pointSize="17"/>
                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
@@ -34,6 +34,7 @@
                 <constraints>
                     <constraint firstItem="nFY-5k-KbB" firstAttribute="leading" secondItem="3uC-Tg-pAH" secondAttribute="leading" id="4R0-4A-jWo"/>
                     <constraint firstItem="nFY-5k-KbB" firstAttribute="top" secondItem="3uC-Tg-pAH" secondAttribute="top" id="GQ7-7m-e5b"/>
+                    <constraint firstAttribute="bottom" secondItem="HGv-6A-e7Y" secondAttribute="bottom" constant="10" id="QK6-vK-Wo0"/>
                     <constraint firstAttribute="trailing" secondItem="HGv-6A-e7Y" secondAttribute="trailing" constant="10" id="kbM-pr-4TH"/>
                     <constraint firstItem="HGv-6A-e7Y" firstAttribute="top" secondItem="nFY-5k-KbB" secondAttribute="bottom" constant="10" id="l7Z-O9-Gds"/>
                     <constraint firstItem="HGv-6A-e7Y" firstAttribute="leading" secondItem="3uC-Tg-pAH" secondAttribute="leading" constant="10" id="ugg-VW-IQW"/>

@@ -13,12 +13,15 @@ class AddToCollectionViewController: UIViewController {
     @IBOutlet weak var doneButton: UIButton!
     @IBOutlet weak var collectionView: UICollectionView!
     
+    public var game: Game?
+    private var selectedCollection: String?
+    
     private var collections = ["Your Games", "Wishlist"] {
         didSet {
             collectionView.reloadData()
         }
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         configureCollectionView()
@@ -30,7 +33,36 @@ class AddToCollectionViewController: UIViewController {
     }
 
     @IBAction func doneButtonPressed(_ sender: UIButton) {
-        //add to firebase collections
+        if selectedCollection == "Your Games" {
+            DatabaseService.shared.addToCollection(userGames: game, wishlist: nil) { [weak self] (result) in
+                switch result {
+                case .failure(let error):
+                    DispatchQueue.main.async {
+                        self?.showAlert(title: "Could not save to collection at this time", message: "error: \(error.localizedDescription)")
+                    }
+                case .success:
+                    DispatchQueue.main.async {
+                        self?.showAlert(title: "Saved to Your Games Collection", message: "\(self?.game?.name ?? "") is now in your collection")
+                    }
+                    self?.dismiss(animated: true)
+                }
+            }
+            
+        } else if selectedCollection == "Wishlist" {
+            DatabaseService.shared.addToCollection(userGames: nil, wishlist: game) { [weak self] (result) in
+                switch result {
+                case .failure(let error):
+                    DispatchQueue.main.async {
+                        self?.showAlert(title: "Could not save to collection at this time", message: "error: \(error.localizedDescription)")
+                    }
+                case .success:
+                    DispatchQueue.main.async {
+                        self?.showAlert(title: "Saved to your Wishlist", message: "\(self?.game?.name ?? "") is now in wishlist")
+                    }
+                    self?.dismiss(animated: true)
+                }
+            }
+        }
     }
     
     
@@ -71,9 +103,9 @@ extension AddToCollectionViewController: UICollectionViewDataSource {
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        //if selected, save to that collection
         doneButton.isEnabled = true
-        
+        let selectedCell = collections[indexPath.row]
+        selectedCollection = selectedCell
     }
     
     

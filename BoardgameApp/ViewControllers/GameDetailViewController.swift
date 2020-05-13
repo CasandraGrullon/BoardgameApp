@@ -138,11 +138,13 @@ class GameDetailViewController: UITableViewController {
         let safariPage = SFSafariViewController(url: url)
         present(safariPage, animated: true)
     }
-    
-    @IBAction func addToCollectionButtonPressed(_ sender: UIBarButtonItem) {
-        //save to user collection on firebase and profile view
-        
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let addToCollectionVC = segue.destination as? AddToCollectionViewController else {
+            return
+        } 
+        addToCollectionVC.game = game
     }
+
 }
 
 extension GameDetailViewController: UICollectionViewDelegateFlowLayout {

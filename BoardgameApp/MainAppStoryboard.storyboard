@@ -182,11 +182,14 @@
                                     <segment title="Your Games"/>
                                     <segment title="Wishlist"/>
                                 </segments>
+                                <connections>
+                                    <action selector="segmentPressed:" destination="7E8-KU-yzz" eventType="valueChanged" id="hr6-Tg-T8B"/>
+                                </connections>
                             </segmentedControl>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="8C1-4m-zJA">
                                 <rect key="frame" x="0.0" y="332" width="414" height="481"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="NfD-mV-ADR">
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="NfD-mV-ADR">
                                     <size key="itemSize" width="295" height="218"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -206,7 +209,7 @@
                             </collectionView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YUL-bF-gO0" customClass="DesignableImageView" customModule="BoardgameApp" customModuleProvider="target">
                                 <rect key="frame" x="20" y="98" width="124" height="124"/>
-                                <color key="backgroundColor" red="0.12122984520000001" green="0.79138050390000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="backgroundColor" red="0.22876183359999999" green="0.6306747117" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="YUL-bF-gO0" secondAttribute="height" multiplier="1:1" id="IdM-cN-8Zp"/>
                                 </constraints>
@@ -279,7 +282,7 @@
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iq4-XF-ktZ" customClass="DesignableImageView" customModule="BoardgameApp" customModuleProvider="target">
                                 <rect key="frame" x="117.5" y="108" width="179" height="179"/>
-                                <color key="backgroundColor" red="0.12122984520000001" green="0.79138050390000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="backgroundColor" red="0.22876183359999999" green="0.6306747117" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="iq4-XF-ktZ" secondAttribute="height" multiplier="1:1" id="f0P-E2-qGt"/>
                                 </constraints>
@@ -854,8 +857,7 @@
                         <barButtonItem key="rightBarButtonItem" title="Item" image="plus" catalog="system" id="gXe-u9-WMm">
                             <color key="tintColor" red="0.12122984520000001" green="0.79138050390000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <connections>
-                                <action selector="addToCollectionButtonPressed:" destination="QZE-qt-9Ub" id="mWE-SC-sT0"/>
-                                <segue destination="uSv-XD-vMW" kind="presentation" id="fJU-bX-FV1"/>
+                                <segue destination="uSv-XD-vMW" kind="presentation" id="0vr-2o-pR8"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -885,7 +887,7 @@
         <!--Add to Collection-->
         <scene sceneID="yze-2L-L0T">
             <objects>
-                <viewController id="uSv-XD-vMW" customClass="AddToCollectionViewController" customModule="BoardgameApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddToCollectionViewController" id="uSv-XD-vMW" customClass="AddToCollectionViewController" customModule="BoardgameApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QT0-MN-Cyb">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1355,7 +1357,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Ur2-nN-ItT">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="tintColor" red="1" green="0.38623575789999998" blue="0.1393451436" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="tintColor" red="0.12122984520000001" green="0.79138050390000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
