@@ -44,7 +44,7 @@
                                                         <constraint firstAttribute="height" constant="44" id="JRr-Cj-a1k"/>
                                                         <constraint firstAttribute="width" constant="44" id="NSo-YO-daX"/>
                                                     </constraints>
-                                                    <color key="tintColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="tintColor" red="0.22876183359999999" green="0.6306747117" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <state key="normal" image="x.circle" catalog="system"/>
                                                     <connections>
                                                         <action selector="removeButtonPressed:" destination="BuI-wy-H06" eventType="touchUpInside" id="jtd-3B-kCA"/>
@@ -204,7 +204,7 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.5" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YUL-bF-gO0" customClass="DesignableImageView" customModule="BoardgameApp" customModuleProvider="target">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YUL-bF-gO0" customClass="DesignableImageView" customModule="BoardgameApp" customModuleProvider="target">
                                 <rect key="frame" x="20" y="98" width="124" height="124"/>
                                 <color key="backgroundColor" red="0.12122984520000001" green="0.79138050390000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
@@ -239,6 +239,7 @@
                         <viewLayoutGuide key="safeArea" id="53Y-0i-EcC"/>
                     </view>
                     <navigationItem key="navigationItem" title="Profile" id="mPu-s9-EbD">
+                        <barButtonItem key="leftBarButtonItem" title="Sign Out" id="6GX-E6-u6c"/>
                         <barButtonItem key="rightBarButtonItem" title="Item" image="line.horizontal.3" catalog="system" id="Nlu-9o-5pz">
                             <connections>
                                 <segue destination="GM2-vH-bwH" kind="show" id="V3q-9g-THy"/>
@@ -247,6 +248,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="8C1-4m-zJA" id="JUu-aw-CWb"/>
+                        <outlet property="profileImageView" destination="YUL-bF-gO0" id="geO-Zq-olP"/>
                         <outlet property="segmentController" destination="KFt-bW-Iqo" id="bgr-av-E4z"/>
                         <outlet property="userEmailLabel" destination="p9a-Ef-YYb" id="KfL-qN-oBd"/>
                         <outlet property="userNameLabel" destination="Ga4-94-aHV" id="WzZ-lg-vLS"/>
@@ -275,7 +277,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.5" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iq4-XF-ktZ" customClass="DesignableImageView" customModule="BoardgameApp" customModuleProvider="target">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iq4-XF-ktZ" customClass="DesignableImageView" customModule="BoardgameApp" customModuleProvider="target">
                                 <rect key="frame" x="117.5" y="108" width="179" height="179"/>
                                 <color key="backgroundColor" red="0.12122984520000001" green="0.79138050390000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
@@ -905,6 +907,9 @@
                                         </constraints>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" image="xmark" catalog="system"/>
+                                        <connections>
+                                            <action selector="cancelButtonPressed:" destination="uSv-XD-vMW" eventType="touchUpInside" id="ySh-1G-DZh"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gu5-9P-HKJ">
                                         <rect key="frame" x="350" y="20" width="44" height="44"/>
@@ -914,6 +919,9 @@
                                         </constraints>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" image="checkmark" catalog="system"/>
+                                        <connections>
+                                            <action selector="doneButtonPressed:" destination="uSv-XD-vMW" eventType="touchUpInside" id="ggH-go-eK8"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.12122984520000001" green="0.79138050390000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -927,7 +935,7 @@
                                 </constraints>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Fne-cv-mjK">
-                                <rect key="frame" x="20" y="104" width="374" height="253"/>
+                                <rect key="frame" x="20" y="104" width="374" height="684"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="zyh-gJ-PcW">
                                     <size key="itemSize" width="213" height="171"/>
@@ -956,6 +964,9 @@
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="213" height="171"/>
+                                        <connections>
+                                            <outlet property="collectionNameLabel" destination="l8E-kd-7gT" id="1D5-Xl-2bi"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
@@ -964,16 +975,20 @@
                         <constraints>
                             <constraint firstItem="Fne-cv-mjK" firstAttribute="leading" secondItem="wWA-QF-Fft" secondAttribute="leading" constant="20" id="6le-cd-V2y"/>
                             <constraint firstItem="13z-t7-IA7" firstAttribute="height" secondItem="QT0-MN-Cyb" secondAttribute="height" multiplier="0.1" id="MZi-Pt-Ai7"/>
+                            <constraint firstItem="wWA-QF-Fft" firstAttribute="bottom" secondItem="Fne-cv-mjK" secondAttribute="bottom" constant="20" id="O0O-Sx-9OY"/>
                             <constraint firstItem="13z-t7-IA7" firstAttribute="top" secondItem="wWA-QF-Fft" secondAttribute="top" id="U2e-gI-9Uj"/>
                             <constraint firstItem="wWA-QF-Fft" firstAttribute="trailing" secondItem="Fne-cv-mjK" secondAttribute="trailing" constant="20" id="V7r-9W-3re"/>
                             <constraint firstItem="wWA-QF-Fft" firstAttribute="trailing" secondItem="13z-t7-IA7" secondAttribute="trailing" id="ZHw-fX-Pf2"/>
                             <constraint firstItem="13z-t7-IA7" firstAttribute="leading" secondItem="wWA-QF-Fft" secondAttribute="leading" id="lSo-Nb-nIf"/>
-                            <constraint firstItem="Fne-cv-mjK" firstAttribute="height" secondItem="QT0-MN-Cyb" secondAttribute="height" multiplier="0.3" id="mQQ-2C-a2A"/>
                             <constraint firstItem="Fne-cv-mjK" firstAttribute="top" secondItem="13z-t7-IA7" secondAttribute="bottom" constant="20" id="rsj-IP-ZtB"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="wWA-QF-Fft"/>
                     </view>
                     <navigationItem key="navigationItem" title="Add to Collection" id="mTp-5h-4Ma"/>
+                    <connections>
+                        <outlet property="collectionView" destination="Fne-cv-mjK" id="yB7-ef-ZNH"/>
+                        <outlet property="doneButton" destination="gu5-9P-HKJ" id="Kzf-xk-RoQ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dn3-4N-r38" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
