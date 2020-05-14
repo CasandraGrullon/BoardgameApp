@@ -25,8 +25,8 @@ class GameDetailViewController: UITableViewController {
     @IBOutlet weak var star3Button: UIButton!
     @IBOutlet weak var star4Button: UIButton!
     @IBOutlet weak var star5Button: UIButton!
-    @IBOutlet weak var rulesButton: UIButton!
-    @IBOutlet weak var addToCollection: UIBarButtonItem!
+    @IBOutlet weak var rulesButton: UIButton!    
+    @IBOutlet weak var addToCollectionButton: UIBarButtonItem!
     
     public var game: Game?
     public var categories = [Category]()
@@ -37,12 +37,18 @@ class GameDetailViewController: UITableViewController {
             }
         }
     }
+    private var isGameInCollection = false {
+        didSet {
+            checkCollections()
+        }
+    }
+    private var isUserOwned = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureCollectionView()
         updateUI()
-         
+        
     }
     private func configureCollectionView() {
         reviewsCollectionView.delegate = self
@@ -127,6 +133,32 @@ class GameDetailViewController: UITableViewController {
             }
         }
     }
+    private func checkCollections() {
+        guard let game = game else {return}
+        DatabaseService.shared.isInUserOwnedCollection(collectedGame: game) { [weak self] (result) in
+            switch result {
+            case .failure(let error):
+                print("unable to check collection error: \(error.localizedDescription)")
+            case .success(let result):
+                self?.isGameInCollection = result
+                if result == false {
+                    self?.isUserOwned = false
+                } else {
+                    self?.isUserOwned = true
+                }
+            }
+        }
+        DatabaseService.shared.isInWishlistCollection(collectedGame: game) { [weak self] (result) in
+            switch result {
+            case .failure(let error):
+                print("unable to check collection error: \(error.localizedDescription)")
+            case .success(let result):
+                self?.isGameInCollection = result
+                self?.isUserOwned = false
+            }
+        }
+        
+    }
     
     @IBAction func gameRulesButtonPressed(_ sender: UIButton) {
         guard let rulesURL = game?.rulesURL else {
@@ -139,13 +171,36 @@ class GameDetailViewController: UITableViewController {
         let safariPage = SFSafariViewController(url: url)
         present(safariPage, animated: true)
     }
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let addToCollectionVC = segue.destination as? AddToCollectionViewController else {
-            return
-        } 
-        addToCollectionVC.game = game
-    }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if isGameInCollection == false {
+            addToCollectionButton.setBackgroundImage(UIImage(systemName: "plus"), for: .normal, barMetrics: .default)
+            guard let addToCollectionVC = segue.destination as? AddToCollectionViewController else {
+                return
+            }
+            addToCollectionVC.game = game
+        }
+        
+    }
+    
+    @IBAction func addToCollectionButtonPressed(_ sender: UIBarButtonItem) {
+        if isGameInCollection {
+            addToCollectionButton.setBackgroundImage(UIImage(systemName: "minus"), for: .normal, barMetrics: .default)
+            DatabaseService.shared.removeFromCollection(userOwned: isUserOwned, collectedGame: nil, game: game) { [weak self] (result) in
+                switch result {
+                case .failure(let error):
+                    DispatchQueue.main.async {
+                        self?.showAlert(title: "Error", message: "Unable to delete at this time: \(error.localizedDescription)")
+                    }
+                case .success:
+                    DispatchQueue.main.async {
+                        self?.showAlert(title: "Removed From Collection", message: "\(self?.game?.name) has been removed")
+                    }
+                }
+            }
+        }
+    }
+    
 }
 
 extension GameDetailViewController: UICollectionViewDelegateFlowLayout {

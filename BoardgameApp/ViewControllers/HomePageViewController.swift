@@ -73,7 +73,7 @@ class HomePageViewController: UITableViewController {
 }
 extension HomePageViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let itemSpacing: CGFloat = 11
+        let itemSpacing: CGFloat = 5
         let maxSize: CGFloat = UIScreen.main.bounds.size.width
         let numberOfItems: CGFloat = 2
         let totalSpace: CGFloat = (numberOfItems * itemSpacing) * 2.5
@@ -81,7 +81,7 @@ extension HomePageViewController: UICollectionViewDelegateFlowLayout {
         return CGSize(width: itemWidth, height: itemWidth)
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 5, left: 0, bottom: 5, right: 0)
+        return UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
     }
 }
 extension HomePageViewController: UICollectionViewDataSource {

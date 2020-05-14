@@ -390,7 +390,7 @@
         <scene sceneID="rxl-Qx-uaJ">
             <objects>
                 <tableViewController id="lHd-7d-f0D" customClass="HomePageViewController" customModule="BoardgameApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="10" sectionFooterHeight="18" id="Xe9-tk-mB1">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="none" rowHeight="50" estimatedRowHeight="-1" sectionHeaderHeight="10" sectionFooterHeight="10" id="Xe9-tk-mB1">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -399,15 +399,15 @@
                         <sections>
                             <tableViewSection headerTitle="Featured" id="Scv-jS-Gpc">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="190" id="g1D-sW-Jzy">
-                                        <rect key="frame" x="0.0" y="55.5" width="414" height="190"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="200" id="g1D-sW-Jzy">
+                                        <rect key="frame" x="0.0" y="55.5" width="414" height="200"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="g1D-sW-Jzy" id="z87-eF-F7t">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="190"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="200"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="jIY-cu-i6g">
-                                                    <rect key="frame" x="20" y="11" width="374" height="168"/>
+                                                    <rect key="frame" x="20" y="11" width="374" height="178"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="GCI-Gb-5Eh">
                                                         <size key="itemSize" width="215" height="149"/>
@@ -417,7 +417,7 @@
                                                     </collectionViewFlowLayout>
                                                     <cells>
                                                         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="" id="lXX-v4-BPk">
-                                                            <rect key="frame" x="0.0" y="9.5" width="215" height="149"/>
+                                                            <rect key="frame" x="0.0" y="14.5" width="215" height="149"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="k3B-J8-Cig">
                                                                 <rect key="frame" x="0.0" y="0.0" width="215" height="149"/>
@@ -461,15 +461,15 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="New" id="di8-cB-SFM">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="190" id="Olo-ma-0KS">
-                                        <rect key="frame" x="0.0" y="301.5" width="414" height="190"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="200" id="Olo-ma-0KS">
+                                        <rect key="frame" x="0.0" y="303.5" width="414" height="200"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Olo-ma-0KS" id="cMs-xO-GPu">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="190"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="200"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="R1W-IV-eUW">
-                                                    <rect key="frame" x="20" y="11" width="374" height="168"/>
+                                                    <rect key="frame" x="20" y="11" width="374" height="178"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="n7Y-BS-N68">
                                                         <size key="itemSize" width="215" height="149"/>
@@ -479,7 +479,7 @@
                                                     </collectionViewFlowLayout>
                                                     <cells>
                                                         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="" id="xlI-Uf-Fmw">
-                                                            <rect key="frame" x="0.0" y="9.5" width="215" height="149"/>
+                                                            <rect key="frame" x="0.0" y="14.5" width="215" height="149"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="rUW-fo-yAH">
                                                                 <rect key="frame" x="0.0" y="0.0" width="215" height="149"/>
@@ -522,15 +522,15 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="Popular" id="OiN-Sh-A2q">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="190" id="Y3q-T1-kRu">
-                                        <rect key="frame" x="0.0" y="547.5" width="414" height="190"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="200" id="Y3q-T1-kRu">
+                                        <rect key="frame" x="0.0" y="551.5" width="414" height="200"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Y3q-T1-kRu" id="09e-tU-1PH">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="190"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="200"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="e7f-HK-1r5">
-                                                    <rect key="frame" x="20" y="11" width="374" height="168"/>
+                                                    <rect key="frame" x="20" y="11" width="374" height="178"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Wel-a4-AUO">
                                                         <size key="itemSize" width="215" height="149"/>
@@ -540,7 +540,7 @@
                                                     </collectionViewFlowLayout>
                                                     <cells>
                                                         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="" id="xqz-g7-ohg">
-                                                            <rect key="frame" x="0.0" y="9.5" width="215" height="149"/>
+                                                            <rect key="frame" x="0.0" y="14.5" width="215" height="149"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Tfd-vQ-cTc">
                                                                 <rect key="frame" x="0.0" y="0.0" width="215" height="149"/>
@@ -861,12 +861,13 @@
                         <barButtonItem key="rightBarButtonItem" title="Item" image="plus" catalog="system" id="gXe-u9-WMm">
                             <color key="tintColor" red="0.22876183359999999" green="0.6306747117" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <connections>
+                                <action selector="addToCollectionButtonPressed:" destination="QZE-qt-9Ub" id="uM6-oc-Z4h"/>
                                 <segue destination="uSv-XD-vMW" kind="presentation" id="0vr-2o-pR8"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="addToCollection" destination="gXe-u9-WMm" id="THU-Sf-IQV"/>
+                        <outlet property="addToCollectionButton" destination="gXe-u9-WMm" id="Ct1-BA-h3Z"/>
                         <outlet property="ageLabel" destination="abU-Z8-MZX" id="RSg-Li-EoF"/>
                         <outlet property="categoriesLabel" destination="yY1-iq-Pt1" id="VAd-nZ-wrX"/>
                         <outlet property="gameDescription" destination="H6k-1Q-kBC" id="mmv-dd-MyU"/>

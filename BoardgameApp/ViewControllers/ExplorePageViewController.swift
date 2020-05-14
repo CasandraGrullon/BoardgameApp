@@ -10,7 +10,6 @@ import UIKit
 
 class ExplorePageViewController: UIViewController {
     
-    
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var filtersCollectionView: UICollectionView!
     @IBOutlet weak var gamesCollectionView: UICollectionView!
@@ -40,9 +39,7 @@ class ExplorePageViewController: UIViewController {
         super.viewDidLoad()
         getGames(search: "")
         configureCollectionView()
-        configureRefresh()
-        filtersCollectionView.isHidden = true
-        
+        configureRefresh()        
     }
     private func configureRefresh() {
         searchBar.delegate = self
@@ -57,6 +54,7 @@ class ExplorePageViewController: UIViewController {
         filtersCollectionView.delegate = self
         filtersCollectionView.dataSource = self
     }
+
     @objc private func loadData() {
         getGames(search: "")
         addedFilters.removeAll()
@@ -106,7 +104,7 @@ extension ExplorePageViewController: UICollectionViewDelegateFlowLayout {
         if collectionView == gamesCollectionView {
             let itemSpacing: CGFloat = 5
             let maxSize: CGFloat = UIScreen.main.bounds.size.width
-            let numberOfItems: CGFloat = 2
+            let numberOfItems: CGFloat = 3
             let totalSpace: CGFloat = (numberOfItems * itemSpacing) * 2.5
             let itemWidth: CGFloat = (maxSize - totalSpace) / numberOfItems
             return CGSize(width: itemWidth, height: itemWidth)
