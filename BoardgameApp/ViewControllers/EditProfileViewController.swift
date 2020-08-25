@@ -13,7 +13,7 @@ import FirebaseFirestore
 
 class EditProfileViewController: UIViewController {
 
-    @IBOutlet weak var profilePictureImageView: DesignableImageView!
+    @IBOutlet weak var profilePictureImageView: UIImageView!
     @IBOutlet weak var addPhotoButton: UIButton!
     @IBOutlet weak var userNameTextField: UITextField!
     @IBOutlet weak var displayEmailSegment: UISegmentedControl!

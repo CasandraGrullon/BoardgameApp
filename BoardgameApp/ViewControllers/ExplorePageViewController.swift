@@ -22,7 +22,6 @@ class ExplorePageViewController: UIViewController {
             }
         }
     }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureCollectionView()
@@ -117,8 +116,17 @@ class ExplorePageViewController: UIViewController {
             guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: HeaderView.reuseIdentifier, for: indexPath) as? HeaderView, let sectionKind = SectionKind(rawValue: indexPath.section) else {
                 fatalError("could not dequeue header view")
             }
-
-            header.textLabel.text = sectionKind.sectionTitle
+            if self.searchText.isEmpty {
+                if sectionKind == .main {
+                    header.textLabel.text = "Top Games"
+                } else if sectionKind == .second {
+                    header.textLabel.text = "Popular Games"
+                } else {
+                    header.textLabel.text = "More Games"
+                }
+            } else {
+                header.textLabel.text = sectionKind.sectionTitle
+            }
             header.textLabel.textColor = .systemGray2
             header.textLabel.font = UIFont.preferredFont(forTextStyle: .headline)
             return header

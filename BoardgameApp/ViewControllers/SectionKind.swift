@@ -34,9 +34,9 @@ enum SectionKind: Int, CaseIterable {
         case .main:
             return "Top Results"
         case .second:
-            return ""
+            return "More Results"
         case .third:
-            return ""
+            return "Other Results"
         }
     }
     var orthogonalBehaviour: UICollectionLayoutSectionOrthogonalScrollingBehavior {
