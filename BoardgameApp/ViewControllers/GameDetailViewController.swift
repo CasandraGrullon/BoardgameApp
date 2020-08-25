@@ -73,10 +73,9 @@ class GameDetailViewController: UITableViewController {
        gameImageView.kf.setImage(with: URL(string: game.imageURL))
         nameLabel.text = game.name
         priceLabel.text = "$\(game.price)"
-        let gameDes = game.description.replacingOccurrences(of: "<p>", with: "\n").replacingOccurrences(of: "</p>", with: "").replacingOccurrences(of: "<br />", with: "").replacingOccurrences(of: "</h4>", with: "").replacingOccurrences(of: "<h4>", with: " ").replacingOccurrences(of: "<em>", with: "").replacingOccurrences(of: "</em>", with: "").replacingOccurrences(of: "<strong>", with: "").replacingOccurrences(of: "</strong>", with: "").replacingOccurrences(of: "<ul>", with: "").replacingOccurrences(of: "<li>", with: "").replacingOccurrences(of: "</ul>", with: "").replacingOccurrences(of: "</li>", with: "")
-        gameDescription.text = gameDes
+        gameDescription.text = game.description.formatString()
         guard let age = game.minAge, let minPlayers = game.minPlayers, let maxPlayers = game.maxPlayers, let minPlaytime = game.minPlaytime, let maxPlaytime = game.maxPlaytime else {return}
-        ageLabel.text = "Age: \(age)+"
+        ageLabel.text = "Ages: \(age)+"
         numberofPlayerLabel.text = "\(minPlayers) - \(maxPlayers) players"
         playtimeLabel.text = "Average Game Time: \t\(minPlaytime) - \(maxPlaytime) minutes"
         if game.averageUserRating >= 5 {
