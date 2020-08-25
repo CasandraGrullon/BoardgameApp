@@ -37,10 +37,14 @@ class ExplorePageViewController: UIViewController {
         var snapshot = dataSource.snapshot()
         snapshot.deleteAllItems()
         snapshot.appendSections([.main, .second, .third])
-        snapshot.appendItems(games, toSection: .second)
-        if let topResult = games.first {
-            snapshot.appendItems([topResult], toSection: .main)
-        }
+        let middleIndex = games.count / 2
+        let topResults = Array(games[0...2])
+        let low = Array(games[3...middleIndex])
+        let high = Array(games[middleIndex + 1..<games.count])
+        
+        snapshot.appendItems(topResults, toSection: .main)
+        snapshot.appendItems(low, toSection: .second)
+        snapshot.appendItems(high, toSection: .third)
         dataSource.apply(snapshot, animatingDifferences: false)
     }
     //CollectionView
@@ -68,7 +72,7 @@ class ExplorePageViewController: UIViewController {
             let innerGroupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
             let innerGroup = NSCollectionLayoutGroup.vertical(layoutSize: innerGroupSize, subitem: item, count: sectionKind.itemCount)
             
-            let nestedGroupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalWidth(1.0))
+            let nestedGroupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.6), heightDimension: sectionKind.nestedGroupHeight)
             let nestedGroup = NSCollectionLayoutGroup.vertical(layoutSize: nestedGroupSize, subitems: [innerGroup])
             
             let section = NSCollectionLayoutSection(group: nestedGroup)

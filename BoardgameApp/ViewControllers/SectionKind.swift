@@ -18,15 +18,15 @@ enum SectionKind: Int, CaseIterable {
         case .main:
             return 1
         default:
-            return 3
+            return 2
         }
     }
     var nestedGroupHeight: NSCollectionLayoutDimension {
         switch self {
         case .main:
-            return .fractionalWidth(0.9)
+            return .fractionalWidth(1.0)
         default:
-            return .fractionalWidth(0.45)
+            return .fractionalWidth(0.8)
         }
     }
     var sectionTitle: String {
