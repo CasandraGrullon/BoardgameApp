@@ -22,7 +22,7 @@ class ExplorePageViewController: UIViewController {
         super.viewDidLoad()
         configureCollectionView()
         configureCollectionViewDataSource()
-        fetchGames(for: "")
+        fetchGames(for: "catan")
     }
     // API data
     private func fetchGames(for query: String) {
@@ -44,10 +44,9 @@ class ExplorePageViewController: UIViewController {
         snapshot.appendItems(games)
         dataSource.apply(snapshot, animatingDifferences: false)
     }
-    
     //CollectionView
     private func configureCollectionView() {
-        collectionView.collectionViewLayout = createLayout()
+        collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: createLayout())
         collectionView.backgroundColor = .systemBackground
         
         collectionView.register(UINib(nibName: "GameCell", bundle: nil), forCellWithReuseIdentifier: GameCell.reuseIdentifier)
@@ -57,12 +56,12 @@ class ExplorePageViewController: UIViewController {
     }
     private func createLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewCompositionalLayout { (sectionIndex, layoutEnvironment) -> NSCollectionLayoutSection? in
-            let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
+            let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.3), heightDimension: .fractionalWidth(0.5))
             let item = NSCollectionLayoutItem(layoutSize: itemSize)
             let itemSpacing: CGFloat = 5
             item.contentInsets = NSDirectionalEdgeInsets(top: itemSpacing, leading: itemSpacing, bottom: itemSpacing, trailing: itemSpacing)
             
-            let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalWidth(1.0))
+            let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
             let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
             
             let section = NSCollectionLayoutSection(group: group)
