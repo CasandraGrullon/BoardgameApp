@@ -153,11 +153,11 @@
 				C6C400B7245B5F7300846A31 /* MainAppTabBarViewController.swift */,
 				C687024D2458D8970037F22D /* HomePageViewController.swift */,
 				C687024F2458D8C30037F22D /* ExplorePageViewController.swift */,
-				C68702512458D8E50037F22D /* ProfilePageViewController.swift */,
-				C6ED7400246C499D00FBA65C /* EditProfileViewController.swift */,
 				C68702532458D8F50037F22D /* FilterViewController.swift */,
 				C68702552458D9140037F22D /* GameDetailViewController.swift */,
 				C6ED73FE246C462A00FBA65C /* AddToCollectionViewController.swift */,
+				C68702512458D8E50037F22D /* ProfilePageViewController.swift */,
+				C6ED7400246C499D00FBA65C /* EditProfileViewController.swift */,
 				C6B2172624F5A5E700551394 /* SectionKind.swift */,
 				C6B2172824F5B0A000551394 /* HeaderView.swift */,
 			);

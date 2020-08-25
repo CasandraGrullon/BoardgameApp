@@ -47,6 +47,10 @@ class ExplorePageViewController: UIViewController {
         snapshot.deleteAllItems()
         snapshot.appendSections([.main, .second, .third])
         let middleIndex = games.count / 2
+        guard middleIndex > 0 else {
+            snapshot.appendItems(games, toSection: .second)
+            return
+        }
         let topResults = Array(games[0...2])
         let low = Array(games[3...middleIndex])
         let high = Array(games[middleIndex + 1..<games.count])
@@ -73,7 +77,7 @@ class ExplorePageViewController: UIViewController {
         collectionView.register(UINib(nibName: "GameCell", bundle: nil), forCellWithReuseIdentifier: GameCell.reuseIdentifier)
         collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.addSubview(collectionView)
-        
+        collectionView.delegate = self
     }
     private func createLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewCompositionalLayout { (sectionIndex, layoutEnvironment) -> NSCollectionLayoutSection? in
@@ -144,5 +148,16 @@ extension ExplorePageViewController: UISearchResultsUpdating {
             return
         }
         searchText = text
+    }
+}
+extension ExplorePageViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let storyboard = UIStoryboard(name: "MainAppStoryboard", bundle: nil)
+        if let game = dataSource.itemIdentifier(for: indexPath) {
+            let detailVC = storyboard.instantiateViewController(identifier: "GameDetailViewController") { (coder) in
+                return GameDetailViewController(coder: coder, game: game)
+            }
+            navigationController?.pushViewController(detailVC, animated: true)
+        }
     }
 }
