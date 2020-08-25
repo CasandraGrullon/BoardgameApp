@@ -9,7 +9,7 @@
 import UIKit
 import SafariServices
 
-class GameDetailViewController: UITableViewController {
+class GameDetailTableViewController: UITableViewController {
     
     @IBOutlet weak var gameImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
@@ -215,7 +215,7 @@ class GameDetailViewController: UITableViewController {
     
 }
 
-extension GameDetailViewController: UICollectionViewDelegateFlowLayout {
+extension GameDetailTableViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let itemSpacing: CGFloat = 11
         let maxSize: CGFloat = UIScreen.main.bounds.size.width
@@ -225,7 +225,7 @@ extension GameDetailViewController: UICollectionViewDelegateFlowLayout {
         return CGSize(width: itemWidth, height: itemWidth)
     }
 }
-extension GameDetailViewController: UICollectionViewDataSource {
+extension GameDetailTableViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return reviews.count
     }

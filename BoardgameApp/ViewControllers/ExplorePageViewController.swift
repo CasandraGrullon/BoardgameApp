@@ -154,8 +154,8 @@ extension ExplorePageViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let storyboard = UIStoryboard(name: "MainAppStoryboard", bundle: nil)
         if let game = dataSource.itemIdentifier(for: indexPath) {
-            let detailVC = storyboard.instantiateViewController(identifier: "GameDetailViewController") { (coder) in
-                return GameDetailViewController(coder: coder, game: game)
+            let detailVC = storyboard.instantiateViewController(identifier: "GameDetailTableViewController") { (coder) in
+                return GameDetailTableViewController(coder: coder, game: game)
             }
             navigationController?.pushViewController(detailVC, animated: true)
         }
