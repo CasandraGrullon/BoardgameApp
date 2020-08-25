@@ -8,10 +8,6 @@
 
 import UIKit
 
-enum SectionKind: Int, CaseIterable {
-    case main
-}
-
 class ExplorePageViewController: UIViewController {
     
     private var collectionView: UICollectionView!
@@ -40,8 +36,11 @@ class ExplorePageViewController: UIViewController {
     private func updateSnapshot(with games: [Game]) {
         var snapshot = dataSource.snapshot()
         snapshot.deleteAllItems()
-        snapshot.appendSections([.main])
-        snapshot.appendItems(games)
+        snapshot.appendSections([.main, .second, .third])
+        snapshot.appendItems(games, toSection: .second)
+        if let topResult = games.first {
+            snapshot.appendItems([topResult], toSection: .main)
+        }
         dataSource.apply(snapshot, animatingDifferences: false)
     }
     //CollectionView
@@ -56,15 +55,24 @@ class ExplorePageViewController: UIViewController {
     }
     private func createLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewCompositionalLayout { (sectionIndex, layoutEnvironment) -> NSCollectionLayoutSection? in
-            let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.3), heightDimension: .fractionalWidth(0.5))
+            
+            guard let sectionKind = SectionKind(rawValue: sectionIndex) else {
+                fatalError("unable to retrieve section kind")
+            }
+            
+            let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalWidth(1.0))
             let item = NSCollectionLayoutItem(layoutSize: itemSize)
             let itemSpacing: CGFloat = 5
             item.contentInsets = NSDirectionalEdgeInsets(top: itemSpacing, leading: itemSpacing, bottom: itemSpacing, trailing: itemSpacing)
             
-            let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
-            let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
+            let innerGroupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
+            let innerGroup = NSCollectionLayoutGroup.vertical(layoutSize: innerGroupSize, subitem: item, count: sectionKind.itemCount)
             
-            let section = NSCollectionLayoutSection(group: group)
+            let nestedGroupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalWidth(1.0))
+            let nestedGroup = NSCollectionLayoutGroup.vertical(layoutSize: nestedGroupSize, subitems: [innerGroup])
+            
+            let section = NSCollectionLayoutSection(group: nestedGroup)
+            section.orthogonalScrollingBehavior = sectionKind.orthogonalBehaviour
             return section
         }
         return layout
@@ -78,7 +86,8 @@ class ExplorePageViewController: UIViewController {
             return cell
         })
         var snapshot = NSDiffableDataSourceSnapshot<SectionKind, Game>()
-        snapshot.appendSections([.main])
+        snapshot.appendSections([.main, .second, .third])
+        
         dataSource.apply(snapshot, animatingDifferences: false)
     }
 }
