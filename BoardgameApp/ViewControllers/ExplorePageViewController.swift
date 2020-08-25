@@ -8,203 +8,79 @@
 
 import UIKit
 
+enum SectionKind: Int, CaseIterable {
+    case main
+}
+
 class ExplorePageViewController: UIViewController {
     
-    @IBOutlet weak var searchBar: UISearchBar!
-    @IBOutlet weak var filtersCollectionView: UICollectionView!
-    @IBOutlet weak var gamesCollectionView: UICollectionView!
-    @IBOutlet weak var gamesCollectionTopAnchor: NSLayoutConstraint!
-    
-    private var games = [Game]() {
-        didSet {
-            DispatchQueue.main.async {
-                self.gamesCollectionView.reloadData()
-            }
-        }
-    }
-    private var searchQuery = "" {
-        didSet {
-            self.getGames(search: searchQuery)
-        }
-    }
-    public var addedFilters = [String]() {
-        didSet {
-            filtersCollectionView.reloadData()
-        }
-    }
-    
-    private var refreshControl: UIRefreshControl!
+    private var collectionView: UICollectionView!
+    typealias Datasource = UICollectionViewDiffableDataSource< SectionKind, Game >
+    private var dataSource: Datasource!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        getGames(search: "")
         configureCollectionView()
-        configureRefresh()        
+        configureCollectionViewDataSource()
+        fetchGames(for: "")
     }
-    private func configureRefresh() {
-        searchBar.delegate = self
-        refreshControl = UIRefreshControl()
-        gamesCollectionView.refreshControl = refreshControl
-        refreshControl.addTarget(self, action: #selector(loadData), for: .valueChanged)
-    }
-    private func configureCollectionView() {
-        gamesCollectionView.delegate = self
-        gamesCollectionView.dataSource = self
-        gamesCollectionView.register(UINib(nibName: "GameCell", bundle: nil), forCellWithReuseIdentifier: "gameCell")
-        filtersCollectionView.delegate = self
-        filtersCollectionView.dataSource = self
-    }
-
-    @objc private func loadData() {
-        getGames(search: "")
-        addedFilters.removeAll()
-    }
-    private func getGames(search: String) {
-        BoardGameAPIClient.getGames(searchQuery: search) { [weak self] (result) in
+    // API data
+    private func fetchGames(for query: String) {
+        APIClient().fetchGames(for: query) { [weak self] (result) in
             switch result {
-            case .failure(let appError):
+            case .failure(let error):
                 DispatchQueue.main.async {
-                    self?.showAlert(title: "Unable to get data", message: "issue loading data from api \(appError)")
-                    self?.refreshControl.endRefreshing()
+                    self?.showAlert(title: "API Error", message: "\(error.localizedDescription)")
                 }
             case .success(let games):
-                self?.games = games
-                DispatchQueue.main.async {
-                    self?.refreshControl.endRefreshing()
-                }
+                self?.updateSnapshot(with: games)
             }
         }
     }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let filterVC = segue.destination as? FilterViewController else {
-            fatalError("could not segue to FilterVC")
-        }
-        filterVC.delegate = self
+    private func updateSnapshot(with games: [Game]) {
+        var snapshot = dataSource.snapshot()
+        snapshot.deleteAllItems()
+        snapshot.appendSections([.main])
+        snapshot.appendItems(games)
+        dataSource.apply(snapshot, animatingDifferences: false)
     }
     
-}
-extension ExplorePageViewController: UISearchBarDelegate {
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        searchQuery = searchBar.text ?? ""
-        searchBar.resignFirstResponder()
+    //CollectionView
+    private func configureCollectionView() {
+        collectionView.collectionViewLayout = createLayout()
+        collectionView.backgroundColor = .systemBackground
+        
+        collectionView.register(UINib(nibName: "GameCell", bundle: nil), forCellWithReuseIdentifier: GameCell.reuseIdentifier)
+        collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        view.addSubview(collectionView)
+        
     }
-    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        searchBar.showsCancelButton = true
-    }
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.resignFirstResponder()
-        searchBar.showsCancelButton = false
-    }
-    
-}
-extension ExplorePageViewController: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout
-        collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if collectionView == gamesCollectionView {
+    private func createLayout() -> UICollectionViewLayout {
+        let layout = UICollectionViewCompositionalLayout { (sectionIndex, layoutEnvironment) -> NSCollectionLayoutSection? in
+            let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
+            let item = NSCollectionLayoutItem(layoutSize: itemSize)
             let itemSpacing: CGFloat = 5
-            let maxSize: CGFloat = UIScreen.main.bounds.size.width
-            let numberOfItems: CGFloat = 3
-            let totalSpace: CGFloat = (numberOfItems * itemSpacing) * 2.5
-            let itemWidth: CGFloat = (maxSize - totalSpace) / numberOfItems
-            return CGSize(width: itemWidth, height: itemWidth)
-        } else {
-            let itemSpacing: CGFloat = 2
-            let maxSize: CGFloat = UIScreen.main.bounds.size.width
-            let numberOfItems: CGFloat = 3
-            let totalSpace: CGFloat = (numberOfItems * itemSpacing) * 1.5
-            let itemWidth: CGFloat = (maxSize - totalSpace) / numberOfItems
-            return CGSize(width: itemWidth, height: itemWidth)
+            item.contentInsets = NSDirectionalEdgeInsets(top: itemSpacing, leading: itemSpacing, bottom: itemSpacing, trailing: itemSpacing)
+            
+            let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalWidth(1.0))
+            let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
+            
+            let section = NSCollectionLayoutSection(group: group)
+            return section
         }
-        
+        return layout
     }
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        if collectionView == gamesCollectionView {
-            return UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
-        } else {
-             return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        }
-        
-    }
-}
-extension ExplorePageViewController: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if collectionView == gamesCollectionView {
-             return games.count
-        } else {
-            return addedFilters.count
-        }
-       
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if collectionView == gamesCollectionView {
-            guard let cell = gamesCollectionView.dequeueReusableCell(withReuseIdentifier: "gameCell", for: indexPath) as? GameCell else {
-                fatalError("could not cast to GameCell")
+    private func configureCollectionViewDataSource() {
+        dataSource = Datasource(collectionView: collectionView, cellProvider: { (collectionView, indexPath, game) -> UICollectionViewCell? in
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GameCell.reuseIdentifier, for: indexPath) as? GameCell else {
+                fatalError("could not dequeue Game Cell")
             }
-            let game = games[indexPath.row]
             cell.configureCell(game: game)
             return cell
-        } else {
-            guard let cell = filtersCollectionView.dequeueReusableCell(withReuseIdentifier: "filterCell", for: indexPath) as? FilterCell else {
-                fatalError("could not cast to filter cell")
-            }
-            let filter = addedFilters[indexPath.row]
-            cell.filterNameLabel.text = filter
-            cell.filter = filter
-            cell.delegate = self
-            return cell
-        }
-        
+        })
+        var snapshot = NSDiffableDataSourceSnapshot<SectionKind, Game>()
+        snapshot.appendSections([.main])
+        dataSource.apply(snapshot, animatingDifferences: false)
     }
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let game = games[indexPath.row]
-        guard let detailVC = storyboard?.instantiateViewController(identifier: "GameDetailViewController") as? GameDetailViewController else {
-            print("could not segue to GameDetailViewController")
-            return
-        }
-        detailVC.game = game
-        navigationController?.pushViewController(detailVC, animated: true)
-    }
-    
-    
 }
-extension ExplorePageViewController: FiltersAdded {
-    func didAddFilters(filters: [String], ageFilter: [String], numberOfPlayersFilter: [String], priceFilter: [String], genreFilter: [String], vc: FilterViewController) {
-        
-        addedFilters = filters
-        filtersCollectionView.isHidden = false
-        var gamesFiltered = [Game]()
-        
-        if let genre = genreFilter.first {
-            gamesFiltered = games.filter {$0.categories.first?.id == genre}
-        }
-        if let age = Int(ageFilter.first ?? "0") {
-            gamesFiltered = games.filter {$0.minAge == age}
-        }
-        if let maxPlayers = Int(numberOfPlayersFilter.first ?? "6") {
-            gamesFiltered = games.filter {$0.maxPlayers == maxPlayers}
-        }
-        if let price = priceFilter.first {
-            gamesFiltered = games.filter {Double($0.price) ?? 0 <= Double(price) ?? 0}
-        }
-        
-        games = gamesFiltered
-        
-    }
-    
-    
-}
-extension ExplorePageViewController: RemoveFilter {
-    func tappedRemoveButton(cell: FilterCell, filter: String) {
-        for (index, filters) in addedFilters.enumerated() {
-            if filters == filter {
-                addedFilters.remove(at: index)
-            }
-        }
-        // TODO: need to add functionality
-        //removes the filter from the filters collection view, but that will not update the games collectionview
-        
-    }
-    
-}
+

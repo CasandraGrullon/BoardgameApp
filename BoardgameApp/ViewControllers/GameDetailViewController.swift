@@ -37,18 +37,14 @@ class GameDetailViewController: UITableViewController {
             }
         }
     }
-    private var isGameInCollection = false {
-        didSet {
-            checkCollections()
-        }
-    }
+    private var isGameInCollection = false
     private var isUserOwned = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureCollectionView()
         updateUI()
-        
+        checkCollections()
     }
     private func configureCollectionView() {
         reviewsCollectionView.delegate = self
@@ -58,8 +54,8 @@ class GameDetailViewController: UITableViewController {
     private func updateUI() {
         guard let game = game else {return}
         navigationItem.title = game.name
-        getCategories()
-        getGameReviews(gameId: game.id)
+        //getCategories()
+        //getGameReviews(gameId: game.id)
         gameImageView.kf.setImage(with: URL(string: game.imageURL))
         nameLabel.text = game.name
         priceLabel.text = "$\(game.price)"
@@ -108,31 +104,31 @@ class GameDetailViewController: UITableViewController {
         }
         
     }
-    private func getCategories() {
-        BoardGameAPIClient.getGameCategories { [weak self] (result) in
-            switch result {
-            case .failure(let error):
-                print("could not get categories from api error: \(error)")
-            case .success(let categories):
-                self?.categories = categories
-                DispatchQueue.main.async {
-                    for category in categories {
-                        self?.categoriesLabel.text = category.name
-                    }
-                }
-            }
-        }
-    }
-    private func getGameReviews(gameId: String) {
-        BoardGameAPIClient.getReviews(gameId: gameId) { [weak self] (result) in
-            switch result {
-            case .failure(let error):
-                print("unable to get user reviews \(error)")
-            case .success(let reviews):
-                self?.reviews = reviews.filter {$0.description != nil}
-            }
-        }
-    }
+//    private func getCategories() {
+//        APIClient.getGameCategories { [weak self] (result) in
+//            switch result {
+//            case .failure(let error):
+//                print("could not get categories from api error: \(error)")
+//            case .success(let categories):
+//                self?.categories = categories
+//                DispatchQueue.main.async {
+//                    for category in categories {
+//                        self?.categoriesLabel.text = category.name
+//                    }
+//                }
+//            }
+//        }
+//    }
+//    private func getGameReviews(gameId: String) {
+//        APIClient.getReviews(gameId: gameId) { [weak self] (result) in
+//            switch result {
+//            case .failure(let error):
+//                print("unable to get user reviews \(error)")
+//            case .success(let reviews):
+//                self?.reviews = reviews.filter {$0.description != nil}
+//            }
+//        }
+//    }
     private func checkCollections() {
         guard let game = game else {return}
         DatabaseService.shared.isInUserOwnedCollection(collectedGame: game) { [weak self] (result) in
@@ -143,8 +139,10 @@ class GameDetailViewController: UITableViewController {
                 self?.isGameInCollection = result
                 if result == false {
                     self?.isUserOwned = false
+                    self?.addToCollectionButton.setBackgroundImage(UIImage(systemName: "plus"), for: .normal, barMetrics: .default)
                 } else {
                     self?.isUserOwned = true
+                    self?.addToCollectionButton.setBackgroundImage(UIImage(systemName: "minus"), for: .normal, barMetrics: .default)
                 }
             }
         }
@@ -155,6 +153,11 @@ class GameDetailViewController: UITableViewController {
             case .success(let result):
                 self?.isGameInCollection = result
                 self?.isUserOwned = false
+                if result == true {
+                    self?.addToCollectionButton.setBackgroundImage(UIImage(systemName: "minus"), for: .normal, barMetrics: .default)
+                } else {
+                    self?.addToCollectionButton.setBackgroundImage(UIImage(systemName: "plus"), for: .normal, barMetrics: .default)
+                }
             }
         }
         
@@ -174,18 +177,11 @@ class GameDetailViewController: UITableViewController {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if isGameInCollection == false {
-            addToCollectionButton.setBackgroundImage(UIImage(systemName: "plus"), for: .normal, barMetrics: .default)
             guard let addToCollectionVC = segue.destination as? AddToCollectionViewController else {
                 return
             }
             addToCollectionVC.game = game
-        }
-        
-    }
-    
-    @IBAction func addToCollectionButtonPressed(_ sender: UIBarButtonItem) {
-        if isGameInCollection {
-            addToCollectionButton.setBackgroundImage(UIImage(systemName: "minus"), for: .normal, barMetrics: .default)
+        } else {
             DatabaseService.shared.removeFromCollection(userOwned: isUserOwned, collectedGame: nil, game: game) { [weak self] (result) in
                 switch result {
                 case .failure(let error):
@@ -193,13 +189,16 @@ class GameDetailViewController: UITableViewController {
                         self?.showAlert(title: "Error", message: "Unable to delete at this time: \(error.localizedDescription)")
                     }
                 case .success:
+                    guard let game = self?.game else {return}
                     DispatchQueue.main.async {
-                        self?.showAlert(title: "Removed From Collection", message: "\(self?.game?.name) has been removed")
+                        self?.showAlert(title: "Removed From Collection", message: "\(game.name) has been removed")
                     }
                 }
             }
         }
+        
     }
+    
     
 }
 

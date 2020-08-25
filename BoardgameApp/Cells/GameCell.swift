@@ -14,7 +14,7 @@ class GameCell: UICollectionViewCell {
     @IBOutlet weak var gameImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var removeButton: UIButton!
-    
+    public static let reuseIdentifier = "gameCell"
     
     public func configureCell(game: Game) {
         removeButton.isHidden = true

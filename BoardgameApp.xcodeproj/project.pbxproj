@@ -13,7 +13,7 @@
 		C670D79C24591C6C00F556BE /* AuthenticationSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = C670D79B24591C6C00F556BE /* AuthenticationSession.swift */; };
 		C670D79E24591C7C00F556BE /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C670D79D24591C7C00F556BE /* StorageService.swift */; };
 		C670D7A124591CE400F556BE /* ImageKit in Frameworks */ = {isa = PBXBuildFile; productRef = C670D7A024591CE400F556BE /* ImageKit */; };
-		C670D7A324591CF300F556BE /* BoardGameAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C670D7A224591CF300F556BE /* BoardGameAPIClient.swift */; };
+		C670D7A324591CF300F556BE /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C670D7A224591CF300F556BE /* APIClient.swift */; };
 		C670D7A724591D4400F556BE /* ShowAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = C670D7A624591D4400F556BE /* ShowAlert.swift */; };
 		C670D7A924591D8F00F556BE /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C670D7A824591D8F00F556BE /* DateFormatter.swift */; };
 		C670D7AB24591DAE00F556BE /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C670D7AA24591DAE00F556BE /* EmptyView.swift */; };
@@ -57,7 +57,7 @@
 		C670D79924591C4900F556BE /* DatabaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseService.swift; sourceTree = "<group>"; };
 		C670D79B24591C6C00F556BE /* AuthenticationSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationSession.swift; sourceTree = "<group>"; };
 		C670D79D24591C7C00F556BE /* StorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
-		C670D7A224591CF300F556BE /* BoardGameAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardGameAPIClient.swift; sourceTree = "<group>"; };
+		C670D7A224591CF300F556BE /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		C670D7A624591D4400F556BE /* ShowAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowAlert.swift; sourceTree = "<group>"; };
 		C670D7A824591D8F00F556BE /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
 		C670D7AA24591DAE00F556BE /* EmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
@@ -130,7 +130,7 @@
 		C670D7A424591CFE00F556BE /* NetworkServices */ = {
 			isa = PBXGroup;
 			children = (
-				C670D7A224591CF300F556BE /* BoardGameAPIClient.swift */,
+				C670D7A224591CF300F556BE /* APIClient.swift */,
 			);
 			path = NetworkServices;
 			sourceTree = "<group>";
@@ -392,7 +392,7 @@
 				C650F1172469C8C50087179A /* Genre.swift in Sources */,
 				C6C400B4245B132800846A31 /* Secrets.swift in Sources */,
 				C6C400C0245B818B00846A31 /* ReviewCell.swift in Sources */,
-				C670D7A324591CF300F556BE /* BoardGameAPIClient.swift in Sources */,
+				C670D7A324591CF300F556BE /* APIClient.swift in Sources */,
 				C68702542458D8F50037F22D /* FilterViewController.swift in Sources */,
 				C687026024591A770037F22D /* GameReview.swift in Sources */,
 				C670D7A724591D4400F556BE /* ShowAlert.swift in Sources */,

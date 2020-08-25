@@ -11,7 +11,7 @@ import Foundation
 struct GameResults: Codable {
     let games: [Game]
 }
-struct Game: Codable {
+struct Game: Codable, Hashable {
     let id: String
     let name: String
     let yearPublished: Int?
@@ -48,6 +48,6 @@ struct Game: Codable {
         case rulesURL = "rules_url"
     }
 }
-struct GameCategories: Codable {
+struct GameCategories: Codable, Hashable {
     let id: String
 }
