@@ -16,9 +16,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="DU6-G1-kkA">
-                                <rect key="frame" x="87" y="411" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="DU6-G1-kkA">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="wJh-8V-A28">
                                     <size key="itemSize" width="128" height="128"/>
@@ -28,7 +27,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Elh-YY-d2n">
-                                        <rect key="frame" x="56" y="0.0" width="128" height="128"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="IEv-AR-pMb">
                                             <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
@@ -39,6 +38,12 @@
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="8Mo-Xz-UjW" firstAttribute="bottom" secondItem="DU6-G1-kkA" secondAttribute="bottom" id="KUG-u5-upv"/>
+                            <constraint firstItem="8Mo-Xz-UjW" firstAttribute="trailing" secondItem="DU6-G1-kkA" secondAttribute="trailing" id="Tnp-b6-f2I"/>
+                            <constraint firstItem="DU6-G1-kkA" firstAttribute="top" secondItem="8Mo-Xz-UjW" secondAttribute="top" id="ZdS-pw-XVR"/>
+                            <constraint firstItem="DU6-G1-kkA" firstAttribute="leading" secondItem="8Mo-Xz-UjW" secondAttribute="leading" id="zOy-vi-0jy"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="8Mo-Xz-UjW"/>
                     </view>
                     <navigationItem key="navigationItem" title="Explore" id="dsO-Kp-5Cy">

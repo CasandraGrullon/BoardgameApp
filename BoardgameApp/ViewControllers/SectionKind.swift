@@ -32,11 +32,11 @@ enum SectionKind: Int, CaseIterable {
     var sectionTitle: String {
         switch self {
         case .main:
-            return "First Section"
+            return "Top Results"
         case .second:
-            return "Second Section"
+            return ""
         case .third:
-            return "Third Section"
+            return ""
         }
     }
     var orthogonalBehaviour: UICollectionLayoutSectionOrthogonalScrollingBehavior {

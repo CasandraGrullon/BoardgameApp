@@ -13,12 +13,22 @@ class ExplorePageViewController: UIViewController {
     private var collectionView: UICollectionView!
     typealias Datasource = UICollectionViewDiffableDataSource< SectionKind, Game >
     private var dataSource: Datasource!
+    private var searchController: UISearchController!
+    
+    private var searchText = String() {
+        didSet {
+            DispatchQueue.main.async {
+                self.fetchGames(for: self.searchText)
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureCollectionView()
         configureCollectionViewDataSource()
-        fetchGames(for: "catan")
+        configureSearchController()
+        fetchGames(for: "")
     }
     // API data
     private func fetchGames(for query: String) {
@@ -47,11 +57,20 @@ class ExplorePageViewController: UIViewController {
         snapshot.appendItems(high, toSection: .third)
         dataSource.apply(snapshot, animatingDifferences: false)
     }
+    //searchController
+    private func configureSearchController() {
+        searchController = UISearchController(searchResultsController: nil)
+        navigationItem.searchController = searchController
+        searchController.searchResultsUpdater = self
+        searchController.searchBar.autocapitalizationType = .none
+        searchController.obscuresBackgroundDuringPresentation = false
+    }
     //CollectionView
     private func configureCollectionView() {
         collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: createLayout())
         collectionView.backgroundColor = .systemBackground
         
+        collectionView.register(HeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: HeaderView.reuseIdentifier)
         collectionView.register(UINib(nibName: "GameCell", bundle: nil), forCellWithReuseIdentifier: GameCell.reuseIdentifier)
         collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.addSubview(collectionView)
@@ -77,6 +96,11 @@ class ExplorePageViewController: UIViewController {
             
             let section = NSCollectionLayoutSection(group: nestedGroup)
             section.orthogonalScrollingBehavior = sectionKind.orthogonalBehaviour
+            
+            let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(44))
+            let header = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
+            section.boundarySupplementaryItems = [header]
+            
             return section
         }
         return layout
@@ -89,10 +113,28 @@ class ExplorePageViewController: UIViewController {
             cell.configureCell(game: game)
             return cell
         })
+        dataSource.supplementaryViewProvider = { (collectionView, kind, indexPath) in
+            guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: HeaderView.reuseIdentifier, for: indexPath) as? HeaderView, let sectionKind = SectionKind(rawValue: indexPath.section) else {
+                fatalError("could not dequeue header view")
+            }
+
+            header.textLabel.text = sectionKind.sectionTitle
+            header.textLabel.textColor = .systemGray2
+            header.textLabel.font = UIFont.preferredFont(forTextStyle: .headline)
+            return header
+        }
         var snapshot = NSDiffableDataSourceSnapshot<SectionKind, Game>()
         snapshot.appendSections([.main, .second, .third])
         
         dataSource.apply(snapshot, animatingDifferences: false)
     }
+    
 }
-
+extension ExplorePageViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        guard let text = searchController.searchBar.text, !text.isEmpty else {
+            return
+        }
+        searchText = text
+    }
+}
