@@ -75,15 +75,12 @@ class AddToCollectionViewController: UIViewController {
 }
 extension AddToCollectionViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let itemSpacing: CGFloat = 3
-        let maxSize: CGFloat = UIScreen.main.bounds.size.width
-        let numberOfItems: CGFloat = 2
-        let totalSpace: CGFloat = (numberOfItems * itemSpacing) * 2.5
-        let itemWidth: CGFloat = (maxSize - totalSpace) / numberOfItems
-        return CGSize(width: itemWidth, height: itemWidth)
+        let maxWidth = view.frame.width
+        let adjustedWidth = CGFloat(maxWidth * 0.5)
+        return CGSize(width: adjustedWidth, height: adjustedWidth * 0.5)
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
+        return UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0)
     }
 }
 extension AddToCollectionViewController: UICollectionViewDataSource {
@@ -96,6 +93,7 @@ extension AddToCollectionViewController: UICollectionViewDataSource {
             fatalError("could not cast to collectioncell")
         }
         let collection = collections[indexPath.row]
+        cell.collectionNameLabel.numberOfLines = 0
         cell.collectionNameLabel.text = collection
         cell.backgroundColor = #colorLiteral(red: 0, green: 0.805752337, blue: 1, alpha: 1)
         cell.layer.cornerRadius = 13

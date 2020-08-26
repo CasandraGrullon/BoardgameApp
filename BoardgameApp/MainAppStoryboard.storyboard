@@ -783,13 +783,9 @@
                     <navigationItem key="navigationItem" id="Dla-v9-CVk">
                         <barButtonItem key="rightBarButtonItem" title="Item" image="plus" catalog="system" id="gXe-u9-WMm">
                             <color key="tintColor" red="0.22876183359999999" green="0.6306747117" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                            <connections>
-                                <action selector="addToCollectionButtonPressed:" destination="QZE-qt-9Ub" id="tSX-lt-q7x"/>
-                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="addToCollectionButton" destination="gXe-u9-WMm" id="zAH-Hv-w7j"/>
                         <outlet property="ageLabel" destination="abU-Z8-MZX" id="RSg-Li-EoF"/>
                         <outlet property="gameDescription" destination="H6k-1Q-kBC" id="mmv-dd-MyU"/>
                         <outlet property="gameImageView" destination="i3W-LS-WlD" id="blR-gk-ZFY"/>

@@ -25,7 +25,6 @@ class GameDetailTableViewController: UITableViewController {
     @IBOutlet weak var star4Button: UIButton!
     @IBOutlet weak var star5Button: UIButton!
     @IBOutlet weak var rulesButton: UIButton!    
-    @IBOutlet weak var addToCollectionButton: UIBarButtonItem!
     
     private weak var flowLayout: UICollectionViewFlowLayout!
     
@@ -71,6 +70,7 @@ class GameDetailTableViewController: UITableViewController {
         DispatchQueue.main.async {
             self.updateUI()
             self.getGameReviews(gameId: self.game.id)
+            self.configureNavBar()
         }
     }
     private func getGameReviews(gameId: String) {
@@ -83,8 +83,19 @@ class GameDetailTableViewController: UITableViewController {
             }
         }
     }
-    private func updateUI() {
+    private func configureNavBar() {
         navigationItem.title = game.name
+        if isGameInCollection {
+            navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "minus"), style: .plain, target: self, action: #selector(removeFromCollectionButtonPressed(_:)))
+        } else {
+            navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "minus"), style: .plain, target: self, action: #selector(addToCollectionButtonPressed(_:)))
+        }
+    }
+    private func updateUI() {
+        guard game.rulesURL != nil else {
+            rulesButton.isHidden = true
+            return
+        }
         gameImageView.kf.setImage(with: URL(string: game.imageURL))
         nameLabel.text = game.name
         priceLabel.text = "$\(game.price)"
@@ -142,34 +153,15 @@ class GameDetailTableViewController: UITableViewController {
                 self?.isGameInCollection = result
                 if result == false {
                     self?.isUserOwned = false
-                    self?.addToCollectionButton.setBackgroundImage(UIImage(systemName: "plus"), for: .normal, barMetrics: .default)
                 } else {
                     self?.isUserOwned = true
-                    self?.addToCollectionButton.setBackgroundImage(UIImage(systemName: "minus"), for: .normal, barMetrics: .default)
                 }
             }
         }
-        DatabaseService.shared.isInWishlistCollection(collectedGame: game) { [weak self] (result) in
-            switch result {
-            case .failure(let error):
-                print("unable to check collection error: \(error.localizedDescription)")
-            case .success(let result):
-                self?.isGameInCollection = result
-                self?.isUserOwned = false
-                if result == true {
-                    self?.addToCollectionButton.setBackgroundImage(UIImage(systemName: "minus"), for: .normal, barMetrics: .default)
-                } else {
-                    self?.addToCollectionButton.setBackgroundImage(UIImage(systemName: "plus"), for: .normal, barMetrics: .default)
-                }
-            }
-        }
-        
     }
-    
     
     @IBAction func gameRulesButtonPressed(_ sender: UIButton) {
         guard let rulesURL = game.rulesURL else {
-            rulesButton.isHidden = true
             return
         }
         guard let url = URL(string: rulesURL) else {
@@ -179,35 +171,31 @@ class GameDetailTableViewController: UITableViewController {
         present(safariPage, animated: true)
     }
     
-    @IBAction func addToCollectionButtonPressed(_ sender: UIBarButtonItem) {
-        if isGameInCollection == false {
-            let storyboard = UIStoryboard(name: "MainAppStoryboard", bundle: nil)
-            let addToCollection = storyboard.instantiateViewController(identifier: "AddToCollectionViewController") { (coder) in
-                return AddToCollectionViewController(coder: coder)
-            }
-            addToCollection.game = game
-            addToCollection.modalPresentationStyle = .popover
-            addToCollection.view.bounds.size = CGSize(width: view.bounds.width, height: view.bounds.height / 2)
-            present(addToCollection, animated: true)
+    @objc private func addToCollectionButtonPressed(_ sender: UIBarButtonItem) {
+        let storyboard = UIStoryboard(name: "MainAppStoryboard", bundle: nil)
+        let addToCollection = storyboard.instantiateViewController(identifier: "AddToCollectionViewController") { (coder) in
+            return AddToCollectionViewController(coder: coder)
         }
-        else {
-            DatabaseService.shared.removeFromCollection(userOwned: isUserOwned, collectedGame: nil, game: game) { [weak self] (result) in
-                switch result {
-                case .failure(let error):
-                    DispatchQueue.main.async {
-                        self?.showAlert(title: "Error", message: "Unable to delete at this time: \(error.localizedDescription)")
-                    }
-                case .success:
-                    guard let game = self?.game else {return}
-                    DispatchQueue.main.async {
-                        self?.showAlert(title: "Removed From Collection", message: "\(game.name) has been removed")
-                    }
+        addToCollection.game = game
+        addToCollection.modalPresentationStyle = .popover
+        addToCollection.view.bounds.size = CGSize(width: view.bounds.width, height: view.bounds.height / 2)
+        present(addToCollection, animated: true)
+    }
+    @objc private func removeFromCollectionButtonPressed(_ sender: UIBarButtonItem) {
+        DatabaseService.shared.removeFromCollection(userOwned: isUserOwned, collectedGame: nil, game: game) { [weak self] (result) in
+            switch result {
+            case .failure(let error):
+                DispatchQueue.main.async {
+                    self?.showAlert(title: "Error", message: "Unable to delete at this time: \(error.localizedDescription)")
+                }
+            case .success:
+                guard let game = self?.game else {return}
+                DispatchQueue.main.async {
+                    self?.showAlert(title: "Removed From Collection", message: "\(game.name) has been removed")
                 }
             }
         }
-        
     }
-
 }
 
 extension GameDetailTableViewController: UICollectionViewDelegateFlowLayout {
