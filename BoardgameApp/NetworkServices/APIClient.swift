@@ -31,6 +31,27 @@ struct APIClient {
                 }
             }
         }
+    }
+    public func fetchGameReviews(gameId: String, completion: @escaping (Result<[GameReview], AppError>) -> ()) {
+        let endpoint = "https://api.boardgameatlas.com/api/reviews?client_id=\(Secrets.clientId)&game_id=\(gameId)"
+        guard let url = URL(string: endpoint) else {
+            return completion(.failure(.badURL(endpoint)))
+        }
+        let request = URLRequest(url: url)
+        
+        NetworkHelper.shared.performDataTask(with: request) { (result) in
+            switch result {
+            case .failure(let error):
+                completion(.failure(.networkClientError(error)))
+            case .success(let data):
+                do {
+                    let results = try JSONDecoder().decode(Reviews.self, from: data)
+                    completion(.success(results.reviews))
+                } catch {
+                    completion(.failure(.decodingError(error)))
+                }
+            }
+        }
         
     }
 }

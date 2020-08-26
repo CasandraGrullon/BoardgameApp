@@ -11,7 +11,6 @@ import Foundation
 struct Reviews: Codable {
     let reviews: [GameReview]
 }
-
 struct GameReview: Codable {
     let date: String
     let rating: Int

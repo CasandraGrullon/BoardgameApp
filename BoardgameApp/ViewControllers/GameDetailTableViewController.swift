@@ -15,7 +15,6 @@ class GameDetailTableViewController: UITableViewController {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var gameDescription: UITextView!
-    @IBOutlet weak var categoriesLabel: UILabel!
     @IBOutlet weak var ageLabel: UILabel!
     @IBOutlet weak var numberofPlayerLabel: UILabel!
     @IBOutlet weak var playtimeLabel: UILabel!
@@ -29,7 +28,6 @@ class GameDetailTableViewController: UITableViewController {
     @IBOutlet weak var addToCollectionButton: UIBarButtonItem!
     
     public var game: Game
-    public var categories = [Category]()
     public var reviews = [GameReview]() {
         didSet {
             DispatchQueue.main.async {
@@ -51,7 +49,7 @@ class GameDetailTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //configureCollectionView()
+        configureCollectionView()
         uiAsync()
         checkCollections()
     }
@@ -66,10 +64,8 @@ class GameDetailTableViewController: UITableViewController {
         }
     }
     private func updateUI() {
-        //guard let game = game else {return}
         navigationItem.title = game.name
-        //getCategories()
-        //getGameReviews(gameId: game.id)
+        getGameReviews(gameId: game.id)
        gameImageView.kf.setImage(with: URL(string: game.imageURL))
         nameLabel.text = game.name
         priceLabel.text = "$\(game.price)"
@@ -78,6 +74,7 @@ class GameDetailTableViewController: UITableViewController {
         ageLabel.text = "Ages: \(age)+"
         numberofPlayerLabel.text = "\(minPlayers) - \(maxPlayers) players"
         playtimeLabel.text = "Average Game Time: \t\(minPlaytime) - \(maxPlaytime) minutes"
+        
         if game.averageUserRating >= 5 {
             star1Button.setImage(UIImage(systemName: "star.fill"), for: .normal)
             star2Button.setImage(UIImage(systemName: "star.fill"), for: .normal)
@@ -117,33 +114,17 @@ class GameDetailTableViewController: UITableViewController {
         }
         
     }
-//    private func getCategories() {
-//        APIClient.getGameCategories { [weak self] (result) in
-//            switch result {
-//            case .failure(let error):
-//                print("could not get categories from api error: \(error)")
-//            case .success(let categories):
-//                self?.categories = categories
-//                DispatchQueue.main.async {
-//                    for category in categories {
-//                        self?.categoriesLabel.text = category.name
-//                    }
-//                }
-//            }
-//        }
-//    }
-//    private func getGameReviews(gameId: String) {
-//        APIClient.getReviews(gameId: gameId) { [weak self] (result) in
-//            switch result {
-//            case .failure(let error):
-//                print("unable to get user reviews \(error)")
-//            case .success(let reviews):
-//                self?.reviews = reviews.filter {$0.description != nil}
-//            }
-//        }
-//    }
+    private func getGameReviews(gameId: String) {
+        APIClient().fetchGameReviews(gameId: gameId) { [weak self] (result) in
+            switch result {
+            case .failure(let error):
+                print("unable to get user reviews \(error)")
+            case .success(let reviews):
+                self?.reviews = reviews.filter {$0.description != nil}
+            }
+        }
+    }
     private func checkCollections() {
-        //guard let game = game else {return}
         DatabaseService.shared.isInUserOwnedCollection(collectedGame: game) { [weak self] (result) in
             switch result {
             case .failure(let error):

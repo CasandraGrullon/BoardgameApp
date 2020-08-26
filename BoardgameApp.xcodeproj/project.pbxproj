@@ -254,11 +254,11 @@
 			isa = PBXGroup;
 			children = (
 				C670D7A524591D1800F556BE /* SupportingFiles */,
-				C687025B2459159E0037F22D /* Extensions */,
 				C6C400B1245B130E00846A31 /* Secrets */,
-				C687025C245915A70037F22D /* Models */,
 				C670D7A424591CFE00F556BE /* NetworkServices */,
 				C687025A2459158F0037F22D /* FirebaseServices */,
+				C687025C245915A70037F22D /* Models */,
+				C687025B2459159E0037F22D /* Extensions */,
 				C687024B2458D7B70037F22D /* ViewControllers */,
 				C68702592458DF3C0037F22D /* Cells */,
 				C687024C2458D7D20037F22D /* Storyboards */,

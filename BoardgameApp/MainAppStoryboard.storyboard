@@ -514,30 +514,30 @@
                         <sections>
                             <tableViewSection id="Pa4-U0-Nm7">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="topInfo" rowHeight="300" id="0AB-t4-C02">
-                                        <rect key="frame" x="0.0" y="18" width="414" height="300"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="topInfo" rowHeight="200" id="0AB-t4-C02">
+                                        <rect key="frame" x="0.0" y="18" width="414" height="200"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0AB-t4-C02" id="CrV-8M-fXT">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="300"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="200"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="i3W-LS-WlD">
-                                                    <rect key="frame" x="8" y="0.0" width="210" height="210"/>
+                                                    <rect key="frame" x="8" y="0.0" width="180" height="180"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="i3W-LS-WlD" secondAttribute="height" multiplier="1:1" id="v8w-4b-tab"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kcb-9Y-bwm">
-                                                    <rect key="frame" x="226" y="19" width="160" height="22"/>
+                                                    <rect key="frame" x="196" y="19" width="190" height="22"/>
                                                     <fontDescription key="fontDescription" name="HiraginoSans-W6" family="Hiragino Sans" pointSize="22"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="ymV-wZ-AfZ">
-                                                    <rect key="frame" x="226" y="51" width="160" height="44"/>
+                                                    <rect key="frame" x="196" y="51" width="190" height="44"/>
                                                     <subviews>
                                                         <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QYQ-P3-Vg7">
-                                                            <rect key="frame" x="0.0" y="0.0" width="32" height="44"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="38" height="44"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="44" id="vvo-xQ-zas"/>
                                                             </constraints>
@@ -545,7 +545,7 @@
                                                             <state key="normal" image="star" catalog="system"/>
                                                         </button>
                                                         <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Guq-dP-F0t">
-                                                            <rect key="frame" x="32" y="0.0" width="32" height="44"/>
+                                                            <rect key="frame" x="38" y="0.0" width="38" height="44"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="44" id="p2i-gt-Z5P"/>
                                                             </constraints>
@@ -553,7 +553,7 @@
                                                             <state key="normal" image="star" catalog="system"/>
                                                         </button>
                                                         <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lec-ca-72I">
-                                                            <rect key="frame" x="64" y="0.0" width="32" height="44"/>
+                                                            <rect key="frame" x="76" y="0.0" width="38" height="44"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="44" id="ppK-aa-WMX"/>
                                                             </constraints>
@@ -561,7 +561,7 @@
                                                             <state key="normal" image="star" catalog="system"/>
                                                         </button>
                                                         <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BUN-8d-s4x">
-                                                            <rect key="frame" x="96" y="0.0" width="32" height="44"/>
+                                                            <rect key="frame" x="114" y="0.0" width="38" height="44"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="44" id="hrn-gN-6yd"/>
                                                             </constraints>
@@ -569,7 +569,7 @@
                                                             <state key="normal" image="star" catalog="system"/>
                                                         </button>
                                                         <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fTG-LC-nS8">
-                                                            <rect key="frame" x="128" y="0.0" width="32" height="44"/>
+                                                            <rect key="frame" x="152" y="0.0" width="38" height="44"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="44" id="GuI-wD-ooJ"/>
                                                             </constraints>
@@ -579,7 +579,7 @@
                                                     </subviews>
                                                 </stackView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WuJ-EC-hfu">
-                                                    <rect key="frame" x="226" y="103" width="160" height="17"/>
+                                                    <rect key="frame" x="196" y="103" width="190" height="17"/>
                                                     <fontDescription key="fontDescription" name="HiraginoSans-W3" family="Hiragino Sans" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -587,7 +587,7 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="ymV-wZ-AfZ" firstAttribute="top" secondItem="kcb-9Y-bwm" secondAttribute="bottom" constant="10" id="FsR-a0-cdo"/>
-                                                <constraint firstItem="i3W-LS-WlD" firstAttribute="height" secondItem="CrV-8M-fXT" secondAttribute="height" multiplier="0.7" id="L5G-o0-hOA"/>
+                                                <constraint firstItem="i3W-LS-WlD" firstAttribute="height" secondItem="CrV-8M-fXT" secondAttribute="height" multiplier="0.9" id="L5G-o0-hOA"/>
                                                 <constraint firstItem="ymV-wZ-AfZ" firstAttribute="leading" secondItem="i3W-LS-WlD" secondAttribute="trailing" constant="8" id="PPi-px-OBa"/>
                                                 <constraint firstItem="kcb-9Y-bwm" firstAttribute="top" secondItem="CrV-8M-fXT" secondAttribute="topMargin" constant="8" id="TNs-24-d4X"/>
                                                 <constraint firstItem="i3W-LS-WlD" firstAttribute="top" secondItem="CrV-8M-fXT" secondAttribute="top" id="Txu-tA-7Vw"/>
@@ -605,34 +605,31 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="Details" id="gxU-Nx-slM">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="gameDetails" rowHeight="210" id="hZr-6W-0RR">
-                                        <rect key="frame" x="0.0" y="374" width="414" height="210"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="gameDetails" rowHeight="180" id="hZr-6W-0RR">
+                                        <rect key="frame" x="0.0" y="274" width="414" height="180"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hZr-6W-0RR" id="GNT-3O-QUy">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="210"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="180"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Categories" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yY1-iq-Pt1">
-                                                    <rect key="frame" x="20" y="10" width="374" height="31"/>
-                                                    <fontDescription key="fontDescription" name="KhmerSangamMN" family="Khmer Sangam MN" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="age:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="abU-Z8-MZX">
-                                                    <rect key="frame" x="20" y="51" width="374" height="31"/>
+                                                    <rect key="frame" x="20" y="19" width="374" height="31"/>
                                                     <fontDescription key="fontDescription" name="KhmerSangamMN" family="Khmer Sangam MN" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number of players" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rlu-pU-FVr">
-                                                    <rect key="frame" x="20" y="92" width="374" height="31"/>
+                                                    <rect key="frame" x="20" y="58" width="374" height="31"/>
                                                     <fontDescription key="fontDescription" name="KhmerSangamMN" family="Khmer Sangam MN" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="02B-d6-aeI" customClass="DesignableButton" customModule="BoardgameApp" customModuleProvider="target">
-                                                    <rect key="frame" x="10" y="171" width="394" height="29"/>
+                                                    <rect key="frame" x="10" y="128" width="394" height="44"/>
                                                     <color key="backgroundColor" red="0.22876183359999999" green="0.6306747117" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="44" id="j8e-5Q-r1Z"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" name="HiraginoSans-W6" family="Hiragino Sans" pointSize="17"/>
                                                     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <state key="normal" title="Game Rules"/>
@@ -646,26 +643,23 @@
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Average play time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Iu-dO-aHI">
-                                                    <rect key="frame" x="20" y="133" width="374" height="31"/>
+                                                    <rect key="frame" x="20" y="97" width="374" height="31"/>
                                                     <fontDescription key="fontDescription" name="KhmerSangamMN" family="Khmer Sangam MN" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="yY1-iq-Pt1" secondAttribute="trailing" constant="20" id="6Ha-k5-t3X"/>
                                                 <constraint firstItem="02B-d6-aeI" firstAttribute="leading" secondItem="GNT-3O-QUy" secondAttribute="leading" constant="10" id="Bjh-8j-Ltz"/>
-                                                <constraint firstItem="abU-Z8-MZX" firstAttribute="top" secondItem="yY1-iq-Pt1" secondAttribute="bottom" constant="10" id="M7n-O2-er7"/>
                                                 <constraint firstItem="8Iu-dO-aHI" firstAttribute="leading" secondItem="GNT-3O-QUy" secondAttribute="leading" constant="20" id="PFl-y0-qGv"/>
                                                 <constraint firstItem="rlu-pU-FVr" firstAttribute="leading" secondItem="GNT-3O-QUy" secondAttribute="leading" constant="20" id="QaN-2R-gee"/>
-                                                <constraint firstItem="rlu-pU-FVr" firstAttribute="top" secondItem="abU-Z8-MZX" secondAttribute="bottom" constant="10" id="Xmo-3a-NBv"/>
-                                                <constraint firstItem="8Iu-dO-aHI" firstAttribute="top" secondItem="rlu-pU-FVr" secondAttribute="bottom" constant="10" id="bkb-LQ-S5t"/>
+                                                <constraint firstItem="rlu-pU-FVr" firstAttribute="top" secondItem="abU-Z8-MZX" secondAttribute="bottom" constant="8" id="Xmo-3a-NBv"/>
+                                                <constraint firstItem="8Iu-dO-aHI" firstAttribute="top" secondItem="rlu-pU-FVr" secondAttribute="bottom" constant="8" id="bkb-LQ-S5t"/>
                                                 <constraint firstItem="abU-Z8-MZX" firstAttribute="leading" secondItem="GNT-3O-QUy" secondAttribute="leading" constant="20" id="c80-Vu-s8V"/>
-                                                <constraint firstAttribute="bottom" secondItem="02B-d6-aeI" secondAttribute="bottom" constant="10" id="idt-yG-SFm"/>
-                                                <constraint firstItem="yY1-iq-Pt1" firstAttribute="top" secondItem="GNT-3O-QUy" secondAttribute="top" constant="10" id="jhN-Qj-2us"/>
+                                                <constraint firstAttribute="bottom" secondItem="02B-d6-aeI" secondAttribute="bottom" constant="8" id="idt-yG-SFm"/>
                                                 <constraint firstAttribute="trailing" secondItem="abU-Z8-MZX" secondAttribute="trailing" constant="20" id="kVL-om-P8C"/>
                                                 <constraint firstAttribute="trailing" secondItem="02B-d6-aeI" secondAttribute="trailing" constant="10" id="oqR-2J-cLW"/>
-                                                <constraint firstItem="yY1-iq-Pt1" firstAttribute="leading" secondItem="GNT-3O-QUy" secondAttribute="leading" constant="20" id="q1Q-A7-BZ8"/>
+                                                <constraint firstItem="abU-Z8-MZX" firstAttribute="top" secondItem="GNT-3O-QUy" secondAttribute="topMargin" constant="8" id="owo-tB-cZk"/>
                                                 <constraint firstAttribute="trailing" secondItem="rlu-pU-FVr" secondAttribute="trailing" constant="20" id="s46-MY-V1A"/>
                                                 <constraint firstAttribute="trailing" secondItem="8Iu-dO-aHI" secondAttribute="trailing" constant="20" id="urS-qP-lg5"/>
                                             </constraints>
@@ -676,15 +670,15 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="Description" id="YgO-E1-IA5">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="gameDescription" rowHeight="200" id="T64-Cw-WaK">
-                                        <rect key="frame" x="0.0" y="640" width="414" height="200"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="gameDescription" rowHeight="180" id="T64-Cw-WaK">
+                                        <rect key="frame" x="0.0" y="510" width="414" height="180"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="T64-Cw-WaK" id="3La-Yd-skL">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="200"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="180"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Game description" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="H6k-1Q-kBC">
-                                                    <rect key="frame" x="20" y="0.0" width="374" height="200"/>
+                                                    <rect key="frame" x="20" y="0.0" width="374" height="180"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                     <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <fontDescription key="fontDescription" name="KhmerSangamMN" family="Khmer Sangam MN" pointSize="17"/>
@@ -703,15 +697,15 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="Reviews" id="jjM-Pu-e9R">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="gameReviews" rowHeight="400" id="jBw-SU-AJb">
-                                        <rect key="frame" x="0.0" y="896" width="414" height="400"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="gameReviews" rowHeight="200" id="jBw-SU-AJb">
+                                        <rect key="frame" x="0.0" y="746" width="414" height="200"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jBw-SU-AJb" id="PLu-qU-wGX">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="400"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="200"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="TE9-Vx-qg1">
-                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="400"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="200"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="jHc-3R-cov">
                                                         <size key="itemSize" width="311" height="194"/>
@@ -744,8 +738,8 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="Add A Review" id="RfL-sw-yNd">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="gameReviews" rowHeight="400" id="iuM-vF-rDV">
-                                        <rect key="frame" x="0.0" y="1352" width="414" height="400"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="gameReviews" rowHeight="180" id="iuM-vF-rDV">
+                                        <rect key="frame" x="0.0" y="1002" width="414" height="400"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="iuM-vF-rDV" id="PPY-9z-pET">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="400"/>
@@ -771,7 +765,6 @@
                     <connections>
                         <outlet property="addToCollectionButton" destination="gXe-u9-WMm" id="Ct1-BA-h3Z"/>
                         <outlet property="ageLabel" destination="abU-Z8-MZX" id="RSg-Li-EoF"/>
-                        <outlet property="categoriesLabel" destination="yY1-iq-Pt1" id="VAd-nZ-wrX"/>
                         <outlet property="gameDescription" destination="H6k-1Q-kBC" id="mmv-dd-MyU"/>
                         <outlet property="gameImageView" destination="i3W-LS-WlD" id="blR-gk-ZFY"/>
                         <outlet property="nameLabel" destination="kcb-9Y-bwm" id="Hhg-fG-fdH"/>
