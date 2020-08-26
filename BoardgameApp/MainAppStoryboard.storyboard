@@ -624,7 +624,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="02B-d6-aeI" customClass="DesignableButton" customModule="BoardgameApp" customModuleProvider="target">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="02B-d6-aeI">
                                                     <rect key="frame" x="10" y="128" width="394" height="44"/>
                                                     <color key="backgroundColor" red="0.22876183359999999" green="0.6306747117" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <constraints>
@@ -639,7 +639,7 @@
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                     <connections>
-                                                        <action selector="gameRulesButtonPressed:" destination="QZE-qt-9Ub" eventType="touchUpInside" id="1Se-0t-CqW"/>
+                                                        <action selector="gameRulesButtonPressed:" destination="QZE-qt-9Ub" eventType="touchUpInside" id="bKr-at-1Gi"/>
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Average play time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Iu-dO-aHI">
@@ -784,12 +784,12 @@
                         <barButtonItem key="rightBarButtonItem" title="Item" image="plus" catalog="system" id="gXe-u9-WMm">
                             <color key="tintColor" red="0.22876183359999999" green="0.6306747117" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <connections>
-                                <segue destination="uSv-XD-vMW" kind="presentation" id="0vr-2o-pR8"/>
+                                <action selector="addToCollectionButtonPressed:" destination="QZE-qt-9Ub" id="tSX-lt-q7x"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="addToCollectionButton" destination="gXe-u9-WMm" id="Ct1-BA-h3Z"/>
+                        <outlet property="addToCollectionButton" destination="gXe-u9-WMm" id="zAH-Hv-w7j"/>
                         <outlet property="ageLabel" destination="abU-Z8-MZX" id="RSg-Li-EoF"/>
                         <outlet property="gameDescription" destination="H6k-1Q-kBC" id="mmv-dd-MyU"/>
                         <outlet property="gameImageView" destination="i3W-LS-WlD" id="blR-gk-ZFY"/>
@@ -798,7 +798,7 @@
                         <outlet property="playtimeLabel" destination="8Iu-dO-aHI" id="fjg-Ff-8ow"/>
                         <outlet property="priceLabel" destination="WuJ-EC-hfu" id="ffN-EU-s2m"/>
                         <outlet property="reviewsCollectionView" destination="TE9-Vx-qg1" id="CSb-wq-xnt"/>
-                        <outlet property="rulesButton" destination="02B-d6-aeI" id="Vt9-rC-mpf"/>
+                        <outlet property="rulesButton" destination="02B-d6-aeI" id="gGs-Qw-Gnh"/>
                         <outlet property="star1Button" destination="QYQ-P3-Vg7" id="UCF-ao-SJA"/>
                         <outlet property="star2Button" destination="Guq-dP-F0t" id="fzf-qS-Lr0"/>
                         <outlet property="star3Button" destination="Lec-ca-72I" id="SGM-bo-BXn"/>
@@ -815,14 +815,14 @@
             <objects>
                 <viewController storyboardIdentifier="AddToCollectionViewController" id="uSv-XD-vMW" customClass="AddToCollectionViewController" customModule="BoardgameApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QT0-MN-Cyb">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="13z-t7-IA7">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="84"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="89.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add To Collection" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zAa-Rd-mby">
-                                        <rect key="frame" x="135.5" y="31.5" width="143" height="21"/>
+                                        <rect key="frame" x="135.5" y="34.5" width="143" height="21"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -836,7 +836,7 @@
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" image="xmark" catalog="system"/>
                                         <connections>
-                                            <action selector="cancelButtonPressed:" destination="uSv-XD-vMW" eventType="touchUpInside" id="ySh-1G-DZh"/>
+                                            <action selector="cancelButtonPressed:" destination="uSv-XD-vMW" eventType="touchUpInside" id="dl1-yv-737"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gu5-9P-HKJ">
@@ -848,7 +848,7 @@
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" image="checkmark" catalog="system"/>
                                         <connections>
-                                            <action selector="doneButtonPressed:" destination="uSv-XD-vMW" eventType="touchUpInside" id="ggH-go-eK8"/>
+                                            <action selector="doneButtonPressed:" destination="uSv-XD-vMW" eventType="touchUpInside" id="0tV-kP-0uT"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -863,7 +863,7 @@
                                 </constraints>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Fne-cv-mjK">
-                                <rect key="frame" x="20" y="104" width="374" height="684"/>
+                                <rect key="frame" x="20" y="153.5" width="374" height="688.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="zyh-gJ-PcW">
                                     <size key="itemSize" width="213" height="171"/>
@@ -915,7 +915,7 @@
                     <navigationItem key="navigationItem" title="Add to Collection" id="mTp-5h-4Ma"/>
                     <connections>
                         <outlet property="collectionView" destination="Fne-cv-mjK" id="yB7-ef-ZNH"/>
-                        <outlet property="doneButton" destination="gu5-9P-HKJ" id="Kzf-xk-RoQ"/>
+                        <outlet property="doneButton" destination="gu5-9P-HKJ" id="yZf-s3-lg5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dn3-4N-r38" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

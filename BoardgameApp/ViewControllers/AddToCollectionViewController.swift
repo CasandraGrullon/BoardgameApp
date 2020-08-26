@@ -9,19 +9,19 @@
 import UIKit
 
 class AddToCollectionViewController: UIViewController {
-
+    
     @IBOutlet weak var doneButton: UIButton!
     @IBOutlet weak var collectionView: UICollectionView!
     
     public var game: Game?
     private var selectedCollection: String?
     
-    private var collections = ["Your Games", "Wishlist"] {
+    private var collections = ["My Games", "Wishlist"] {
         didSet {
             collectionView.reloadData()
         }
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureCollectionView()
@@ -33,7 +33,7 @@ class AddToCollectionViewController: UIViewController {
     }
 
     @IBAction func doneButtonPressed(_ sender: UIButton) {
-        if selectedCollection == "Your Games" {
+        if selectedCollection == "My Games" {
             DatabaseService.shared.addToCollection(userGames: game, wishlist: nil) { [weak self] (result) in
                 switch result {
                 case .failure(let error):
@@ -42,9 +42,10 @@ class AddToCollectionViewController: UIViewController {
                     }
                 case .success:
                     DispatchQueue.main.async {
-                        self?.showAlert(title: "Saved to Your Games Collection", message: "\(self?.game?.name ?? "") is now in your collection")
+                        self?.showAlert(title: "Saved to Your Games Collection", message: "\(self?.game?.name ?? "") is now in your collection", completion: { (action) in
+                            self?.dismiss(animated: true)
+                        })
                     }
-                    self?.dismiss(animated: true)
                 }
             }
             
@@ -57,9 +58,10 @@ class AddToCollectionViewController: UIViewController {
                     }
                 case .success:
                     DispatchQueue.main.async {
-                        self?.showAlert(title: "Saved to your Wishlist", message: "\(self?.game?.name ?? "") is now in wishlist")
+                        self?.showAlert(title: "Saved to your Wishlist", message: "\(self?.game?.name ?? "") is now in wishlist", completion: { (action) in
+                            self?.dismiss(animated: true)
+                        })
                     }
-                    self?.dismiss(animated: true)
                 }
             }
         }
@@ -95,11 +97,8 @@ extension AddToCollectionViewController: UICollectionViewDataSource {
         }
         let collection = collections[indexPath.row]
         cell.collectionNameLabel.text = collection
-        if indexPath.row % 2 == 0 {
-            cell.backgroundColor = #colorLiteral(red: 0.4936085343, green: 0.9875773787, blue: 1, alpha: 1)
-        } else {
-            cell.backgroundColor = #colorLiteral(red: 0, green: 0.805752337, blue: 1, alpha: 1)
-        }
+        cell.backgroundColor = #colorLiteral(red: 0, green: 0.805752337, blue: 1, alpha: 1)
+        cell.layer.cornerRadius = 13
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

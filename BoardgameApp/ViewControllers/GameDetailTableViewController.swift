@@ -54,8 +54,8 @@ class GameDetailTableViewController: UITableViewController {
         configureCollectionView()
         uiAsync()
         checkCollections()
-        
     }
+    
     private func configureCollectionView() {
         reviewsCollectionView.delegate = self
         reviewsCollectionView.dataSource = self
@@ -166,6 +166,7 @@ class GameDetailTableViewController: UITableViewController {
         
     }
     
+    
     @IBAction func gameRulesButtonPressed(_ sender: UIButton) {
         guard let rulesURL = game.rulesURL else {
             rulesButton.isHidden = true
@@ -178,13 +179,18 @@ class GameDetailTableViewController: UITableViewController {
         present(safariPage, animated: true)
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    @IBAction func addToCollectionButtonPressed(_ sender: UIBarButtonItem) {
         if isGameInCollection == false {
-            guard let addToCollectionVC = segue.destination as? AddToCollectionViewController else {
-                return
+            let storyboard = UIStoryboard(name: "MainAppStoryboard", bundle: nil)
+            let addToCollection = storyboard.instantiateViewController(identifier: "AddToCollectionViewController") { (coder) in
+                return AddToCollectionViewController(coder: coder)
             }
-            addToCollectionVC.game = game
-        } else {
+            addToCollection.game = game
+            addToCollection.modalPresentationStyle = .popover
+            addToCollection.view.bounds.size = CGSize(width: view.bounds.width, height: view.bounds.height / 2)
+            present(addToCollection, animated: true)
+        }
+        else {
             DatabaseService.shared.removeFromCollection(userOwned: isUserOwned, collectedGame: nil, game: game) { [weak self] (result) in
                 switch result {
                 case .failure(let error):
@@ -201,7 +207,7 @@ class GameDetailTableViewController: UITableViewController {
         }
         
     }
-    
+
 }
 
 extension GameDetailTableViewController: UICollectionViewDelegateFlowLayout {
@@ -229,3 +235,4 @@ extension GameDetailTableViewController: UICollectionViewDataSource {
         return cell
     }
 }
+

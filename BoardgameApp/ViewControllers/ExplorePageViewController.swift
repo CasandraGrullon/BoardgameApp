@@ -38,7 +38,9 @@ class ExplorePageViewController: UIViewController {
                     self?.showAlert(title: "API Error", message: "\(error.localizedDescription)")
                 }
             case .success(let games):
-                self?.updateSnapshot(with: games)
+                DispatchQueue.main.async {
+                    self?.updateSnapshot(with: games)
+                }
             }
         }
     }

@@ -11,13 +11,12 @@ import FirebaseAuth
 import FirebaseFirestore
 
 class ProfilePageViewController: UIViewController {
-    
+        
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var userEmailLabel: UILabel!
     @IBOutlet weak var segmentController: UISegmentedControl!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var profileImageView: UIImageView!
-    
     
     private var listener: ListenerRegistration?
     
