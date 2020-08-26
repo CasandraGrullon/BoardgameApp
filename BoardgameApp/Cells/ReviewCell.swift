@@ -12,13 +12,13 @@ class ReviewCell: UICollectionViewCell {
 
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var descriptionLabel: UITextView!
+    @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var oneStar: UIButton!
     @IBOutlet weak var twoStars: UIButton!
     @IBOutlet weak var threeStars: UIButton!
     @IBOutlet weak var fourStars: UIButton!
     @IBOutlet weak var fiveStars: UIButton!
-    
+    @IBOutlet weak var dateLabel: UILabel!
     
     public func configureCell(review: GameReview) {
         userNameLabel.text = review.user.username

@@ -27,6 +27,8 @@ class GameDetailTableViewController: UITableViewController {
     @IBOutlet weak var rulesButton: UIButton!    
     @IBOutlet weak var addToCollectionButton: UIBarButtonItem!
     
+    private weak var flowLayout: UICollectionViewFlowLayout!
+    
     public var game: Game
     public var reviews = [GameReview]() {
         didSet {
@@ -52,21 +54,38 @@ class GameDetailTableViewController: UITableViewController {
         configureCollectionView()
         uiAsync()
         checkCollections()
+        
     }
     private func configureCollectionView() {
         reviewsCollectionView.delegate = self
         reviewsCollectionView.dataSource = self
         reviewsCollectionView.register(UINib(nibName: "ReviewCell", bundle: nil), forCellWithReuseIdentifier: "reviewCell")
+        
+        if let flowLayout = flowLayout,
+            let collectionView = reviewsCollectionView {
+            let w = collectionView.frame.width - 20
+            flowLayout.estimatedItemSize = CGSize(width: w, height: 200)
+        }
     }
     private func uiAsync() {
         DispatchQueue.main.async {
             self.updateUI()
+            self.getGameReviews(gameId: self.game.id)
+        }
+    }
+    private func getGameReviews(gameId: String) {
+        APIClient().fetchGameReviews(gameId: gameId) { [weak self] (result) in
+            switch result {
+            case .failure(let error):
+                print("unable to get user reviews \(error)")
+            case .success(let reviews):
+                self?.reviews = reviews.filter {$0.description != nil && $0.title != nil}.sorted {$0.date > $1.date}
+            }
         }
     }
     private func updateUI() {
         navigationItem.title = game.name
-        getGameReviews(gameId: game.id)
-       gameImageView.kf.setImage(with: URL(string: game.imageURL))
+        gameImageView.kf.setImage(with: URL(string: game.imageURL))
         nameLabel.text = game.name
         priceLabel.text = "$\(game.price)"
         gameDescription.text = game.description.formatString()
@@ -114,16 +133,6 @@ class GameDetailTableViewController: UITableViewController {
         }
         
     }
-    private func getGameReviews(gameId: String) {
-        APIClient().fetchGameReviews(gameId: gameId) { [weak self] (result) in
-            switch result {
-            case .failure(let error):
-                print("unable to get user reviews \(error)")
-            case .success(let reviews):
-                self?.reviews = reviews.filter {$0.description != nil}
-            }
-        }
-    }
     private func checkCollections() {
         DatabaseService.shared.isInUserOwnedCollection(collectedGame: game) { [weak self] (result) in
             switch result {
@@ -168,7 +177,7 @@ class GameDetailTableViewController: UITableViewController {
         let safariPage = SFSafariViewController(url: url)
         present(safariPage, animated: true)
     }
-
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if isGameInCollection == false {
             guard let addToCollectionVC = segue.destination as? AddToCollectionViewController else {
@@ -193,24 +202,24 @@ class GameDetailTableViewController: UITableViewController {
         
     }
     
-    
 }
 
 extension GameDetailTableViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let itemSpacing: CGFloat = 11
-        let maxSize: CGFloat = UIScreen.main.bounds.size.width
-        let numberOfItems: CGFloat = 1
-        let totalSpace: CGFloat = (numberOfItems * itemSpacing) * 2.5
-        let itemWidth: CGFloat = (maxSize - totalSpace) / numberOfItems
-        return CGSize(width: itemWidth, height: itemWidth)
+        let maxWidth = view.frame.width
+        let maxHeight = view.frame.height
+        let adjustedWidth = CGFloat(maxWidth * 0.9)
+        let adjustedHeight = CGFloat(maxHeight / 5)
+        return CGSize(width: adjustedWidth, height: adjustedHeight)
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0)
     }
 }
 extension GameDetailTableViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return reviews.count
     }
-    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = reviewsCollectionView.dequeueReusableCell(withReuseIdentifier: "reviewCell", for: indexPath) as? ReviewCell else {
             fatalError("could not cast to review cell")
@@ -219,6 +228,4 @@ extension GameDetailTableViewController: UICollectionViewDataSource {
         cell.configureCell(review: review)
         return cell
     }
-    
-    
 }
