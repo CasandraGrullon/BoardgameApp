@@ -21,6 +21,8 @@ class ReviewCell: UICollectionViewCell {
     @IBOutlet weak var dateLabel: UILabel!
     
     public func configureCell(review: GameReview) {
+        let date = review.date.toDate()
+        dateLabel.text = date?.toString()
         userNameLabel.text = review.user.username
         titleLabel.text = review.title
         descriptionLabel.text = review.description

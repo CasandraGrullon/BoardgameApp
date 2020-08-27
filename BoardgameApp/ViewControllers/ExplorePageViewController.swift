@@ -15,7 +15,7 @@ class ExplorePageViewController: UIViewController {
     private var dataSource: Datasource!
     private var searchController: UISearchController!
     
-    private var searchText = String() {
+    private var searchText = "" {
         didSet {
             DispatchQueue.main.async {
                 self.fetchGames(for: self.searchText)

@@ -9,17 +9,22 @@
 import Foundation
 
 extension String {
-    func convertToDate() -> Date? {
+    func toDate(withFormat format: String = "yyyy-MM-dd'T'HH:mm:ssZ") -> Date? {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MM/dd/yyyy"
-        let date = dateFormatter.date (from: self)
+        dateFormatter.timeZone = TimeZone.current
+        dateFormatter.locale = Locale.current
+        dateFormatter.calendar = Calendar(identifier: .gregorian)
+        dateFormatter.dateFormat = format
+        let date = dateFormatter.date(from: self)
         return date
     }
 }
+
 extension Date {
-    func convertToString() -> String {
+    func toString(withFormat format: String = "MM/dd/yyyy") -> String {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MM/dd/yyyy"
-        return dateFormatter.string(from: self)
+        dateFormatter.dateFormat = format
+        let string = dateFormatter.string(from: self)
+        return string
     }
 }

@@ -88,7 +88,7 @@ class GameDetailTableViewController: UITableViewController {
         if isGameInCollection {
             navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "minus"), style: .plain, target: self, action: #selector(removeFromCollectionButtonPressed(_:)))
         } else {
-            navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "minus"), style: .plain, target: self, action: #selector(addToCollectionButtonPressed(_:)))
+            navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(addToCollectionButtonPressed(_:)))
         }
     }
     private func updateUI() {
