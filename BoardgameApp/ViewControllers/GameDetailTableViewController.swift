@@ -54,7 +54,6 @@ class GameDetailTableViewController: UITableViewController {
         uiAsync()
         checkCollections()
     }
-    
     private func configureCollectionView() {
         reviewsCollectionView.delegate = self
         reviewsCollectionView.dataSource = self
@@ -84,6 +83,7 @@ class GameDetailTableViewController: UITableViewController {
         }
     }
     private func configureNavBar() {
+        navigationController?.navigationBar.tintColor = #colorLiteral(red: 0, green: 0.805752337, blue: 1, alpha: 1)
         navigationItem.title = game.name
         if isGameInCollection {
             navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "minus"), style: .plain, target: self, action: #selector(removeFromCollectionButtonPressed(_:)))

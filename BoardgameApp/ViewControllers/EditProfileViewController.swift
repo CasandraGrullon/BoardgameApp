@@ -36,6 +36,7 @@ class EditProfileViewController: UIViewController {
         userNameTextField.delegate = self
     }
     private func configureNavBar() {
+        navigationController?.navigationBar.tintColor = #colorLiteral(red: 0, green: 0.805752337, blue: 1, alpha: 1)
         navigationItem.title = "Edit Profile"
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "checkmark") , style: .plain, target: self, action: #selector(doneEditingButtonPressed(_:)))
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "xmark") , style: .plain, target: self, action: #selector(dismissButtonPressed(_:)))

@@ -48,7 +48,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Explore" id="dsO-Kp-5Cy">
                         <barButtonItem key="rightBarButtonItem" title="Item" image="slider.horizontal.3" catalog="system" id="9W9-n9-7kx">
-                            <color key="tintColor" red="0.22876183359999999" green="0.6306747117" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <color key="tintColor" red="0.12122984520000001" green="0.79138050390000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         </barButtonItem>
                     </navigationItem>
                 </viewController>
@@ -65,15 +65,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ga4-94-aHV">
-                                <rect key="frame" x="154" y="108" width="240" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <rect key="frame" x="154" y="108" width="240" height="26.5"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p9a-Ef-YYb">
-                                <rect key="frame" x="154" y="139" width="240" height="21"/>
+                                <rect key="frame" x="154" y="144.5" width="240" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="KFt-bW-Iqo">
@@ -108,9 +108,10 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YUL-bF-gO0" customClass="DesignableImageView" customModule="BoardgameApp" customModuleProvider="target">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YUL-bF-gO0">
                                 <rect key="frame" x="20" y="98" width="124" height="124"/>
-                                <color key="backgroundColor" red="0.22876183359999999" green="0.6306747117" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="backgroundColor" red="0.12122984520000001" green="0.79138050390000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="tintColor" red="0.12122984520000001" green="0.79138050390000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="YUL-bF-gO0" secondAttribute="height" multiplier="1:1" id="IdM-cN-8Zp"/>
                                 </constraints>
@@ -143,8 +144,12 @@
                         <viewLayoutGuide key="safeArea" id="53Y-0i-EcC"/>
                     </view>
                     <navigationItem key="navigationItem" title="Profile" id="mPu-s9-EbD">
-                        <barButtonItem key="leftBarButtonItem" title="Sign Out" id="6GX-E6-u6c"/>
-                        <barButtonItem key="rightBarButtonItem" title="Item" image="line.horizontal.3" catalog="system" id="Nlu-9o-5pz"/>
+                        <barButtonItem key="leftBarButtonItem" title="Sign Out" id="6GX-E6-u6c">
+                            <color key="tintColor" red="0.12122984520000001" green="0.79138050390000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="line.horizontal.3" catalog="system" id="Nlu-9o-5pz">
+                            <color key="tintColor" red="0.12122984520000001" green="0.79138050390000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="8C1-4m-zJA" id="JUu-aw-CWb"/>
@@ -177,9 +182,10 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iq4-XF-ktZ" customClass="DesignableImageView" customModule="BoardgameApp" customModuleProvider="target">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iq4-XF-ktZ">
                                 <rect key="frame" x="117.5" y="64" width="179" height="179"/>
-                                <color key="backgroundColor" red="0.22876183359999999" green="0.6306747117" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="backgroundColor" red="0.12122984520000001" green="0.79138050390000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="tintColor" red="0.12122984520000001" green="0.79138050390000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="iq4-XF-ktZ" secondAttribute="height" multiplier="1:1" id="f0P-E2-qGt"/>
                                 </constraints>
@@ -195,7 +201,7 @@
                                     <constraint firstAttribute="width" constant="44" id="8N8-Wx-efm"/>
                                     <constraint firstAttribute="height" constant="44" id="b75-Su-GvU"/>
                                 </constraints>
-                                <color key="tintColor" red="0.22876183359999999" green="0.6306747117" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" backgroundImage="plus.circle.fill" catalog="system">
                                     <color key="titleShadowColor" red="0.43537168370000001" green="0.2114817558" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </state>
@@ -377,7 +383,7 @@
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="02B-d6-aeI">
                                                     <rect key="frame" x="10" y="128" width="394" height="44"/>
-                                                    <color key="backgroundColor" red="0.22876183359999999" green="0.6306747117" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <color key="backgroundColor" red="0.12122984520000001" green="0.79138050390000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="44" id="j8e-5Q-r1Z"/>
                                                     </constraints>
@@ -533,7 +539,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="Dla-v9-CVk">
                         <barButtonItem key="rightBarButtonItem" title="Item" image="plus" catalog="system" id="gXe-u9-WMm">
-                            <color key="tintColor" red="0.22876183359999999" green="0.6306747117" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <color key="tintColor" red="0.12122984520000001" green="0.79138050390000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -936,10 +942,13 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="GIi-3d-wYi" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Home" image="house" catalog="system" selectedImage="house.fill" id="OE5-pd-HeU"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="MfJ-3k-GLe">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="MfJ-3k-GLe">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="0.22876183359999999" green="0.6306747117" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -950,7 +959,7 @@
             </objects>
             <point key="canvasLocation" x="-678" y="-954"/>
         </scene>
-        <!--Home Page View Controller-->
+        <!--Boardgame Cafe-->
         <scene sceneID="UQU-lQ-ASg">
             <objects>
                 <viewController id="dAq-PT-bS9" customClass="HomePageViewController" customModule="BoardgameApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -988,7 +997,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="KnB-ho-2mi"/>
                     </view>
-                    <navigationItem key="navigationItem" id="5hk-JK-p1l"/>
+                    <navigationItem key="navigationItem" title="Boardgame Cafe" id="5hk-JK-p1l"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XlF-7W-RJB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

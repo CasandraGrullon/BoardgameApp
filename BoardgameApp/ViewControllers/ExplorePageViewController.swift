@@ -64,6 +64,7 @@ class ExplorePageViewController: UIViewController {
         dataSource.apply(snapshot, animatingDifferences: false)
     }
     private func configureNavBar() {
+        navigationController?.navigationBar.tintColor = #colorLiteral(red: 0, green: 0.805752337, blue: 1, alpha: 1)
         navigationItem.title = "Explore"
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "slider.horizontal.3"), style: .plain, target: self, action: #selector(filterButtonPressed(_:)))
     }
