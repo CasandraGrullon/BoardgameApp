@@ -692,7 +692,7 @@
                                 <color key="textColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="7pp-KJ-Mjo">
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="7pp-KJ-Mjo" userLabel="Age Stack">
                                 <rect key="frame" x="10" y="84" width="394" height="40"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iPf-pH-kCz">
@@ -758,7 +758,7 @@
                                 <color key="textColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="76S-UQ-GPZ">
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="76S-UQ-GPZ" userLabel="Players Stack">
                                 <rect key="frame" x="10" y="174" width="394" height="40"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IXI-m7-DZe">
@@ -796,7 +796,7 @@
                                     <constraint firstAttribute="height" constant="40" id="om6-U6-qB0"/>
                                 </constraints>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Msk-Yk-dOp">
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Msk-Yk-dOp" userLabel="Price Stack">
                                 <rect key="frame" x="10" y="264" width="394" height="40"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lMN-9q-LbW">
@@ -840,7 +840,7 @@
                                 <color key="textColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="5GQ-fh-so2">
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="5GQ-fh-so2" userLabel="PlaytimeStack">
                                 <rect key="frame" x="20" y="352.5" width="374" height="40"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Egi-FO-PLG">
@@ -851,6 +851,7 @@
                                         <state key="normal" title="&lt; 30"/>
                                         <connections>
                                             <action selector="numberPlayersButtonPressed:" destination="crZ-dr-865" eventType="touchUpInside" id="q41-SS-AkQ"/>
+                                            <action selector="playTimeButtonPressed:" destination="crZ-dr-865" eventType="touchUpInside" id="bpc-pD-BNF"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TPm-dK-bcV">
@@ -861,6 +862,7 @@
                                         <state key="normal" title="30 - 60"/>
                                         <connections>
                                             <action selector="numberPlayersButtonPressed:" destination="crZ-dr-865" eventType="touchUpInside" id="dXw-hS-doj"/>
+                                            <action selector="playTimeButtonPressed:" destination="crZ-dr-865" eventType="touchUpInside" id="FVW-TV-Zl3"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1LZ-dz-gWa">
@@ -871,6 +873,7 @@
                                         <state key="normal" title="60 - 90"/>
                                         <connections>
                                             <action selector="numberPlayersButtonPressed:" destination="crZ-dr-865" eventType="touchUpInside" id="2PM-Xr-uij"/>
+                                            <action selector="playTimeButtonPressed:" destination="crZ-dr-865" eventType="touchUpInside" id="FGl-OC-KQJ"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mv8-t0-ECh">
@@ -878,9 +881,10 @@
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                         <color key="tintColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" title="60 - 90"/>
+                                        <state key="normal" title="90 +"/>
                                         <connections>
                                             <action selector="numberPlayersButtonPressed:" destination="crZ-dr-865" eventType="touchUpInside" id="TN2-TN-ttg"/>
+                                            <action selector="playTimeButtonPressed:" destination="crZ-dr-865" eventType="touchUpInside" id="dUp-rv-TpL"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -888,6 +892,15 @@
                                     <constraint firstAttribute="height" constant="40" id="A97-3M-M4c"/>
                                 </constraints>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z98-Qn-HqF">
+                                <rect key="frame" x="20" y="422.5" width="374" height="30"/>
+                                <color key="backgroundColor" red="0.12122984520000001" green="0.79138050390000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Clear Filters"/>
+                                <connections>
+                                    <action selector="clearButtonPressed:" destination="crZ-dr-865" eventType="touchUpInside" id="GOF-4p-Dhm"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -898,6 +911,7 @@
                             <constraint firstItem="tF2-2q-leK" firstAttribute="trailing" secondItem="y6d-O3-1Gj" secondAttribute="trailing" constant="20" id="7xw-Ro-0AX"/>
                             <constraint firstItem="5GQ-fh-so2" firstAttribute="leading" secondItem="tF2-2q-leK" secondAttribute="leading" constant="20" id="8Gu-lh-L3l"/>
                             <constraint firstItem="tF2-2q-leK" firstAttribute="trailing" secondItem="SqZ-ey-NuO" secondAttribute="trailing" constant="20" id="8Zy-h5-qUK"/>
+                            <constraint firstItem="Z98-Qn-HqF" firstAttribute="leading" secondItem="tF2-2q-leK" secondAttribute="leading" constant="20" id="8iy-Io-QMq"/>
                             <constraint firstItem="tF2-2q-leK" firstAttribute="trailing" secondItem="5GQ-fh-so2" secondAttribute="trailing" constant="20" id="BXN-HV-beb"/>
                             <constraint firstItem="76S-UQ-GPZ" firstAttribute="leading" secondItem="tF2-2q-leK" secondAttribute="leading" constant="10" id="Cxw-WJ-oLn"/>
                             <constraint firstItem="QQA-Rk-v23" firstAttribute="top" secondItem="Msk-Yk-dOp" secondAttribute="bottom" constant="20" id="Est-Y7-Epm"/>
@@ -907,9 +921,11 @@
                             <constraint firstItem="7pp-KJ-Mjo" firstAttribute="leading" secondItem="tF2-2q-leK" secondAttribute="leading" constant="10" id="KBc-tk-e2m"/>
                             <constraint firstItem="y6d-O3-1Gj" firstAttribute="leading" secondItem="tF2-2q-leK" secondAttribute="leading" constant="20" id="L3M-lb-22a"/>
                             <constraint firstItem="nJm-wv-vSx" firstAttribute="leading" secondItem="tF2-2q-leK" secondAttribute="leading" constant="20" id="MVs-E2-ePW"/>
+                            <constraint firstItem="tF2-2q-leK" firstAttribute="trailing" secondItem="Z98-Qn-HqF" secondAttribute="trailing" constant="20" id="WaI-SF-vbc"/>
                             <constraint firstItem="tF2-2q-leK" firstAttribute="trailing" secondItem="76S-UQ-GPZ" secondAttribute="trailing" constant="10" id="XAP-7s-0kd"/>
                             <constraint firstItem="SqZ-ey-NuO" firstAttribute="leading" secondItem="tF2-2q-leK" secondAttribute="leading" constant="20" id="acV-3d-rcE"/>
                             <constraint firstItem="SqZ-ey-NuO" firstAttribute="top" secondItem="76S-UQ-GPZ" secondAttribute="bottom" constant="20" id="bgh-3A-8Tz"/>
+                            <constraint firstItem="Z98-Qn-HqF" firstAttribute="top" secondItem="5GQ-fh-so2" secondAttribute="bottom" constant="30" id="gfI-sp-qZm"/>
                             <constraint firstItem="tF2-2q-leK" firstAttribute="trailing" secondItem="7pp-KJ-Mjo" secondAttribute="trailing" constant="10" id="hXd-Wh-uzR"/>
                             <constraint firstItem="tF2-2q-leK" firstAttribute="trailing" secondItem="QQA-Rk-v23" secondAttribute="trailing" constant="20" id="hwd-Gi-w3E"/>
                             <constraint firstItem="nJm-wv-vSx" firstAttribute="top" secondItem="tF2-2q-leK" secondAttribute="top" constant="10" id="jAY-e9-dQV"/>
@@ -924,11 +940,16 @@
                         <outlet property="allAgesButton" destination="iPf-pH-kCz" id="Iw9-Dd-KD6"/>
                         <outlet property="cheapButton" destination="lMN-9q-LbW" id="raM-d8-iW0"/>
                         <outlet property="childrenButton" destination="loz-JR-rmA" id="doh-Rw-eEK"/>
+                        <outlet property="clearButton" destination="Z98-Qn-HqF" id="tFY-Ci-a6D"/>
                         <outlet property="expensiveButton" destination="FH1-Xu-lSp" id="FXi-L6-95e"/>
                         <outlet property="fourSixButton" destination="hKr-M6-L6X" id="lUa-kF-aDl"/>
                         <outlet property="middleButton" destination="okk-Iu-kKQ" id="6nY-KP-psH"/>
+                        <outlet property="ninetyPlusButton" destination="Mv8-t0-ECh" id="JL4-S2-h5O"/>
                         <outlet property="sixPlusButton" destination="JLP-O5-snY" id="U8o-Ut-WTY"/>
+                        <outlet property="sixtyNinetyButton" destination="1LZ-dz-gWa" id="HmD-KP-dL7"/>
                         <outlet property="teensButton" destination="8of-kf-b0G" id="0zA-a3-csM"/>
+                        <outlet property="thirtyLessButton" destination="Egi-FO-PLG" id="ili-W2-Ac6"/>
+                        <outlet property="thirtySixtyButton" destination="TPm-dK-bcV" id="sOm-tk-CaD"/>
                         <outlet property="twoFourButton" destination="IXI-m7-DZe" id="qsN-SF-DQH"/>
                     </connections>
                 </viewController>

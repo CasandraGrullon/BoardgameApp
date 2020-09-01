@@ -174,7 +174,8 @@ extension ExplorePageViewController: UICollectionViewDelegate {
     }
 }
 extension ExplorePageViewController: FiltersAdded {
-    func didAddFilters(filters: [String], ageFilter: [String], numberOfPlayersFilter: [String], priceFilter: [String], genreFilter: [String], vc: FilterViewController) {
+    func didAddFilters(filters: [String], ageFilter: [String], numberOfPlayersFilter: [String], priceFilter: [String], genreFilter: [String], playtimeFilter: [String], vc: FilterViewController) {
         //
     }
+
 }
