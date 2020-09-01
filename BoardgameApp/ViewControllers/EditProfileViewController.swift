@@ -16,7 +16,6 @@ class EditProfileViewController: UIViewController {
     @IBOutlet weak var profilePictureImageView: UIImageView!
     @IBOutlet weak var addPhotoButton: UIButton!
     @IBOutlet weak var userNameTextField: UITextField!
-    @IBOutlet weak var displayEmailSegment: UISegmentedControl!
     
     private lazy var imagePickerController: UIImagePickerController = {
         let picker = UIImagePickerController()
@@ -30,12 +29,22 @@ class EditProfileViewController: UIViewController {
             }
         }
     }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        updateUI()
+        configureNavBar()
+        userNameTextField.delegate = self
     }
-    
+    private func configureNavBar() {
+        navigationItem.title = "Edit Profile"
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "checkmark") , style: .plain, target: self, action: #selector(doneEditingButtonPressed(_:)))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "xmark") , style: .plain, target: self, action: #selector(dismissButtonPressed(_:)))
+    }
+    private func updateUI() {
+        guard let user = Auth.auth().currentUser else { return }
+        profilePictureImageView.kf.setImage(with: user.photoURL)
+        userNameTextField.text = user.displayName
+    }
     @IBAction func addPhotoButtonPressed(_ sender: UIButton) {
         let alertController = UIAlertController(title: "Upload Profile Picture", message: nil, preferredStyle: .actionSheet)
         let photogallery = UIAlertAction(title: "Gallery", style: .default) { (action) in
@@ -55,15 +64,15 @@ class EditProfileViewController: UIViewController {
         alertController.addAction(cancel)
         present(alertController, animated: true)
     }
-    @IBAction func doneEditingButtonPressed(_ sender: UIBarButtonItem) {
-        guard let username = userNameTextField.text, !username.isEmpty, let profilePicture = selectedImage else {
+    @objc private func doneEditingButtonPressed(_ sender: UIBarButtonItem) {
+        guard let username = userNameTextField.text, !username.isEmpty else {
             DispatchQueue.main.async {
-                self.showAlert(title: "Missing Fields", message: "All fields are required")
+                self.showAlert(title: "Missing Fields", message: "Please enter a username")
             }
             return
         }
-        
-         let resizeImage = UIImage.resizeImage(originalImage: profilePicture, rect: profilePictureImageView.bounds)
+        guard let profilePicture = selectedImage else { return }
+        let resizeImage = UIImage.resizeImage(originalImage: profilePicture, rect: profilePictureImageView.bounds)
         
         guard let user = Auth.auth().currentUser else { return }
         
@@ -84,18 +93,18 @@ class EditProfileViewController: UIViewController {
                         }
                     } else {
                         DispatchQueue.main.async {
-                            self?.showAlert(title: "Profile Updated", message: "")
-                        }
-                        let profileVC = ProfilePageViewController()
-                        self?.navigationController?.pushViewController(profileVC, animated: true)
+                            self?.showAlert(title: "Profile Updated", message: "", completion: { (action) in
+                                self?.dismiss(animated: true)
+                            })
+                        }                        
                     }
                 })
             }
         }
-        
     }
-    
-
+    @objc private func dismissButtonPressed(_ sender: UIBarButtonItem) {
+        self.dismiss(animated: true)
+    }
 }
 extension EditProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
@@ -104,5 +113,11 @@ extension EditProfileViewController: UIImagePickerControllerDelegate, UINavigati
         }
         selectedImage = image
         dismiss(animated: true)
+    }
+}
+extension EditProfileViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }

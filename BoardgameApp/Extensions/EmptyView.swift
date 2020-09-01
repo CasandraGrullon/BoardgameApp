@@ -9,27 +9,26 @@
 import UIKit
 
 class EmptyView: UIView {
-    public lazy var titleLabel: UILabel =  {
+    private lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.preferredFont(forTextStyle: .headline)
+        label.font = .boldSystemFont(ofSize: 17)
+        label.textColor = .systemGray
         label.numberOfLines = 1
         label.textAlignment = .center
-        label.text = "Empty collection"
         return label
     }()
-    public lazy var messageLabel: UILabel =  {
+    private lazy var msgLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.preferredFont(forTextStyle: .subheadline)
+        label.font = .systemFont(ofSize: 17)
+        label.textColor = .systemGray2
         label.numberOfLines = 0
         label.textAlignment = .center
-        label.text = "There are no items currently in your collection"
         return label
     }()
-    
     init(title: String, message: String) {
         super.init(frame: UIScreen.main.bounds)
-        self.titleLabel.text = title
-        self.messageLabel.text = message
+        titleLabel.text = title
+        msgLabel.text = message
         commonInit()
     }
     required init?(coder: NSCoder) {
@@ -37,31 +36,27 @@ class EmptyView: UIView {
         commonInit()
     }
     private func commonInit() {
-        constraintsMessageLabel()
-        constraintsTitleLabel()
-        
+        setUptitleConstraints()
+        setupMsgConstaints()
     }
-    private func constraintsMessageLabel() {
-        addSubview(messageLabel)
-        messageLabel.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            
-            messageLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
-            messageLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
-            messageLabel.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width * 0.95)
-            
-        ])
-    }
-    private func constraintsTitleLabel() {
+    private func setUptitleConstraints() {
         addSubview(titleLabel)
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            
-            titleLabel.bottomAnchor.constraint(equalTo: messageLabel.topAnchor, constant: -8),
-            titleLabel.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width * 0.95),
-            titleLabel.centerXAnchor.constraint(equalTo: centerXAnchor)
-            
+            //titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 10),
+            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
+            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),
+            titleLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
+            titleLabel.centerYAnchor.constraint(equalTo: centerYAnchor)
         ])
     }
-    
+    private func setupMsgConstaints() {
+        addSubview(msgLabel)
+        msgLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            msgLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 10),
+            msgLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
+            msgLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10)
+        ])
+    }
 }

@@ -91,7 +91,7 @@
                                 </connections>
                             </segmentedControl>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="8C1-4m-zJA">
-                                <rect key="frame" x="0.0" y="332" width="414" height="481"/>
+                                <rect key="frame" x="0.0" y="342" width="414" height="471"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="NfD-mV-ADR">
                                     <size key="itemSize" width="295" height="218"/>
@@ -133,7 +133,7 @@
                             <constraint firstItem="53Y-0i-EcC" firstAttribute="trailing" secondItem="p9a-Ef-YYb" secondAttribute="trailing" constant="20" id="MlS-Hw-491"/>
                             <constraint firstItem="53Y-0i-EcC" firstAttribute="trailing" secondItem="Ga4-94-aHV" secondAttribute="trailing" constant="20" id="Qt0-DY-HnG"/>
                             <constraint firstItem="YUL-bF-gO0" firstAttribute="top" secondItem="53Y-0i-EcC" secondAttribute="top" constant="10" id="RvT-ee-8BB"/>
-                            <constraint firstItem="8C1-4m-zJA" firstAttribute="top" secondItem="KFt-bW-Iqo" secondAttribute="bottom" id="Wfe-Kj-BwW"/>
+                            <constraint firstItem="8C1-4m-zJA" firstAttribute="top" secondItem="KFt-bW-Iqo" secondAttribute="bottom" constant="10" id="Wfe-Kj-BwW"/>
                             <constraint firstItem="53Y-0i-EcC" firstAttribute="trailing" secondItem="8C1-4m-zJA" secondAttribute="trailing" id="hEy-Du-u3n"/>
                             <constraint firstItem="p9a-Ef-YYb" firstAttribute="leading" secondItem="YUL-bF-gO0" secondAttribute="trailing" constant="10" id="ip8-NW-Yj9"/>
                             <constraint firstItem="KFt-bW-Iqo" firstAttribute="leading" secondItem="53Y-0i-EcC" secondAttribute="leading" constant="20" id="qxa-Ag-cnm"/>
@@ -146,16 +146,8 @@
                         <viewLayoutGuide key="safeArea" id="53Y-0i-EcC"/>
                     </view>
                     <navigationItem key="navigationItem" title="Profile" id="mPu-s9-EbD">
-                        <barButtonItem key="leftBarButtonItem" title="Sign Out" id="6GX-E6-u6c">
-                            <connections>
-                                <action selector="signOutButtonPressed:" destination="7E8-KU-yzz" id="fxS-tZ-NW3"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Item" image="line.horizontal.3" catalog="system" id="Nlu-9o-5pz">
-                            <connections>
-                                <segue destination="GM2-vH-bwH" kind="show" id="V3q-9g-THy"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="leftBarButtonItem" title="Sign Out" id="6GX-E6-u6c"/>
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="line.horizontal.3" catalog="system" id="Nlu-9o-5pz"/>
                     </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="8C1-4m-zJA" id="JUu-aw-CWb"/>
@@ -167,29 +159,29 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XM8-1W-uwG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="753.62318840579712" y="403.79464285714283"/>
+            <point key="canvasLocation" x="754" y="402"/>
         </scene>
         <!--Edit Profile-->
         <scene sceneID="XtB-Mn-qt3">
             <objects>
-                <viewController id="GM2-vH-bwH" customClass="EditProfileViewController" customModule="BoardgameApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EditProfileViewController" id="GM2-vH-bwH" customClass="EditProfileViewController" customModule="BoardgameApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Wko-Yi-zjD">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="woK-Zd-ygi">
-                                <rect key="frame" x="20" y="348" width="374" height="34"/>
+                                <rect key="frame" x="20" y="304" width="374" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Update Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7q8-hx-zZa">
-                                <rect key="frame" x="20" y="317" width="374" height="21"/>
+                                <rect key="frame" x="20" y="273" width="374" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iq4-XF-ktZ" customClass="DesignableImageView" customModule="BoardgameApp" customModuleProvider="target">
-                                <rect key="frame" x="117.5" y="108" width="179" height="179"/>
+                                <rect key="frame" x="117.5" y="64" width="179" height="179"/>
                                 <color key="backgroundColor" red="0.22876183359999999" green="0.6306747117" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="iq4-XF-ktZ" secondAttribute="height" multiplier="1:1" id="f0P-E2-qGt"/>
@@ -201,7 +193,7 @@
                                 </userDefinedRuntimeAttributes>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FZU-ur-Veg">
-                                <rect key="frame" x="276.5" y="243.5" width="44" height="43"/>
+                                <rect key="frame" x="276.5" y="199.5" width="44" height="43"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="44" id="8N8-Wx-efm"/>
                                     <constraint firstAttribute="height" constant="44" id="b75-Su-GvU"/>
@@ -214,21 +206,6 @@
                                     <action selector="addPhotoButtonPressed:" destination="GM2-vH-bwH" eventType="touchUpInside" id="xVD-nf-3l3"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Display Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="94E-dV-OUF">
-                                <rect key="frame" x="20" y="402" width="101" height="31"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="dDu-v3-YQg">
-                                <rect key="frame" x="161" y="402" width="233" height="32"/>
-                                <color key="backgroundColor" red="0.12122984520000001" green="0.79138050390000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <segments>
-                                    <segment title="Yes"/>
-                                    <segment title="No"/>
-                                </segments>
-                                <color key="selectedSegmentTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -242,33 +219,22 @@
                             <constraint firstItem="iq4-XF-ktZ" firstAttribute="height" secondItem="Wko-Yi-zjD" secondAttribute="height" multiplier="0.2" id="czf-py-f3i"/>
                             <constraint firstItem="woK-Zd-ygi" firstAttribute="leading" secondItem="Q2a-ua-Xgb" secondAttribute="leading" constant="20" id="ddM-qQ-0em"/>
                             <constraint firstItem="woK-Zd-ygi" firstAttribute="top" secondItem="7q8-hx-zZa" secondAttribute="bottom" constant="10" id="eLk-2t-2Il"/>
-                            <constraint firstItem="dDu-v3-YQg" firstAttribute="top" secondItem="woK-Zd-ygi" secondAttribute="bottom" constant="20" id="hm9-qA-fNE"/>
-                            <constraint firstItem="94E-dV-OUF" firstAttribute="leading" secondItem="Q2a-ua-Xgb" secondAttribute="leading" constant="20" id="lyC-iV-Jsj"/>
-                            <constraint firstItem="94E-dV-OUF" firstAttribute="top" secondItem="woK-Zd-ygi" secondAttribute="bottom" constant="20" id="mbZ-Pq-IgH"/>
-                            <constraint firstItem="dDu-v3-YQg" firstAttribute="centerY" secondItem="94E-dV-OUF" secondAttribute="centerY" id="oWz-Zc-X5q"/>
-                            <constraint firstItem="dDu-v3-YQg" firstAttribute="leading" secondItem="94E-dV-OUF" secondAttribute="trailing" constant="40" id="pVm-gF-eQX"/>
                             <constraint firstItem="7q8-hx-zZa" firstAttribute="leading" secondItem="Q2a-ua-Xgb" secondAttribute="leading" constant="20" id="rQY-RB-3SX"/>
-                            <constraint firstItem="Q2a-ua-Xgb" firstAttribute="trailing" secondItem="dDu-v3-YQg" secondAttribute="trailing" constant="20" id="t73-qS-CKQ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Q2a-ua-Xgb"/>
                     </view>
                     <navigationItem key="navigationItem" title="Edit Profile" id="YsU-qt-que">
-                        <barButtonItem key="rightBarButtonItem" title="Item" image="checkmark" catalog="system" id="b8n-fJ-f61">
-                            <connections>
-                                <action selector="doneEditingButtonPressed:" destination="GM2-vH-bwH" id="Ygg-37-s7M"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="checkmark" catalog="system" id="b8n-fJ-f61"/>
                     </navigationItem>
                     <connections>
                         <outlet property="addPhotoButton" destination="FZU-ur-Veg" id="dLp-qq-opj"/>
-                        <outlet property="displayEmailSegment" destination="dDu-v3-YQg" id="39I-8B-iCO"/>
                         <outlet property="profilePictureImageView" destination="iq4-XF-ktZ" id="tls-87-N3Z"/>
                         <outlet property="userNameTextField" destination="woK-Zd-ygi" id="oZ6-Gl-d13"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1vv-S0-fA3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1434" y="402"/>
+            <point key="canvasLocation" x="1461" y="402"/>
         </scene>
         <!--Main App Tab Bar View Controller-->
         <scene sceneID="3Qr-U5-K4r">
@@ -283,7 +249,7 @@
                     <connections>
                         <segue destination="GIi-3d-wYi" kind="relationship" relationship="viewControllers" id="Kcu-vY-HcH"/>
                         <segue destination="Toh-9O-B6t" kind="relationship" relationship="viewControllers" id="TdO-fo-i8f"/>
-                        <segue destination="uJL-Yb-83B" kind="relationship" relationship="viewControllers" id="Mo5-IN-lhe"/>
+                        <segue destination="MJW-f7-DGE" kind="relationship" relationship="viewControllers" id="j3h-4Z-3aX"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XLN-W6-g28" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1122,26 +1088,6 @@
             </objects>
             <point key="canvasLocation" x="27.536231884057973" y="-293.30357142857139"/>
         </scene>
-        <!--Me-->
-        <scene sceneID="0pu-0u-eu0">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="uJL-Yb-83B" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Me" image="person" catalog="system" selectedImage="person.fill" id="aoe-RC-Nfr"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="dI8-iK-nmJ">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="tintColor" red="0.22876183359999999" green="0.6306747117" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="7E8-KU-yzz" kind="relationship" relationship="rootViewController" id="zNw-lQ-e9K"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="UI5-XJ-xfw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="27.536231884057973" y="403.79464285714283"/>
-        </scene>
         <!--Navigation Controller-->
         <scene sceneID="dR0-jj-bUu">
             <objects>
@@ -1160,6 +1106,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TyG-XA-lNy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="754" y="-954"/>
+        </scene>
+        <!--Profile-->
+        <scene sceneID="RdY-Tb-PWi">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="MJW-f7-DGE" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Profile" image="person" catalog="system" selectedImage="person.fill" id="4OV-uf-LqK"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Pct-aK-tON">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="7E8-KU-yzz" kind="relationship" relationship="rootViewController" id="oJD-4z-TeP"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eTR-Pk-PH2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-29" y="402"/>
         </scene>
     </scenes>
     <resources>

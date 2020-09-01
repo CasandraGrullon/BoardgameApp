@@ -24,10 +24,15 @@ class ProfilePageViewController: UIViewController {
         didSet {
             DispatchQueue.main.async {
                 self.collectionView.reloadData()
+                if self.collectedGames.isEmpty {
+                    self.collectionView.backgroundView = EmptyView(title: "This Collection is Empty", message: "Add to your collections by pressing the plus button a game's page")
+                } else {
+                    self.collectionView.reloadData()
+                    self.collectionView.backgroundView = nil
+                }
             }
         }
     }
-    
     private var userOwned = true {
         didSet {
             getUserCollection(userOwned: userOwned)
@@ -36,6 +41,8 @@ class ProfilePageViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        getUserCollection(userOwned: userOwned)
+        configureNavBar()
         updateUI()
         configureCollectionView()
         segmentController.selectedSegmentIndex = 0
@@ -56,18 +63,27 @@ class ProfilePageViewController: UIViewController {
         super.viewDidDisappear(true)
         listener?.remove()
     }
-    
     private func updateUI() {
         guard let user = Auth.auth().currentUser else {return}
         userNameLabel.text = user.displayName
         userEmailLabel.text = user.email
         profileImageView.kf.setImage(with: user.photoURL)
-        
     }
     private func configureCollectionView() {
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(UINib(nibName: "GameCell", bundle: nil), forCellWithReuseIdentifier: "gameCell")
+    }
+    private func configureNavBar() {
+        navigationItem.title = "Your Profile"
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "line.horizontal.3"), style: .plain, target: self, action: #selector(editProfileButtonPressed(_:)))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Sign Out", style: .plain, target: self, action: #selector(signOutButtonPressed(_:)))
+    }
+    @objc private func editProfileButtonPressed(_ sender: UIBarButtonItem) {
+        let storyboard = UIStoryboard(name: "MainAppStoryboard", bundle: nil)
+        let editProfileVC = storyboard.instantiateViewController(identifier: "EditProfileViewController")
+        modalPresentationStyle = .fullScreen
+        present(UINavigationController(rootViewController: editProfileVC), animated: true)
     }
     private func getUserCollection(userOwned: Bool) {
         DatabaseService.shared.getCollection(userOwned: userOwned) { [weak self] (result) in
@@ -79,7 +95,6 @@ class ProfilePageViewController: UIViewController {
             }
         }
     }
-    
     @IBAction func segmentPressed(_ sender: UISegmentedControl) {
         if sender.selectedSegmentIndex == 0 {
             userOwned = true
@@ -87,17 +102,14 @@ class ProfilePageViewController: UIViewController {
             userOwned = false
         }
     }
-    
-    @IBAction func signOutButtonPressed(_ sender: UIBarButtonItem) {
+    @objc private func signOutButtonPressed(_ sender: UIBarButtonItem) {
         UIViewController.showViewController(storyboardName: "Main", viewcontrollerID: "LoginViewController")
     }
-    
-    
 }
 extension ProfilePageViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let itemSpacing: CGFloat = 5
-        let maxSize: CGFloat = UIScreen.main.bounds.size.width
+        let maxSize: CGFloat = view.bounds.size.width
         let numberOfItems: CGFloat = 2
         let totalSpace: CGFloat = (numberOfItems * itemSpacing) * 2.5
         let itemWidth: CGFloat = (maxSize - totalSpace) / numberOfItems
