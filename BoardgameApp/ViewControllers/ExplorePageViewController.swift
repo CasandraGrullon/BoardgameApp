@@ -22,6 +22,14 @@ class ExplorePageViewController: UIViewController {
             }
         }
     }
+    private var setFilter = false
+    private var games = [Game]() {
+        didSet {
+            DispatchQueue.main.async {
+                self.updateSnapshot(with: self.games)
+            }
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         configureNavBar()
@@ -45,10 +53,12 @@ class ExplorePageViewController: UIViewController {
             }
         }
     }
+    // datasource snapshot
     private func updateSnapshot(with games: [Game]) {
         var snapshot = dataSource.snapshot()
         snapshot.deleteAllItems()
         snapshot.appendSections([.main, .second, .third])
+        
         let middleIndex = games.count / 2
         guard middleIndex > 0 else {
             snapshot.appendItems(games, toSection: .second)
@@ -66,7 +76,12 @@ class ExplorePageViewController: UIViewController {
     private func configureNavBar() {
         navigationController?.navigationBar.tintColor = #colorLiteral(red: 0, green: 0.805752337, blue: 1, alpha: 1)
         navigationItem.title = "Explore"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "slider.horizontal.3"), style: .plain, target: self, action: #selector(filterButtonPressed(_:)))
+        if setFilter {
+            navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "slider.horizontal.3"), style: .plain, target: self, action: #selector(filterButtonPressed(_:)))
+        } else {
+            navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "slider.horizontal.3"), style: .plain, target: self, action: #selector(filterButtonPressed(_:)))
+        }
+
     }
     //searchController
     private func configureSearchController() {
@@ -174,8 +189,11 @@ extension ExplorePageViewController: UICollectionViewDelegate {
     }
 }
 extension ExplorePageViewController: FiltersAdded {
-    func didAddFilters(filters: [String], ageFilter: [String], numberOfPlayersFilter: [String], priceFilter: [String], genreFilter: [String], playtimeFilter: [String], vc: FilterViewController) {
-        //
+    func didAddFilters(ageFilter: [String], numberOfPlayersFilter: [String], priceFilter: [String], playtimeFilter: [String], filterSet: Bool, vc: FilterViewController) {
+        setFilter = filterSet
+        games = games.filter {playtimeFilter.contains("\(String(describing: $0.maxPlaytime))")}
+            .filter {ageFilter.contains("\(String(describing: $0.minAge))")}
+            .filter {numberOfPlayersFilter.contains("\(String(describing: $0.maxPlayers))")}
+            .filter {priceFilter.contains("\($0.price)")}
     }
-
 }

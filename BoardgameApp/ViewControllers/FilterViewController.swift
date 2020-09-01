@@ -9,7 +9,7 @@
 import UIKit
 
 protocol FiltersAdded {
-    func didAddFilters(filters: [String], ageFilter: [String], numberOfPlayersFilter: [String], priceFilter: [String], genreFilter: [String], playtimeFilter: [String], vc: FilterViewController)
+    func didAddFilters(ageFilter: [String], numberOfPlayersFilter: [String], priceFilter: [String], playtimeFilter: [String], filterSet: Bool, vc: FilterViewController)
 }
 
 class FilterViewController: UIViewController {
@@ -36,7 +36,6 @@ class FilterViewController: UIViewController {
     @IBOutlet weak var clearButton: UIButton!
     
     public var delegate: FiltersAdded?
-    public var filters = [String]()
     public var ageFilter = [String]()
     public var numberOfPlayersFilter = [String]()
     public var priceFilter = [String]()
@@ -51,6 +50,7 @@ class FilterViewController: UIViewController {
         super.viewDidLoad()
         configureNavBar()
         clearButton.isEnabled = false
+        clearButton.layer.cornerRadius = 13
     }
     private func configureNavBar() {
         navigationController?.navigationBar.tintColor = #colorLiteral(red: 0, green: 0.805752337, blue: 1, alpha: 1)
@@ -64,15 +64,12 @@ class FilterViewController: UIViewController {
         if sender == allAgesButton {
             configureButton(button: allAgesButton, backgroundColor: #colorLiteral(red: 0, green: 0.641186893, blue: 1, alpha: 1), tintColor: .systemBackground)
         } else if sender == childrenButton {
-            filters.append("children")
             ageFilter.append("5")
             configureButton(button: childrenButton, backgroundColor: #colorLiteral(red: 0, green: 0.641186893, blue: 1, alpha: 1), tintColor: .systemBackground)
         } else if sender == teensButton {
-            filters.append("teen")
             ageFilter.append("12")
             configureButton(button: teensButton, backgroundColor: #colorLiteral(red: 0, green: 0.641186893, blue: 1, alpha: 1), tintColor: .systemBackground)
         } else if sender == adultsButton {
-            filters.append("adults")
             ageFilter.append("17")
             configureButton(button: adultsButton, backgroundColor: #colorLiteral(red: 0, green: 0.641186893, blue: 1, alpha: 1), tintColor: .systemBackground)
         }
@@ -81,15 +78,12 @@ class FilterViewController: UIViewController {
     @IBAction func numberPlayersButtonPressed(_ sender: UIButton) {
         clearButton.isEnabled = true
         if sender == twoFourButton {
-            filters.append("2 - 4 players")
             numberOfPlayersFilter.append("4")
             configureButton(button: twoFourButton, backgroundColor: #colorLiteral(red: 0, green: 0.641186893, blue: 1, alpha: 1), tintColor: .systemBackground)
         } else if sender == fourSixButton {
-            filters.append("4 - 6 players")
             numberOfPlayersFilter.append("6")
             configureButton(button: fourSixButton, backgroundColor: #colorLiteral(red: 0, green: 0.641186893, blue: 1, alpha: 1), tintColor: .systemBackground)
         } else if sender == sixPlusButton {
-            filters.append("6 + players")
             numberOfPlayersFilter.append("10")
             configureButton(button: sixPlusButton, backgroundColor: #colorLiteral(red: 0, green: 0.641186893, blue: 1, alpha: 1), tintColor: .systemBackground)
         }
@@ -97,15 +91,12 @@ class FilterViewController: UIViewController {
     @IBAction func priceButtonPressed(_ sender: UIButton) {
         clearButton.isEnabled = true
         if sender == cheapButton {
-            filters.append("$")
             priceFilter.append("10")
             configureButton(button: cheapButton, backgroundColor: #colorLiteral(red: 0, green: 0.641186893, blue: 1, alpha: 1), tintColor: .systemBackground)
         } else if sender == middleButton {
-            filters.append("$$")
             priceFilter.append("30")
             configureButton(button: middleButton, backgroundColor: #colorLiteral(red: 0, green: 0.641186893, blue: 1, alpha: 1), tintColor: .systemBackground)
         } else if sender == expensiveButton {
-            filters.append("$$$")
             priceFilter.append("50")
             configureButton(button: expensiveButton, backgroundColor: #colorLiteral(red: 0, green: 0.641186893, blue: 1, alpha: 1), tintColor: .systemBackground)
         }
@@ -114,20 +105,16 @@ class FilterViewController: UIViewController {
         clearButton.isEnabled = true
         switch sender {
         case thirtyLessButton:
-            filters.append("< 30")
-            playtimeFilter.append("< 30")
+            playtimeFilter.append("30")
             configureButton(button: thirtyLessButton, backgroundColor: #colorLiteral(red: 0, green: 0.641186893, blue: 1, alpha: 1), tintColor: .systemBackground)
         case thirtySixtyButton:
-            filters.append("30 - 60")
-            playtimeFilter.append("30 - 60")
+            playtimeFilter.append("60")
             configureButton(button: thirtySixtyButton, backgroundColor: #colorLiteral(red: 0, green: 0.641186893, blue: 1, alpha: 1), tintColor: .systemBackground)
         case sixtyNinetyButton:
-            filters.append("60 - 90")
-            playtimeFilter.append("60 - 90")
+            playtimeFilter.append("90")
             configureButton(button: sixtyNinetyButton, backgroundColor: #colorLiteral(red: 0, green: 0.641186893, blue: 1, alpha: 1), tintColor: .systemBackground)
         case ninetyPlusButton:
-            filters.append("90 +")
-            playtimeFilter.append("90 +")
+            playtimeFilter.append("150")
             configureButton(button: ninetyPlusButton, backgroundColor: #colorLiteral(red: 0, green: 0.641186893, blue: 1, alpha: 1), tintColor: .systemBackground)
         default:
             print("default")
@@ -135,7 +122,7 @@ class FilterViewController: UIViewController {
     }
     
     @objc private func addFiltersButtonPressed(_ sender: UIBarButtonItem) {
-        delegate?.didAddFilters(filters: filters, ageFilter: ageFilter, numberOfPlayersFilter: numberOfPlayersFilter, priceFilter: priceFilter, genreFilter: genreFilter, playtimeFilter: playtimeFilter, vc: self)
+        delegate?.didAddFilters(ageFilter: ageFilter, numberOfPlayersFilter: numberOfPlayersFilter, priceFilter: priceFilter, playtimeFilter: playtimeFilter, filterSet: true, vc: self)
         dismiss(animated: true)
     }
     @objc private func dismissButtonPressed(_ sender: UIBarButtonItem) {
@@ -143,7 +130,6 @@ class FilterViewController: UIViewController {
     }
     
     @IBAction private func clearButtonPressed(_ sender: UIButton) {
-        filters.removeAll()
         priceFilter.removeAll()
         ageFilter.removeAll()
         numberOfPlayersFilter.removeAll()
