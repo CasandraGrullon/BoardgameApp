@@ -25,6 +25,10 @@ class GameCell: UICollectionViewCell {
     
     weak var delegate: RemoveGameDelegate?
     
+    override func layoutSubviews() {
+        self.gameImageView.layer.cornerRadius = 0
+    }
+    
     public func configureCell(game: Game) {
         removeButton.isHidden = true
         removeButton.isEnabled = false

@@ -69,7 +69,7 @@ class HomePageViewController: UIViewController {
             
             let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalWidth(1.0))
             let item = NSCollectionLayoutItem(layoutSize: itemSize)
-            let itemSpacing: CGFloat = 5
+            let itemSpacing: CGFloat = 6
             item.contentInsets = NSDirectionalEdgeInsets(top: itemSpacing, leading: itemSpacing, bottom: itemSpacing, trailing: itemSpacing)
             
             let innerGroupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))

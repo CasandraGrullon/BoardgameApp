@@ -24,6 +24,7 @@ class ExplorePageViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureNavBar()
         configureCollectionView()
         configureCollectionViewDataSource()
         configureSearchController()
@@ -53,14 +54,18 @@ class ExplorePageViewController: UIViewController {
             snapshot.appendItems(games, toSection: .second)
             return
         }
-        let topResults = Array(games[0...2])
-        let low = Array(games[3...middleIndex])
+        let topResults = Array(games[0...3])
+        let low = Array(games[4...middleIndex])
         let high = Array(games[middleIndex + 1..<games.count])
         
         snapshot.appendItems(topResults, toSection: .main)
         snapshot.appendItems(low, toSection: .second)
         snapshot.appendItems(high, toSection: .third)
         dataSource.apply(snapshot, animatingDifferences: false)
+    }
+    private func configureNavBar() {
+        navigationItem.title = "Explore"
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "slider.horizontal.3"), style: .plain, target: self, action: #selector(filterButtonPressed(_:)))
     }
     //searchController
     private func configureSearchController() {
@@ -81,6 +86,16 @@ class ExplorePageViewController: UIViewController {
         view.addSubview(collectionView)
         collectionView.delegate = self
     }
+    @objc private func filterButtonPressed(_ sender: UIBarButtonItem) {
+    
+        let storyboard = UIStoryboard(name: "MainAppStoryboard", bundle: nil)
+        let filtersVC = storyboard.instantiateViewController(identifier: "FilterViewController") { (coder) in
+            return FilterViewController(coder: coder)
+        }
+        
+        filtersVC.delegate = self
+        present(UINavigationController(rootViewController: filtersVC) , animated: true)
+    }
     private func createLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewCompositionalLayout { (sectionIndex, layoutEnvironment) -> NSCollectionLayoutSection? in
             
@@ -90,7 +105,7 @@ class ExplorePageViewController: UIViewController {
             
             let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalWidth(1.0))
             let item = NSCollectionLayoutItem(layoutSize: itemSize)
-            let itemSpacing: CGFloat = 5
+            let itemSpacing: CGFloat = 6
             item.contentInsets = NSDirectionalEdgeInsets(top: itemSpacing, leading: itemSpacing, bottom: itemSpacing, trailing: itemSpacing)
             
             let innerGroupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
@@ -123,13 +138,7 @@ class ExplorePageViewController: UIViewController {
                 fatalError("could not dequeue header view")
             }
             if self.searchText.isEmpty {
-                if sectionKind == .main {
-                    header.textLabel.text = "Top Games"
-                } else if sectionKind == .second {
-                    header.textLabel.text = "Popular Games"
-                } else {
-                    header.textLabel.text = "More Games"
-                }
+                header.textLabel.text = ""
             } else {
                 header.textLabel.text = sectionKind.sectionTitle
             }
@@ -161,5 +170,10 @@ extension ExplorePageViewController: UICollectionViewDelegate {
             }
             navigationController?.pushViewController(detailVC, animated: true)
         }
+    }
+}
+extension ExplorePageViewController: FiltersAdded {
+    func didAddFilters(filters: [String], ageFilter: [String], numberOfPlayersFilter: [String], priceFilter: [String], genreFilter: [String], vc: FilterViewController) {
+        //
     }
 }
