@@ -108,15 +108,14 @@ class ProfilePageViewController: UIViewController {
 }
 extension ProfilePageViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let itemSpacing: CGFloat = 5
-        let maxSize: CGFloat = view.bounds.size.width
-        let numberOfItems: CGFloat = 2
-        let totalSpace: CGFloat = (numberOfItems * itemSpacing) * 2.5
-        let itemWidth: CGFloat = (maxSize - totalSpace) / numberOfItems
-        return CGSize(width: itemWidth, height: itemWidth)
+        let maxWidth = view.frame.width
+        let maxHeight = view.frame.height
+        let adjustedWidth = CGFloat(maxWidth * 0.3)
+        let adjustedHeight = CGFloat(maxHeight / 6)
+        return CGSize(width: adjustedWidth, height: adjustedHeight)
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
+        return UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
     }
 }
 extension ProfilePageViewController: UICollectionViewDataSource {
@@ -130,7 +129,28 @@ extension ProfilePageViewController: UICollectionViewDataSource {
         }
         let collected = collectedGames[indexPath.row]
         cell.configureCell(collected: collected)
+        cell.collectedGame = collected
+        cell.userOwned = userOwned
+        cell.delegate = self
         return cell
+    }
+}
+extension ProfilePageViewController: RemoveGameDelegate {
+    func gameRemovedFromCollection(_ game: CollectedGame, userOwned: Bool, cell: GameCell) {
+        DatabaseService.shared.removeFromCollection(userOwned: userOwned, collectedGame: game) { [weak self] (result) in
+            switch result {
+            case .failure(let error):
+                DispatchQueue.main.async {
+                    self?.showAlert(title: "Error", message: "Unable to remove from collection at this time error: \(error.localizedDescription)")
+                }
+            case .success:
+                DispatchQueue.main.async {
+                    self?.showAlert(title: "Game Removed", message: "\(game.gameName) was successfully removed from your collection", completion: { (action) in
+                        self?.collectionView.reloadData()
+                    })
+                }
+            }
+        }
     }
     
     

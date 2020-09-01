@@ -9,12 +9,21 @@
 import UIKit
 import Kingfisher
 
+protocol RemoveGameDelegate: NSObject {
+    func gameRemovedFromCollection(_ game: CollectedGame, userOwned: Bool, cell: GameCell )
+}
+
 class GameCell: UICollectionViewCell {
     
     @IBOutlet weak var gameImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var removeButton: UIButton!
     public static let reuseIdentifier = "gameCell"
+    
+    public var collectedGame: CollectedGame?
+    public var userOwned: Bool?
+    
+    weak var delegate: RemoveGameDelegate?
     
     public func configureCell(game: Game) {
         removeButton.isHidden = true
@@ -29,6 +38,9 @@ class GameCell: UICollectionViewCell {
         gameImageView.kf.setImage(with: URL(string: collected.gameImage))
     }
     @IBAction func removeButtonPressed(_ sender: UIButton) {
+        guard let collected =  collectedGame,
+            let userOwned = userOwned else { return }
+        delegate?.gameRemovedFromCollection(collected, userOwned: userOwned, cell: self)
     }
     
 }
