@@ -30,7 +30,6 @@ class LoginViewController: UIViewController {
         emailTextfield.delegate = self
         passwordTextfield.delegate = self
     }
-    
     @IBAction func loginButtonPressed(_ sender: UIButton) {
         guard let email = emailTextfield.text, !email.isEmpty,
             let password = passwordTextfield.text, !password.isEmpty else {
@@ -41,8 +40,6 @@ class LoginViewController: UIViewController {
         }
         continueLoginFlow(email: email, password: password)
     }
-    
-    
     @IBAction func signUpHereButtonPressed(_ sender: UIButton) {
         accountState = accountState == .existingUser ? .newUser : .existingUser
         if accountState == .existingUser {
@@ -54,9 +51,7 @@ class LoginViewController: UIViewController {
             promptLabel.text = "Already have an account?"
             signUpHereButton.setTitle("Login here", for: .normal)
         }
-        
     }
-    
 }
 
 extension LoginViewController: UITextFieldDelegate {

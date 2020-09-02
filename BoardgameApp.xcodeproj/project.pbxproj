@@ -160,8 +160,6 @@
 				C6ED73FE246C462A00FBA65C /* AddToCollectionViewController.swift */,
 				C68702512458D8E50037F22D /* ProfilePageViewController.swift */,
 				C6ED7400246C499D00FBA65C /* EditProfileViewController.swift */,
-				C6B2172624F5A5E700551394 /* SectionKind.swift */,
-				C6B2172824F5B0A000551394 /* HeaderView.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -224,6 +222,15 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		C695388525001991000C2066 /* CollectionDataSouceProperties */ = {
+			isa = PBXGroup;
+			children = (
+				C6B2172624F5A5E700551394 /* SectionKind.swift */,
+				C6B2172824F5B0A000551394 /* HeaderView.swift */,
+			);
+			path = CollectionDataSouceProperties;
+			sourceTree = "<group>";
+		};
 		C6C400B1245B130E00846A31 /* Secrets */ = {
 			isa = PBXGroup;
 			children = (
@@ -259,6 +266,7 @@
 				C687025A2459158F0037F22D /* FirebaseServices */,
 				C687025C245915A70037F22D /* Models */,
 				C687025B2459159E0037F22D /* Extensions */,
+				C695388525001991000C2066 /* CollectionDataSouceProperties */,
 				C687024B2458D7B70037F22D /* ViewControllers */,
 				C68702592458DF3C0037F22D /* Cells */,
 				C687024C2458D7D20037F22D /* Storyboards */,

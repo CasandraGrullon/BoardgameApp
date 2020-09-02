@@ -23,7 +23,6 @@ class ExplorePageViewController: UIViewController {
         }
     }
     private var setFilter = Bool()
-    
     private var games = [Game]()
     
     override func viewDidLoad() {
@@ -186,19 +185,20 @@ extension ExplorePageViewController: UICollectionViewDelegate {
 extension ExplorePageViewController: FiltersAdded {
     func didAddFilters(ageFilter: [String], numberOfPlayersFilter: [String], priceFilter: [String], playtimeFilter: [String], filterSet: Bool, vc: FilterViewController) {
         setFilter = filterSet
-        print(priceFilter)
-        for filter in priceFilter {
-            games = games.filter {$0.price <= filter}
+        if setFilter {
+            for filter in priceFilter {
+                games = games.filter {$0.price <= filter}
+            }
+            for filter in ageFilter {
+                games = games.filter {$0.minAge ?? 0 <= Int(filter) ?? 0}
+            }
+            for filter in numberOfPlayersFilter {
+                games = games.filter {$0.minPlayers ?? 0 == Int(filter) ?? 0}
+            }
+            for filter in playtimeFilter {
+                games = games.filter {$0.maxPlaytime ?? 0 == Int(filter) ?? 0}
+            }
+            updateSnapshot(with: games)
         }
-        for filter in ageFilter {
-            games = games.filter {$0.minAge ?? 0 <= Int(filter) ?? 0}
-        }
-        for filter in numberOfPlayersFilter {
-            games = games.filter {$0.minPlayers ?? 0 == Int(filter) ?? 0}
-        }
-        for filter in playtimeFilter {
-            games = games.filter {$0.maxPlaytime ?? 0 == Int(filter) ?? 0}
-        }
-        updateSnapshot(with: games)
     }
 }
