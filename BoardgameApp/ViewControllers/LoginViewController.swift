@@ -64,7 +64,7 @@ class LoginViewController: UIViewController {
         guard let keyboardFrame = notification.userInfo?["UIKeyboardFrameBeginUserInfoKey"] as? CGRect else {
             return
         }
-        moveKeyboardUp(height: keyboardFrame.size.height / 3)
+        moveKeyboardUp(height: keyboardFrame.size.height / 2)
     }
     @objc
     private func keyboardWillHide(notification: NSNotification) {
@@ -89,6 +89,7 @@ class LoginViewController: UIViewController {
     @objc private func didTap(_ gesture: UITapGestureRecognizer ) {
         emailTextfield.resignFirstResponder()
         passwordTextfield.resignFirstResponder()
+        resetUI()
     }
     //MARK:- Login / Sign Up button functions
     @IBAction func loginButtonPressed(_ sender: UIButton) {

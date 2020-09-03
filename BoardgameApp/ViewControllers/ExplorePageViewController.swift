@@ -96,6 +96,7 @@ class ExplorePageViewController: UIViewController {
         collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.addSubview(collectionView)
         collectionView.delegate = self
+        collectionView.resignFirstResponder()
     }
     @objc private func filterButtonPressed(_ sender: UIBarButtonItem) {
         fetchGames(for: "")
