@@ -136,7 +136,7 @@
                         <outlet property="passwordTextfield" destination="2wP-za-Bsw" id="MRr-24-AdY"/>
                         <outlet property="promptLabel" destination="Mzy-O6-j2Z" id="sqD-S7-jmz"/>
                         <outlet property="signUpHereButton" destination="e1J-aW-RKX" id="UtZ-Wz-UVk"/>
-                        <outlet property="topAnchor" destination="mVB-sq-qhs" id="T67-uH-crB"/>
+                        <outlet property="topAnchor" destination="mVB-sq-qhs" id="Jr1-lQ-M6i"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

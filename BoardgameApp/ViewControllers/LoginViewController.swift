@@ -25,6 +25,9 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var topAnchor: NSLayoutConstraint!
     
     private var accountState: AccountState = .existingUser
+    //MARK:- Keyboard Handeling
+    private var isKeyboardThere = false
+    private var originalState: NSLayoutConstraint!
     
     private lazy var tapGesture: UITapGestureRecognizer = {
         let gesture = UITapGestureRecognizer()
@@ -46,10 +49,7 @@ class LoginViewController: UIViewController {
         super.viewWillDisappear(true)
         unregisterForKeyBoardNotifications()
     }
-    //MARK:- Keyboard Handeling
-    private var isKeyboardThere = false
-    private var originalState: NSLayoutConstraint!
-    
+
     private func registerForKeyBoardNotifications() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         
@@ -71,8 +71,9 @@ class LoginViewController: UIViewController {
         resetUI()
     }
     private func resetUI() {
+        //topAnchor.constant = 200
         isKeyboardThere = false
-        topAnchor.constant += originalState.constant
+        topAnchor.constant = 200
         UIView.animate(withDuration: 1.0) {
             self.view.layoutIfNeeded()
         }
@@ -80,16 +81,15 @@ class LoginViewController: UIViewController {
     private func moveKeyboardUp(height: CGFloat) {
         if isKeyboardThere {return}
         originalState = topAnchor
-        isKeyboardThere = true
         topAnchor.constant -= height
         UIView.animate(withDuration: 1.0) {
             self.view.layoutIfNeeded()
         }
+        isKeyboardThere = true
     }
     @objc private func didTap(_ gesture: UITapGestureRecognizer ) {
         emailTextfield.resignFirstResponder()
         passwordTextfield.resignFirstResponder()
-        resetUI()
     }
     //MARK:- Login / Sign Up button functions
     @IBAction func loginButtonPressed(_ sender: UIButton) {
