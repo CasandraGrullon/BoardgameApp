@@ -18,18 +18,79 @@ class LoginViewController: UIViewController {
     
     @IBOutlet weak var emailTextfield: UITextField!
     @IBOutlet weak var passwordTextfield: UITextField!
-    
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var signUpHereButton: UIButton!
     @IBOutlet weak var promptLabel: UILabel!
     
+    @IBOutlet weak var topAnchor: NSLayoutConstraint!
+    
     private var accountState: AccountState = .existingUser
     
+    private lazy var tapGesture: UITapGestureRecognizer = {
+        let gesture = UITapGestureRecognizer()
+        gesture.addTarget(self, action: #selector(didTap(_:)))
+        return gesture
+    }()
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        registerForKeyBoardNotifications()
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         emailTextfield.delegate = self
         passwordTextfield.delegate = self
+        view.addGestureRecognizer(tapGesture)
     }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        unregisterForKeyBoardNotifications()
+    }
+    //MARK:- Keyboard Handeling
+    private var isKeyboardThere = false
+    private var originalState: NSLayoutConstraint!
+    
+    private func registerForKeyBoardNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    private func unregisterForKeyBoardNotifications() {
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    @objc
+    private func keyboardWillShow(notification: NSNotification) {
+        guard let keyboardFrame = notification.userInfo?["UIKeyboardFrameBeginUserInfoKey"] as? CGRect else {
+            return
+        }
+        moveKeyboardUp(height: keyboardFrame.size.height / 3)
+    }
+    @objc
+    private func keyboardWillHide(notification: NSNotification) {
+        resetUI()
+    }
+    private func resetUI() {
+        isKeyboardThere = false
+        topAnchor.constant += originalState.constant
+        UIView.animate(withDuration: 1.0) {
+            self.view.layoutIfNeeded()
+        }
+    }
+    private func moveKeyboardUp(height: CGFloat) {
+        if isKeyboardThere {return}
+        originalState = topAnchor
+        isKeyboardThere = true
+        topAnchor.constant -= height
+        UIView.animate(withDuration: 1.0) {
+            self.view.layoutIfNeeded()
+        }
+    }
+    @objc private func didTap(_ gesture: UITapGestureRecognizer ) {
+        emailTextfield.resignFirstResponder()
+        passwordTextfield.resignFirstResponder()
+    }
+    //MARK:- Login / Sign Up button functions
     @IBAction func loginButtonPressed(_ sender: UIButton) {
         guard let email = emailTextfield.text, !email.isEmpty,
             let password = passwordTextfield.text, !password.isEmpty else {

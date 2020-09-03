@@ -971,7 +971,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="0.22876183359999999" green="0.6306747117" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <textAttributes key="titleTextAttributes">
-                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                            <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="17"/>
                         </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -983,7 +983,7 @@
             </objects>
             <point key="canvasLocation" x="-678" y="-954"/>
         </scene>
-        <!--Boardgame Cafe-->
+        <!--Board Game Cafe-->
         <scene sceneID="UQU-lQ-ASg">
             <objects>
                 <viewController id="dAq-PT-bS9" customClass="HomePageViewController" customModule="BoardgameApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -1021,7 +1021,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="KnB-ho-2mi"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Boardgame Cafe" id="5hk-JK-p1l"/>
+                    <navigationItem key="navigationItem" title="Board Game Cafe" id="5hk-JK-p1l"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XlF-7W-RJB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
