@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Mlf-7d-ZHF">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Mlf-7d-ZHF">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -47,6 +47,7 @@
                         <viewLayoutGuide key="safeArea" id="8Mo-Xz-UjW"/>
                     </view>
                     <navigationItem key="navigationItem" title="Explore" id="dsO-Kp-5Cy">
+                        <barButtonItem key="leftBarButtonItem" title="All Games" id="JxC-Bn-Qbh"/>
                         <barButtonItem key="rightBarButtonItem" title="Item" image="slider.horizontal.3" catalog="system" id="9W9-n9-7kx">
                             <color key="tintColor" red="0.12122984520000001" green="0.79138050390000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         </barButtonItem>

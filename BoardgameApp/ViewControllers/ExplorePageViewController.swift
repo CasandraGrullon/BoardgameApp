@@ -31,7 +31,6 @@ class ExplorePageViewController: UIViewController {
         configureCollectionView()
         configureCollectionViewDataSource()
         configureSearchController()
-        fetchGames(for: "")
     }
     // API data
     private func fetchGames(for query: String) {
@@ -71,11 +70,13 @@ class ExplorePageViewController: UIViewController {
     private func configureNavBar() {
         navigationController?.navigationBar.tintColor = #colorLiteral(red: 0, green: 0.805752337, blue: 1, alpha: 1)
         navigationItem.title = "Explore"
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "All Games", style: .plain, target: self, action: #selector(allGamesPressed(_:)))
         if setFilter {
             navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "line.horizontal.3.decrease.circle"), style: .plain, target: self, action: #selector(filterButtonPressed(_:)))
         } else {
             navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "slider.horizontal.3"), style: .plain, target: self, action: #selector(filterButtonPressed(_:)))
         }
+        
     }
     //searchController
     private func configureSearchController() {
@@ -106,6 +107,9 @@ class ExplorePageViewController: UIViewController {
         }
         filtersVC.delegate = self
         present(UINavigationController(rootViewController: filtersVC) , animated: true)
+    }
+    @objc private func allGamesPressed(_ sender: UIBarButtonItem) {
+        fetchGames(for: "")
     }
     private func createLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewCompositionalLayout { (sectionIndex, layoutEnvironment) -> NSCollectionLayoutSection? in
