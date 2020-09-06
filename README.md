@@ -26,6 +26,7 @@ Find out more about a game through the detail page.
 
 <img src="Images/GameDetailPage.png" alt="GameDetailPage" width="300" height="600" />
 <img src="Images/GameDetailPage2.png" alt="GameDetailPage2" width="300" height="600" />
+
 ## Profile
 See your **My Games** and **Wishlist** collections on your profile page
 
