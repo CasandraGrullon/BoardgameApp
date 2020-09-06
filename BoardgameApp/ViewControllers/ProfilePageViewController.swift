@@ -20,6 +20,23 @@ class ProfilePageViewController: UIViewController {
     
     private var listener: ListenerRegistration?
     
+    //MARK:- Activity Indicator
+    private lazy var spinner: UIActivityIndicatorView = {
+        let spinner = UIActivityIndicatorView(style: .large)
+        spinner.frame = CGRect(x: 0.0, y: 0.0, width: 80.0, height: 80.0)
+        spinner.center = CGPoint(x: loadingView.bounds.size.width / 2, y: loadingView.bounds.size.height / 2)
+        return spinner
+    }()
+    private lazy var loadingView: UIView = {
+        let loadingView = UIView()
+        loadingView.frame = CGRect(x: 0.0, y: 0.0, width: 100.0, height: 100.0)
+        loadingView.center = self.view.center
+        loadingView.backgroundColor = .clear
+        loadingView.alpha = 0.7
+        loadingView.clipsToBounds = true
+        loadingView.layer.cornerRadius = 10
+        return loadingView
+    }()
     private var collectedGames = [CollectedGame]() {
         didSet {
             DispatchQueue.main.async {
@@ -38,7 +55,6 @@ class ProfilePageViewController: UIViewController {
             getUserCollection(userOwned: userOwned)
         }
     }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         getUserCollection(userOwned: userOwned)
@@ -49,12 +65,14 @@ class ProfilePageViewController: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        showActivityIndicator(loadingView: loadingView, spinner: spinner)
         listener = Firestore.firestore().collection(DatabaseService.userGamesCollection).addSnapshotListener({ [weak self] (snapshot, error) in
             if let error = error {
                 print("error getting users game collection \(error.localizedDescription)")
             } else if let snapshot = snapshot {
                 let savedGames = snapshot.documents.compactMap {CollectedGame ($0.data())}.filter {$0.userOwned == self?.userOwned}
                 self?.collectedGames = savedGames
+                self?.hideActivityIndicator(loadingView: self!.loadingView, spinner: self!.spinner)
             }
         })
         
@@ -93,6 +111,7 @@ class ProfilePageViewController: UIViewController {
                 print("could not get user collection: \(error.localizedDescription)")
             case .success(let collected):
                 self?.collectedGames = collected
+                self?.hideActivityIndicator(loadingView: self!.loadingView, spinner: self!.spinner)
             }
         }
     }

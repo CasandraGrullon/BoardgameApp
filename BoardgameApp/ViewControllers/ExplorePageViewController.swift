@@ -42,9 +42,6 @@ class ExplorePageViewController: UIViewController {
         loadingView.layer.cornerRadius = 10
         return loadingView
     }()
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-    }
     override func viewDidLoad() {
         super.viewDidLoad()
         configureNavBar()
