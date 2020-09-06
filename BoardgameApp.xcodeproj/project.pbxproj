@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -12,7 +12,6 @@
 		C670D79A24591C4900F556BE /* DatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C670D79924591C4900F556BE /* DatabaseService.swift */; };
 		C670D79C24591C6C00F556BE /* AuthenticationSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = C670D79B24591C6C00F556BE /* AuthenticationSession.swift */; };
 		C670D79E24591C7C00F556BE /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C670D79D24591C7C00F556BE /* StorageService.swift */; };
-		C670D7A124591CE400F556BE /* ImageKit in Frameworks */ = {isa = PBXBuildFile; productRef = C670D7A024591CE400F556BE /* ImageKit */; };
 		C670D7A324591CF300F556BE /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C670D7A224591CF300F556BE /* APIClient.swift */; };
 		C670D7A724591D4400F556BE /* ShowAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = C670D7A624591D4400F556BE /* ShowAlert.swift */; };
 		C670D7A924591D8F00F556BE /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C670D7A824591D8F00F556BE /* DateFormatter.swift */; };
@@ -107,7 +106,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				BA3CDD7B977C9A26A3D52BB2 /* Pods_BoardgameApp.framework in Frameworks */,
-				C670D7A124591CE400F556BE /* ImageKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -297,7 +295,6 @@
 			);
 			name = BoardgameApp;
 			packageProductDependencies = (
-				C670D7A024591CE400F556BE /* ImageKit */,
 			);
 			productName = BoardgameApp;
 			productReference = C6C53CC12457551700F1F361 /* BoardgameApp.app */;
@@ -328,7 +325,6 @@
 			);
 			mainGroup = C6C53CB82457551700F1F361;
 			packageReferences = (
-				C670D79F24591CE400F556BE /* XCRemoteSwiftPackageReference "ImageKit" */,
 			);
 			productRefGroup = C6C53CC22457551700F1F361 /* Products */;
 			projectDirPath = "";
@@ -636,25 +632,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		C670D79F24591CE400F556BE /* XCRemoteSwiftPackageReference "ImageKit" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/alexpaul/ImageKit";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.5;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		C670D7A024591CE400F556BE /* ImageKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = C670D79F24591CE400F556BE /* XCRemoteSwiftPackageReference "ImageKit" */;
-			productName = ImageKit;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = C6C53CB92457551700F1F361 /* Project object */;
 }
