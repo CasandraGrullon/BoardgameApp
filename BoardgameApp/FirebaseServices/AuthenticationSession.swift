@@ -13,6 +13,7 @@ class AuthenticationSession {
     private init() {}
     public static let shared = AuthenticationSession()
     
+    //MARK:- Create New Firebase User
     public func createNewUser(email: String, password: String, completion: @escaping (Result<AuthDataResult, Error>) -> ()) {
         
         Auth.auth().createUser(withEmail: email, password: password) { (authDataResult, error) in
@@ -23,7 +24,7 @@ class AuthenticationSession {
             }
         }
     }
-    
+    //MARK:- Sign In Method
     public func signInExistingUser(email: String, password: String, completion: @escaping (Result<AuthDataResult, Error>) -> ()) {
         
         Auth.auth().signIn(withEmail: email, password: password) { (authDataResult, error) in

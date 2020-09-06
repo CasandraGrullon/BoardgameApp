@@ -16,11 +16,12 @@ class HomePageViewController: UIViewController {
     private var dataSource: Datasource!
     private var searchController: UISearchController!
     
-    //MARK:- Activity Indicator
+    //MARK:- Activity Indicator spinner and subview
     private lazy var spinner: UIActivityIndicatorView = {
         let spinner = UIActivityIndicatorView(style: .large)
         spinner.frame = CGRect(x: 0.0, y: 0.0, width: 80.0, height: 80.0)
         spinner.center = CGPoint(x: loadingView.bounds.size.width / 2, y: loadingView.bounds.size.height / 2)
+        spinner.color = #colorLiteral(red: 0, green: 0.805752337, blue: 1, alpha: 1)
         return spinner
     }()
     private lazy var loadingView: UIView = {
@@ -43,7 +44,7 @@ class HomePageViewController: UIViewController {
         configureCollectionViewDataSource()
         fetchGames(for: "")
     }
-    //MARK: API Data
+    //MARK: Fetch Games API Data
     private func fetchGames(for query: String) {
         APIClient().fetchGames(for: query) { [weak self] (result) in
             switch result {
@@ -65,6 +66,7 @@ class HomePageViewController: UIViewController {
         snapshot.deleteAllItems()
         snapshot.appendSections([.main, .second, .third])
 
+        // seperating games into sections by recent, highly rated, and price
         let featured = games.filter {$0.yearPublished ?? 0 >= 2018}
         let mostPopular = games.filter {$0.yearPublished ?? 0 <= 2017 && $0.averageUserRating >= 3.8 }
         let recommended = games.filter {!featured.contains($0) && !mostPopular.contains($0) && Int($0.price) ?? 0 < 60}
@@ -74,7 +76,7 @@ class HomePageViewController: UIViewController {
         snapshot.appendItems(recommended, toSection: .third)
         dataSource.apply(snapshot, animatingDifferences: false)
     }
-    //MARK:- CollectionView
+    //MARK:- CollectionView Config
     private func configureCollectionView() {
         collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: createLayout())
         collectionView.backgroundColor = .systemBackground
@@ -85,6 +87,7 @@ class HomePageViewController: UIViewController {
         view.addSubview(collectionView)
         collectionView.delegate = self
     }
+    //MARK:- CollectionView Compositional Layout
     private func createLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewCompositionalLayout { (sectionIndex, layoutEnvironment) -> NSCollectionLayoutSection? in
             
@@ -114,6 +117,7 @@ class HomePageViewController: UIViewController {
         }
         return layout
     }
+    //MARK:- Collection View Datasource config
     private func configureCollectionViewDataSource() {
         dataSource = Datasource(collectionView: collectionView, cellProvider: { (collectionView, indexPath, game) -> UICollectionViewCell? in
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GameCell.reuseIdentifier, for: indexPath) as? GameCell else {
@@ -142,8 +146,8 @@ class HomePageViewController: UIViewController {
         
         dataSource.apply(snapshot, animatingDifferences: false)
     }
-    
 }
+//MARK:- CollectionView Delegate
 extension HomePageViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let storyboard = UIStoryboard(name: "MainAppStoryboard", bundle: nil)

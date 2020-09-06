@@ -33,38 +33,45 @@ class GameDetailTableViewController: UITableViewController {
         didSet {
             DispatchQueue.main.async {
                 self.reviewsCollectionView.reloadData()
+                if self.reviews.isEmpty {
+                    self.reviewsCollectionView.backgroundView = EmptyView(title: "There are no reviews for this game yet", message: "")
+                } else {
+                    self.reviewsCollectionView.reloadData()
+                    self.reviewsCollectionView.backgroundView = nil
+                }
             }
         }
     }
     private var isGameInCollection = false
     private var isUserOwned = false
     
+    //MARK:- Initialized game object
     init?(coder: NSCoder, game: Game) {
         self.game = game
         super.init(coder: coder)
     }
-    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureCollectionView()
         uiAsync()
         checkCollections()
     }
+    //MARK:- CollectionView Config
     private func configureCollectionView() {
         reviewsCollectionView.delegate = self
         reviewsCollectionView.dataSource = self
         reviewsCollectionView.register(UINib(nibName: "ReviewCell", bundle: nil), forCellWithReuseIdentifier: "reviewCell")
-        
+        //Adjusting the size of the reviewsCollectionView cells based on their content
         if let flowLayout = flowLayout,
             let collectionView = reviewsCollectionView {
             let w = collectionView.frame.width - 20
             flowLayout.estimatedItemSize = CGSize(width: w, height: 200)
         }
     }
+    //MARK:- added this method to add ui elements to main thread to avoid a crash
     private func uiAsync() {
         DispatchQueue.main.async {
             self.updateUI()
@@ -72,6 +79,7 @@ class GameDetailTableViewController: UITableViewController {
             self.configureNavBar()
         }
     }
+    //MARK:- Fetch Game Reviews data
     private func getGameReviews(gameId: String) {
         APIClient().fetchGameReviews(gameId: gameId) { [weak self] (result) in
             switch result {
@@ -82,6 +90,7 @@ class GameDetailTableViewController: UITableViewController {
             }
         }
     }
+    //MARK:- Configure NavBar
     private func configureNavBar() {
         navigationController?.navigationBar.tintColor = #colorLiteral(red: 0, green: 0.805752337, blue: 1, alpha: 1)
         navigationItem.title = game.name
@@ -91,6 +100,7 @@ class GameDetailTableViewController: UITableViewController {
             navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(addToCollectionButtonPressed(_:)))
         }
     }
+    //MARK:- Game Detail View UI
     private func updateUI() {
         guard game.rulesURL != nil else {
             rulesButton.isHidden = true
@@ -144,6 +154,7 @@ class GameDetailTableViewController: UITableViewController {
         }
         
     }
+    //MARK:- This method will determine if the game is already in a user's collection and will adjust the nav bar item accordingly
     private func checkCollections() {
         DatabaseService.shared.isInUserOwnedCollection(collectedGame: game) { [weak self] (result) in
             switch result {
@@ -159,7 +170,7 @@ class GameDetailTableViewController: UITableViewController {
             }
         }
     }
-    
+    //MARK:- Game rules button will lead user to a safari view controller
     @IBAction func gameRulesButtonPressed(_ sender: UIButton) {
         guard let rulesURL = game.rulesURL else {
             return
@@ -170,7 +181,7 @@ class GameDetailTableViewController: UITableViewController {
         let safariPage = SFSafariViewController(url: url)
         present(safariPage, animated: true)
     }
-    
+    //MARK:- Add/Remove game from collection methods
     @objc private func addToCollectionButtonPressed(_ sender: UIBarButtonItem) {
         let storyboard = UIStoryboard(name: "MainAppStoryboard", bundle: nil)
         let addToCollection = storyboard.instantiateViewController(identifier: "AddToCollectionViewController") { (coder) in
@@ -197,7 +208,7 @@ class GameDetailTableViewController: UITableViewController {
         }
     }
 }
-
+//MARK:- CollectionView Delegate and Datasource
 extension GameDetailTableViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let maxWidth = view.frame.width

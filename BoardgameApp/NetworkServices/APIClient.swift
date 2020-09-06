@@ -9,7 +9,9 @@
 import Foundation
 import NetworkHelper
 
+//MARK:- Utilized the BoardGame Atlas API https://www.boardgameatlas.com/api/docs
 struct APIClient {
+    //MARK:- Fetch Games with search query
     public func fetchGames(for query: String, completion: @escaping (Result<[Game], AppError>) -> ()){
         let searchQuery = query.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) ?? ""
         let endpoint = "https://api.boardgameatlas.com/api/search?name=\(searchQuery)&client_id=\(Secrets.clientId)"
@@ -32,6 +34,7 @@ struct APIClient {
             }
         }
     }
+    //MARK:- Fetch Game Reviews
     public func fetchGameReviews(gameId: String, completion: @escaping (Result<[GameReview], AppError>) -> ()) {
         let endpoint = "https://api.boardgameatlas.com/api/reviews?client_id=\(Secrets.clientId)&game_id=\(gameId)"
         guard let url = URL(string: endpoint) else {
@@ -52,6 +55,5 @@ struct APIClient {
                 }
             }
         }
-        
     }
 }

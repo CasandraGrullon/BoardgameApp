@@ -20,11 +20,12 @@ class ProfilePageViewController: UIViewController {
     
     private var listener: ListenerRegistration?
     
-    //MARK:- Activity Indicator
+    //MARK:- Activity Indicator spinner and subview
     private lazy var spinner: UIActivityIndicatorView = {
         let spinner = UIActivityIndicatorView(style: .large)
         spinner.frame = CGRect(x: 0.0, y: 0.0, width: 80.0, height: 80.0)
         spinner.center = CGPoint(x: loadingView.bounds.size.width / 2, y: loadingView.bounds.size.height / 2)
+        spinner.color = #colorLiteral(red: 0, green: 0.805752337, blue: 1, alpha: 1)
         return spinner
     }()
     private lazy var loadingView: UIView = {
@@ -41,6 +42,7 @@ class ProfilePageViewController: UIViewController {
         didSet {
             DispatchQueue.main.async {
                 self.collectionView.reloadData()
+                //empty collections will get this empty view instead
                 if self.collectedGames.isEmpty {
                     self.collectionView.backgroundView = EmptyView(title: "This Collection is Empty", message: "Add to your collections by pressing the plus button a game's page")
                 } else {
@@ -66,6 +68,7 @@ class ProfilePageViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         showActivityIndicator(loadingView: loadingView, spinner: spinner)
+        //MARK:- Listener to update view with changes to collection in real time
         listener = Firestore.firestore().collection(DatabaseService.userGamesCollection).addSnapshotListener({ [weak self] (snapshot, error) in
             if let error = error {
                 print("error getting users game collection \(error.localizedDescription)")
@@ -75,23 +78,25 @@ class ProfilePageViewController: UIViewController {
                 self?.hideActivityIndicator(loadingView: self!.loadingView, spinner: self!.spinner)
             }
         })
-        
     }
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(true)
         listener?.remove()
     }
+    //MARK:- UI elements
     private func updateUI() {
         guard let user = Auth.auth().currentUser else {return}
         userNameLabel.text = user.displayName
         userEmailLabel.text = user.email
         profileImageView.kf.setImage(with: user.photoURL)
     }
+    //MARK:- Collection View Config
     private func configureCollectionView() {
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(UINib(nibName: "GameCell", bundle: nil), forCellWithReuseIdentifier: "gameCell")
     }
+    //MARK:- Navigation Bar and bar button button methods
     private func configureNavBar() {
         navigationController?.navigationBar.tintColor = #colorLiteral(red: 0, green: 0.805752337, blue: 1, alpha: 1)
         navigationItem.title = "Your Profile"
@@ -104,6 +109,10 @@ class ProfilePageViewController: UIViewController {
         modalPresentationStyle = .fullScreen
         present(UINavigationController(rootViewController: editProfileVC), animated: true)
     }
+    @objc private func signOutButtonPressed(_ sender: UIBarButtonItem) {
+        UIViewController.showViewController(storyboardName: "Main", viewcontrollerID: "LoginViewController")
+    }
+    //MARK:- Database Service to fetch user collections
     private func getUserCollection(userOwned: Bool) {
         DatabaseService.shared.getCollection(userOwned: userOwned) { [weak self] (result) in
             switch result {
@@ -115,6 +124,7 @@ class ProfilePageViewController: UIViewController {
             }
         }
     }
+    //MARK:- Segment Control
     @IBAction func segmentPressed(_ sender: UISegmentedControl) {
         if sender.selectedSegmentIndex == 0 {
             userOwned = true
@@ -122,10 +132,8 @@ class ProfilePageViewController: UIViewController {
             userOwned = false
         }
     }
-    @objc private func signOutButtonPressed(_ sender: UIBarButtonItem) {
-        UIViewController.showViewController(storyboardName: "Main", viewcontrollerID: "LoginViewController")
-    }
 }
+//MARK:- Collection View delegate and datasource
 extension ProfilePageViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let maxWidth = view.frame.width
@@ -142,7 +150,6 @@ extension ProfilePageViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return collectedGames.count
     }
-    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "gameCell", for: indexPath) as? GameCell else {
             fatalError("unable to cast to game cell")
@@ -155,6 +162,7 @@ extension ProfilePageViewController: UICollectionViewDataSource {
         return cell
     }
 }
+//MARK:- Remove game delegate
 extension ProfilePageViewController: RemoveGameDelegate {
     func gameRemovedFromCollection(_ game: CollectedGame, userOwned: Bool, cell: GameCell) {
         DatabaseService.shared.removeFromCollection(userOwned: userOwned, collectedGame: game) { [weak self] (result) in
@@ -172,6 +180,4 @@ extension ProfilePageViewController: RemoveGameDelegate {
             }
         }
     }
-    
-    
 }

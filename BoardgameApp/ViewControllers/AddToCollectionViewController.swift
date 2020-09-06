@@ -21,17 +21,17 @@ class AddToCollectionViewController: UIViewController {
             collectionView.reloadData()
         }
     }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureCollectionView()
         doneButton.isEnabled = false
     }
+    //MARK:- CollectionView config
     private func configureCollectionView() {
         collectionView.delegate = self
         collectionView.dataSource = self
     }
-
+    //MARK:- Function to add a game to a collection
     @IBAction func doneButtonPressed(_ sender: UIButton) {
         if selectedCollection == "My Games" {
             DatabaseService.shared.addToCollection(userGames: game, wishlist: nil) { [weak self] (result) in
@@ -66,13 +66,11 @@ class AddToCollectionViewController: UIViewController {
             }
         }
     }
-    
-    
     @IBAction func cancelButtonPressed(_ sender: UIButton) {
         dismiss(animated: true)
     }
-    
 }
+//MARK:- CollectionView delegate and datasource
 extension AddToCollectionViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let maxWidth = view.frame.width
@@ -87,7 +85,6 @@ extension AddToCollectionViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return collections.count
     }
-    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectionCell", for: indexPath) as? CollectionCell else {
             fatalError("could not cast to collectioncell")
@@ -104,6 +101,4 @@ extension AddToCollectionViewController: UICollectionViewDataSource {
         let selectedCell = collections[indexPath.row]
         selectedCollection = selectedCell
     }
-    
-    
 }

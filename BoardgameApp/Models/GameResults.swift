@@ -25,10 +25,10 @@ struct Game: Codable, Hashable {
     let thumbURL: String
     let price: String
     let primaryPublisher: String?
-    let categories: [GameCategories]
     let averageUserRating: Double
     let rulesURL: String?
     
+    //coding keys to rename properties from json to fit Swift standards
     enum CodingKeys: String, CodingKey {
         case id
         case name
@@ -43,11 +43,7 @@ struct Game: Codable, Hashable {
         case thumbURL = "thumb_url"
         case price
         case primaryPublisher = "primary_publisher"
-        case categories
         case averageUserRating = "average_user_rating"
         case rulesURL = "rules_url"
     }
-}
-struct GameCategories: Codable, Hashable {
-    let id: String
 }

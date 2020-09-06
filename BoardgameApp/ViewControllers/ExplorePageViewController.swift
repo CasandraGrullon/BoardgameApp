@@ -10,6 +10,7 @@ import UIKit
 
 class ExplorePageViewController: UIViewController {
     
+    //Using CollectionView Diffable DataSource and Compositional Layout
     private var collectionView: UICollectionView!
     typealias Datasource = UICollectionViewDiffableDataSource< SectionKind, Game >
     private var dataSource: Datasource!
@@ -25,11 +26,13 @@ class ExplorePageViewController: UIViewController {
     }
     private var setFilter = Bool()
     private var games = [Game]()
-    //MARK:- Activity Indicator
+    
+    //MARK:- Activity Indicator spinner and subview
     private lazy var spinner: UIActivityIndicatorView = {
         let spinner = UIActivityIndicatorView(style: .large)
         spinner.frame = CGRect(x: 0.0, y: 0.0, width: 80.0, height: 80.0)
         spinner.center = CGPoint(x: loadingView.bounds.size.width / 2, y: loadingView.bounds.size.height / 2)
+        spinner.color = #colorLiteral(red: 0, green: 0.805752337, blue: 1, alpha: 1)
         return spinner
     }()
     private lazy var loadingView: UIView = {
@@ -49,7 +52,7 @@ class ExplorePageViewController: UIViewController {
         configureCollectionViewDataSource()
         configureSearchController()
     }
-    // API data
+    // MARK:- Fetch Games API data
     private func fetchGames(for query: String) {
         APIClient().fetchGames(for: query) { [weak self] (result) in
             switch result {
@@ -66,7 +69,7 @@ class ExplorePageViewController: UIViewController {
             }
         }
     }
-    // datasource snapshot
+    // MARK:- CollectionView Datasource snapshot
     private func updateSnapshot(with games: [Game]) {
         var snapshot = dataSource.snapshot()
         snapshot.deleteAllItems()
@@ -76,6 +79,7 @@ class ExplorePageViewController: UIViewController {
             snapshot.appendItems(games, toSection: .second)
             return
         }
+        //seperating games data into three sections
         let topResults = Array(games[0...3])
         let low = Array(games[4...middleIndex])
         let high = Array(games[middleIndex + 1..<games.count])
@@ -85,34 +89,12 @@ class ExplorePageViewController: UIViewController {
         snapshot.appendItems(high, toSection: .third)
         dataSource.apply(snapshot, animatingDifferences: false)
     }
+    //MARK:- Configure Nav Bar and methods
     private func configureNavBar() {
         navigationController?.navigationBar.tintColor = #colorLiteral(red: 0, green: 0.805752337, blue: 1, alpha: 1)
         navigationItem.title = "Explore"
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "All Games", style: .plain, target: self, action: #selector(allGamesPressed(_:)))
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "slider.horizontal.3"), style: .plain, target: self, action: #selector(filterButtonPressed(_:)))
-    }
-    //searchController
-    private func configureSearchController() {
-        searchController = UISearchController(searchResultsController: nil)
-        navigationItem.searchController = searchController
-        searchController.searchResultsUpdater = self
-        searchController.obscuresBackgroundDuringPresentation = false
-        
-        searchController.searchBar.placeholder = "search by game name"
-        searchController.searchBar.autocapitalizationType = .none
-        searchController.searchBar.delegate = self
-    }
-    //CollectionView
-    private func configureCollectionView() {
-        collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: createLayout())
-        collectionView.backgroundColor = .systemBackground
-        
-        collectionView.register(HeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: HeaderView.reuseIdentifier)
-        collectionView.register(UINib(nibName: "GameCell", bundle: nil), forCellWithReuseIdentifier: GameCell.reuseIdentifier)
-        collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        view.addSubview(collectionView)
-        collectionView.delegate = self
-        collectionView.resignFirstResponder()
     }
     @objc private func filterButtonPressed(_ sender: UIBarButtonItem) {
         fetchGames(for: "")
@@ -126,6 +108,30 @@ class ExplorePageViewController: UIViewController {
     @objc private func allGamesPressed(_ sender: UIBarButtonItem) {
         fetchGames(for: "")
     }
+    //MARK:- Configure SearchController
+    private func configureSearchController() {
+        searchController = UISearchController(searchResultsController: nil)
+        navigationItem.searchController = searchController
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        
+        searchController.searchBar.placeholder = "search by game name"
+        searchController.searchBar.autocapitalizationType = .none
+        searchController.searchBar.delegate = self
+    }
+    //MARK:- Configure CollectionView
+    private func configureCollectionView() {
+        collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: createLayout())
+        collectionView.backgroundColor = .systemBackground
+        
+        collectionView.register(HeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: HeaderView.reuseIdentifier)
+        collectionView.register(UINib(nibName: "GameCell", bundle: nil), forCellWithReuseIdentifier: GameCell.reuseIdentifier)
+        collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        view.addSubview(collectionView)
+        collectionView.delegate = self
+        collectionView.resignFirstResponder()
+    }
+    //MARK:- Method to return CollectionView Compositional Layout
     private func createLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewCompositionalLayout { (sectionIndex, layoutEnvironment) -> NSCollectionLayoutSection? in
             
@@ -155,6 +161,7 @@ class ExplorePageViewController: UIViewController {
         }
         return layout
     }
+    //MARK:- Method to configure Collection View Diffable Datasource
     private func configureCollectionViewDataSource() {
         dataSource = Datasource(collectionView: collectionView, cellProvider: { (collectionView, indexPath, game) -> UICollectionViewCell? in
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GameCell.reuseIdentifier, for: indexPath) as? GameCell else {
@@ -181,8 +188,8 @@ class ExplorePageViewController: UIViewController {
         
         dataSource.apply(snapshot, animatingDifferences: false)
     }
-    
 }
+//MARK:- UISearchResultsUpdating extension to update search text property
 extension ExplorePageViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         guard let text = searchController.searchBar.text, !text.isEmpty else {
@@ -191,6 +198,7 @@ extension ExplorePageViewController: UISearchResultsUpdating {
         searchText = text
     }
 }
+//MARK:- SearchBar delegate
 extension ExplorePageViewController: UISearchBarDelegate {
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         var snapshot = dataSource.snapshot()
@@ -198,6 +206,7 @@ extension ExplorePageViewController: UISearchBarDelegate {
         dataSource.apply(snapshot, animatingDifferences: false)
     }
 }
+//MARK:- CollectionView Delegate when game cell is selected
 extension ExplorePageViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let storyboard = UIStoryboard(name: "MainAppStoryboard", bundle: nil)
@@ -209,6 +218,7 @@ extension ExplorePageViewController: UICollectionViewDelegate {
         }
     }
 }
+//MARK:- FiltersAdded custom delegate method
 extension ExplorePageViewController: FiltersAdded {
     func didAddFilters(ageFilter: [String], numberOfPlayersFilter: [String], priceFilter: [String], playtimeFilter: [String], filterSet: Bool, vc: FilterViewController) {
         setFilter = filterSet
@@ -217,13 +227,13 @@ extension ExplorePageViewController: FiltersAdded {
                 games = games.filter {$0.price <= filter}
             }
             for filter in ageFilter {
-                games = games.filter {$0.minAge ?? 0 <= Int(filter) ?? 0}
+                games = games.filter {$0.minAge ?? 0 >= Int(filter) ?? 0}
             }
             for filter in numberOfPlayersFilter {
-                games = games.filter {$0.minPlayers ?? 0 == Int(filter) ?? 0}
+                games = games.filter {$0.minPlayers ?? 0 >= Int(filter) ?? 0}
             }
             for filter in playtimeFilter {
-                games = games.filter {$0.maxPlaytime ?? 0 == Int(filter) ?? 0}
+                games = games.filter {$0.maxPlaytime ?? 0 >= Int(filter) ?? 0}
             }
             updateSnapshot(with: games)
         }

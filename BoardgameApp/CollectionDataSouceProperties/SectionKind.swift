@@ -8,11 +8,14 @@
 
 import UIKit
 
+//This enum will be used in the CollectionView Diffable DataSource configure method.
+//Creating sections within the collectionview with unique properties
 enum SectionKind: Int, CaseIterable {
     case main
     case second
     case third
     
+    //number of rows in a section
     var itemCount: Int {
         switch self {
         case .main:
@@ -21,6 +24,7 @@ enum SectionKind: Int, CaseIterable {
             return 2
         }
     }
+    //height for section groups
     var nestedGroupHeight: NSCollectionLayoutDimension {
         switch self {
         case .main:
@@ -29,6 +33,7 @@ enum SectionKind: Int, CaseIterable {
             return .fractionalWidth(0.8)
         }
     }
+    //Section Titles
     var sectionTitle: String {
         switch self {
         case .main:
@@ -39,6 +44,7 @@ enum SectionKind: Int, CaseIterable {
             return "Other Results"
         }
     }
+    //Scroll Behavior for each section
     var orthogonalBehaviour: UICollectionLayoutSectionOrthogonalScrollingBehavior {
         switch self {
         case .main:

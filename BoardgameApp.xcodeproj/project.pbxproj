@@ -31,7 +31,6 @@
 		C6BCC2F62460BC63003DFED3 /* GameCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C6BCC2F52460BC62003DFED3 /* GameCell.xib */; };
 		C6C31047246C7A4C00A47846 /* ResizeImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C31046246C7A4C00A47846 /* ResizeImage.swift */; };
 		C6C31049246C85D700A47846 /* CollectedGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C31048246C85D700A47846 /* CollectedGame.swift */; };
-		C6C3104B246C86C000A47846 /* Categories.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C3104A246C86C000A47846 /* Categories.swift */; };
 		C6C400B4245B132800846A31 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C400B3245B132800846A31 /* Secrets.swift */; };
 		C6C400B6245B5E8500846A31 /* ViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C400B5245B5E8500846A31 /* ViewController+Ext.swift */; };
 		C6C400B8245B5F7300846A31 /* MainAppTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C400B7245B5F7300846A31 /* MainAppTabBarViewController.swift */; };
@@ -78,7 +77,6 @@
 		C6BCC2F52460BC62003DFED3 /* GameCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GameCell.xib; sourceTree = "<group>"; };
 		C6C31046246C7A4C00A47846 /* ResizeImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResizeImage.swift; sourceTree = "<group>"; };
 		C6C31048246C85D700A47846 /* CollectedGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectedGame.swift; sourceTree = "<group>"; };
-		C6C3104A246C86C000A47846 /* Categories.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Categories.swift; sourceTree = "<group>"; };
 		C6C400B3245B132800846A31 /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
 		C6C400B5245B5E8500846A31 /* ViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+Ext.swift"; sourceTree = "<group>"; };
 		C6C400B7245B5F7300846A31 /* MainAppTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAppTabBarViewController.swift; sourceTree = "<group>"; };
@@ -219,7 +217,6 @@
 				C687025D245917A70037F22D /* GameResults.swift */,
 				C687025F24591A770037F22D /* GameReview.swift */,
 				C650F1162469C8C50087179A /* Genre.swift */,
-				C6C3104A246C86C000A47846 /* Categories.swift */,
 				C6C31048246C85D700A47846 /* CollectedGame.swift */,
 			);
 			path = Models;
@@ -426,7 +423,6 @@
 				C6C31047246C7A4C00A47846 /* ResizeImage.swift in Sources */,
 				C6C400B8245B5F7300846A31 /* MainAppTabBarViewController.swift in Sources */,
 				C687024E2458D8970037F22D /* HomePageViewController.swift in Sources */,
-				C6C3104B246C86C000A47846 /* Categories.swift in Sources */,
 				C6C400BE245B773100846A31 /* GenreCell.swift in Sources */,
 				C6C400BA245B6F2F00846A31 /* GameCell.swift in Sources */,
 				C6C31049246C85D700A47846 /* CollectedGame.swift in Sources */,
