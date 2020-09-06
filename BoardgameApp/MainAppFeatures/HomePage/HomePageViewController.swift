@@ -44,6 +44,10 @@ class HomePageViewController: UIViewController {
         configureCollectionViewDataSource()
         fetchGames(for: "")
     }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        hideActivityIndicator(loadingView: loadingView, spinner: spinner)
+    }
     //MARK: Fetch Games API Data
     private func fetchGames(for query: String) {
         APIClient().fetchGames(for: query) { [weak self] (result) in
