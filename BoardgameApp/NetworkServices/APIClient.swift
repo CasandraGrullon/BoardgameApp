@@ -7,7 +7,12 @@
 //
 
 import Foundation
-import NetworkHelper
+
+enum AppError: Error {
+    case badURL(String)
+    case networkError(Error)
+    case decodingError(Error)
+}
 
 //MARK:- Utilized the BoardGame Atlas API https://www.boardgameatlas.com/api/docs
 struct APIClient {
@@ -20,11 +25,10 @@ struct APIClient {
         }
         let request = URLRequest(url: url)
         
-        NetworkHelper.shared.performDataTask(with: request) { (result) in
-            switch result {
-            case .failure(let error):
-                completion(.failure(.networkClientError(error)))
-            case .success(let data):
+        let dataTask = URLSession.shared.dataTask(with: request) { (data, response, error ) in
+            if let error = error {
+                completion(.failure(.networkError(error)))
+            } else if let data = data {
                 do {
                     let results = try JSONDecoder().decode(GameResults.self, from: data)
                     completion(.success(results.games))
@@ -33,6 +37,7 @@ struct APIClient {
                 }
             }
         }
+        dataTask.resume()
     }
     //MARK:- Fetch Game Reviews
     public func fetchGameReviews(gameId: String, completion: @escaping (Result<[GameReview], AppError>) -> ()) {
@@ -42,11 +47,10 @@ struct APIClient {
         }
         let request = URLRequest(url: url)
         
-        NetworkHelper.shared.performDataTask(with: request) { (result) in
-            switch result {
-            case .failure(let error):
-                completion(.failure(.networkClientError(error)))
-            case .success(let data):
+        let dataTask = URLSession.shared.dataTask(with: request) { (data, response, error) in
+            if let error = error {
+                completion(.failure(.networkError(error)))
+            } else if let data = data {
                 do {
                     let results = try JSONDecoder().decode(Reviews.self, from: data)
                     completion(.success(results.reviews))
@@ -55,5 +59,6 @@ struct APIClient {
                 }
             }
         }
+        dataTask.resume()
     }
 }
