@@ -33,7 +33,7 @@ See your **My Games** and **Wishlist** collections on your profile page
 <img src="Images/ProfilePage.png" alt="ProfilePage" width="300" height="600" />
 
 ### Tools & Frameworks used
-Xcode 11, Swift 5, UIKit, Foundation, Firebase, SafariKit
+Xcode 11, Swift 5, UIKit, Foundation, Firebase, SafariKit, UICollectionView DiffableDatasource, UICollectionView CompositionalLayout
 ### API
 [Board Game Atlas API](https://www.boardgameatlas.com/api/docs)
 ### Pods
