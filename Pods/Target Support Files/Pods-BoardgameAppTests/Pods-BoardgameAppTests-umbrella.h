@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double FirebaseFirestoreSwiftVersionNumber;
-FOUNDATION_EXPORT const unsigned char FirebaseFirestoreSwiftVersionString[];
+FOUNDATION_EXPORT double Pods_BoardgameAppTestsVersionNumber;
+FOUNDATION_EXPORT const unsigned char Pods_BoardgameAppTestsVersionString[];
 

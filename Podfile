@@ -1,15 +1,27 @@
 # Uncomment the next line to define a global platform for your project
-# platform :ios, '9.0'
 
-target 'BoardgameApp' do
-  # Comment the next line if you don't want to use dynamic frameworks
-  use_frameworks!
+platform :ios, '13.0'
 
-  # Pods for BoardgameApp
+use_frameworks!
+
+def project_pods
+
+  # Pods for BoardgameApp project
 pod 'Firebase/Auth'
 pod 'Firebase/Firestore'
-pod 'FirebaseFirestoreSwift'
 pod 'Firebase/Storage'
 pod 'Kingfisher'
+
+end
+
+target 'BoardgameApp' do
+
+project_pods
+
+end
+
+target 'BoardgameAppTests' do
+
+project_pods
 
 end
