@@ -18,13 +18,33 @@ class ExplorePageViewController: UIViewController {
     private var searchText = "" {
         didSet {
             DispatchQueue.main.async {
+                self.showActivityIndicator(loadingView: self.loadingView, spinner: self.spinner)
                 self.fetchGames(for: self.searchText)
             }
         }
     }
     private var setFilter = Bool()
     private var games = [Game]()
-    
+    //MARK:- Activity Indicator
+    private lazy var spinner: UIActivityIndicatorView = {
+        let spinner = UIActivityIndicatorView(style: .large)
+        spinner.frame = CGRect(x: 0.0, y: 0.0, width: 80.0, height: 80.0)
+        spinner.center = CGPoint(x: loadingView.bounds.size.width / 2, y: loadingView.bounds.size.height / 2)
+        return spinner
+    }()
+    private lazy var loadingView: UIView = {
+        let loadingView = UIView()
+        loadingView.frame = CGRect(x: 0.0, y: 0.0, width: 100.0, height: 100.0)
+        loadingView.center = self.view.center
+        loadingView.backgroundColor = .clear
+        loadingView.alpha = 0.7
+        loadingView.clipsToBounds = true
+        loadingView.layer.cornerRadius = 10
+        return loadingView
+    }()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         configureNavBar()
@@ -44,6 +64,7 @@ class ExplorePageViewController: UIViewController {
                 DispatchQueue.main.async {
                     self?.updateSnapshot(with: games)
                     self?.games = games
+                    self?.hideActivityIndicator(loadingView: self!.loadingView, spinner: self!.spinner)
                 }
             }
         }
@@ -71,21 +92,18 @@ class ExplorePageViewController: UIViewController {
         navigationController?.navigationBar.tintColor = #colorLiteral(red: 0, green: 0.805752337, blue: 1, alpha: 1)
         navigationItem.title = "Explore"
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "All Games", style: .plain, target: self, action: #selector(allGamesPressed(_:)))
-        if setFilter {
-            navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "line.horizontal.3.decrease.circle"), style: .plain, target: self, action: #selector(filterButtonPressed(_:)))
-        } else {
-            navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "slider.horizontal.3"), style: .plain, target: self, action: #selector(filterButtonPressed(_:)))
-        }
-        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "slider.horizontal.3"), style: .plain, target: self, action: #selector(filterButtonPressed(_:)))
     }
     //searchController
     private func configureSearchController() {
         searchController = UISearchController(searchResultsController: nil)
         navigationItem.searchController = searchController
         searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        
         searchController.searchBar.placeholder = "search by game name"
         searchController.searchBar.autocapitalizationType = .none
-        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.delegate = self
     }
     //CollectionView
     private func configureCollectionView() {
@@ -174,6 +192,13 @@ extension ExplorePageViewController: UISearchResultsUpdating {
             return
         }
         searchText = text
+    }
+}
+extension ExplorePageViewController: UISearchBarDelegate {
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        var snapshot = dataSource.snapshot()
+        snapshot.deleteAllItems()
+        dataSource.apply(snapshot, animatingDifferences: false)
     }
 }
 extension ExplorePageViewController: UICollectionViewDelegate {

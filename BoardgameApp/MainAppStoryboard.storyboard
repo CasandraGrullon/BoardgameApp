@@ -494,44 +494,6 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="Add A Review" id="RfL-sw-yNd">
-                                <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="gameReviews" rowHeight="180" id="iuM-vF-rDV">
-                                        <rect key="frame" x="0.0" y="1102" width="414" height="180"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="iuM-vF-rDV" id="PPY-9z-pET">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="180"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vuE-4n-eJ8">
-                                                    <rect key="frame" x="28" y="19" width="358" height="108"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                </textField>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kRk-Ju-JRL">
-                                                    <rect key="frame" x="28" y="135" width="358" height="44"/>
-                                                    <color key="backgroundColor" red="0.12122984520000001" green="0.79138050390000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="44" id="B0u-Ia-Q46"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <state key="normal" title="Submit Review"/>
-                                                </button>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="vuE-4n-eJ8" firstAttribute="leading" secondItem="PPY-9z-pET" secondAttribute="leadingMargin" constant="8" id="9Nz-3L-f2I"/>
-                                                <constraint firstItem="vuE-4n-eJ8" firstAttribute="top" secondItem="PPY-9z-pET" secondAttribute="topMargin" constant="8" id="Cso-WL-5wx"/>
-                                                <constraint firstItem="kRk-Ju-JRL" firstAttribute="leading" secondItem="PPY-9z-pET" secondAttribute="leadingMargin" constant="8" id="NRA-vt-fDa"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="vuE-4n-eJ8" secondAttribute="trailing" constant="8" id="Xw8-7V-M1Y"/>
-                                                <constraint firstItem="kRk-Ju-JRL" firstAttribute="top" secondItem="vuE-4n-eJ8" secondAttribute="bottom" constant="8" id="cfR-JG-UQg"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="kRk-Ju-JRL" secondAttribute="trailing" constant="8" id="n69-Xz-3Vl"/>
-                                                <constraint firstItem="vuE-4n-eJ8" firstAttribute="height" secondItem="PPY-9z-pET" secondAttribute="height" multiplier="0.6" id="yDu-gU-Lmr"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
                         </sections>
                         <connections>
                             <outlet property="dataSource" destination="QZE-qt-9Ub" id="NfW-Cp-WPf"/>

@@ -47,6 +47,7 @@
 		C6C53CD12457551A00F1F361 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C6C53CCF2457551A00F1F361 /* LaunchScreen.storyboard */; };
 		C6C53CD9245755A000F1F361 /* MainAppStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C6C53CD8245755A000F1F361 /* MainAppStoryboard.storyboard */; };
 		C6C61603245B8A040070F648 /* ReviewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C6C61602245B8A040070F648 /* ReviewCell.xib */; };
+		C6C8B9F52505400400572847 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C8B9F42505400400572847 /* ActivityIndicator.swift */; };
 		C6ED73FD246C45B300FBA65C /* CollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6ED73FC246C45B300FBA65C /* CollectionCell.swift */; };
 		C6ED73FF246C462A00FBA65C /* AddToCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6ED73FE246C462A00FBA65C /* AddToCollectionViewController.swift */; };
 		C6ED7401246C499D00FBA65C /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6ED7400246C499D00FBA65C /* EditProfileViewController.swift */; };
@@ -95,6 +96,7 @@
 		C6C53CD22457551A00F1F361 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C6C53CD8245755A000F1F361 /* MainAppStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainAppStoryboard.storyboard; sourceTree = "<group>"; };
 		C6C61602245B8A040070F648 /* ReviewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReviewCell.xib; sourceTree = "<group>"; };
+		C6C8B9F42505400400572847 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		C6ED73FC246C45B300FBA65C /* CollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionCell.swift; sourceTree = "<group>"; };
 		C6ED73FE246C462A00FBA65C /* AddToCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToCollectionViewController.swift; sourceTree = "<group>"; };
 		C6ED7400246C499D00FBA65C /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
@@ -201,6 +203,7 @@
 			isa = PBXGroup;
 			children = (
 				C670D7A624591D4400F556BE /* ShowAlert.swift */,
+				C6C8B9F42505400400572847 /* ActivityIndicator.swift */,
 				C670D7A824591D8F00F556BE /* DateFormatter.swift */,
 				C670D7AA24591DAE00F556BE /* EmptyView.swift */,
 				C6C400B5245B5E8500846A31 /* ViewController+Ext.swift */,
@@ -414,6 +417,7 @@
 				C670D7A724591D4400F556BE /* ShowAlert.swift in Sources */,
 				C687025E245917A70037F22D /* GameResults.swift in Sources */,
 				C6ED7401246C499D00FBA65C /* EditProfileViewController.swift in Sources */,
+				C6C8B9F52505400400572847 /* ActivityIndicator.swift in Sources */,
 				C68702502458D8C30037F22D /* ExplorePageViewController.swift in Sources */,
 				C6ED73FF246C462A00FBA65C /* AddToCollectionViewController.swift in Sources */,
 				C68702522458D8E50037F22D /* ProfilePageViewController.swift in Sources */,

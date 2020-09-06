@@ -8,19 +8,42 @@
 
 import UIKit
 
+//TODO: add loading spinner
+// 1. home page, profile page and explore
 class HomePageViewController: UIViewController {
     private var collectionView: UICollectionView!
     typealias Datasource = UICollectionViewDiffableDataSource< SectionKind, Game >
     private var dataSource: Datasource!
     private var searchController: UISearchController!
     
+    //MARK:- Activity Indicator
+    private lazy var spinner: UIActivityIndicatorView = {
+        let spinner = UIActivityIndicatorView(style: .large)
+        spinner.frame = CGRect(x: 0.0, y: 0.0, width: 80.0, height: 80.0)
+        spinner.center = CGPoint(x: loadingView.bounds.size.width / 2, y: loadingView.bounds.size.height / 2)
+        return spinner
+    }()
+    private lazy var loadingView: UIView = {
+        let loadingView = UIView()
+        loadingView.frame = CGRect(x: 0.0, y: 0.0, width: 100.0, height: 100.0)
+        loadingView.center = self.view.center
+        loadingView.backgroundColor = .clear
+        loadingView.alpha = 0.7
+        loadingView.clipsToBounds = true
+        loadingView.layer.cornerRadius = 10
+        return loadingView
+    }()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        self.showActivityIndicator(loadingView: loadingView, spinner: spinner)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         configureCollectionView()
         configureCollectionViewDataSource()
         fetchGames(for: "")
     }
-    
+    //MARK: API Data
     private func fetchGames(for query: String) {
         APIClient().fetchGames(for: query) { [weak self] (result) in
             switch result {
@@ -31,10 +54,12 @@ class HomePageViewController: UIViewController {
             case .success(let games):
                 DispatchQueue.main.async {
                     self?.updateSnapshot(with: games)
+                    self?.hideActivityIndicator(loadingView: self!.loadingView, spinner: self!.spinner)
                 }
             }
         }
     }
+    //MARK:- Collection View Diffable Datasource snapshot
     private func updateSnapshot(with games: [Game]) {
         var snapshot = dataSource.snapshot()
         snapshot.deleteAllItems()
@@ -49,7 +74,7 @@ class HomePageViewController: UIViewController {
         snapshot.appendItems(recommended, toSection: .third)
         dataSource.apply(snapshot, animatingDifferences: false)
     }
-    //CollectionView
+    //MARK:- CollectionView
     private func configureCollectionView() {
         collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: createLayout())
         collectionView.backgroundColor = .systemBackground
