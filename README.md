@@ -35,6 +35,6 @@ See your **My Games** and **Wishlist** collections on your profile page
 ### Tools & Frameworks used
 Xcode 11, Swift 5, UIKit, Foundation, Firebase, SafariKit
 ### API
-This app used the [Board Game Atlas] API(https://www.boardgameatlas.com/api/docs)
+[Board Game Atlas API](https://www.boardgameatlas.com/api/docs)
 ### Pods
 [Kingfisher](https://github.com/onevcat/Kingfisher)
