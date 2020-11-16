@@ -15,50 +15,35 @@ enum AppError: Error {
 }
 
 //MARK:- Utilized the BoardGame Atlas API https://www.boardgameatlas.com/api/docs
-struct APIClient {
-    //MARK:- Fetch Games with search query
-    public func fetchGames(for query: String, completion: @escaping (Result<[Game], AppError>) -> ()){
-        let searchQuery = query.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) ?? ""
-        let endpoint = "https://api.boardgameatlas.com/api/search?name=\(searchQuery)&client_id=\(Secrets.clientId)"
-        guard let url = URL(string: endpoint) else {
-           return completion(.failure(.badURL(endpoint)))
-        }
-        let request = URLRequest(url: url)
+struct APIClient<T: Codable> {
+    //MARK:- Fetch Requests
+    public func fetchResults(searchQuery: String? = nil, gameID: String? = nil, completion: @escaping (Result<T, AppError>) -> ()) {
+        var endpoint = String()
         
-        let dataTask = URLSession.shared.dataTask(with: request) { (data, response, error ) in
-            if let error = error {
-                completion(.failure(.networkError(error)))
-            } else if let data = data {
-                do {
-                    let results = try JSONDecoder().decode(GameResults.self, from: data)
-                    completion(.success(results.games))
-                } catch {
-                    completion(.failure(.decodingError(error)))
-                }
-            }
+        if let searchQuery = searchQuery {
+            let query = searchQuery.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) ?? ""
+            endpoint = "https://api.boardgameatlas.com/api/search?name=\(query)&client_id=\(Secrets.clientId)"
+        } else if let gameID = gameID {
+            endpoint = "https://api.boardgameatlas.com/api/reviews?client_id=\(Secrets.clientId)&game_id=\(gameID)"
         }
-        dataTask.resume()
-    }
-    //MARK:- Fetch Game Reviews
-    public func fetchGameReviews(gameId: String, completion: @escaping (Result<[GameReview], AppError>) -> ()) {
-        let endpoint = "https://api.boardgameatlas.com/api/reviews?client_id=\(Secrets.clientId)&game_id=\(gameId)"
+        
         guard let url = URL(string: endpoint) else {
             return completion(.failure(.badURL(endpoint)))
         }
         let request = URLRequest(url: url)
-        
-        let dataTask = URLSession.shared.dataTask(with: request) { (data, response, error) in
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
             if let error = error {
-                completion(.failure(.networkError(error)))
-            } else if let data = data {
+                return completion(.failure(.networkError(error)))
+            }
+            if let data = data {
                 do {
-                    let results = try JSONDecoder().decode(Reviews.self, from: data)
-                    completion(.success(results.reviews))
+                    let result = try JSONDecoder().decode(T.self, from: data)
+                    return completion(.success(result))
                 } catch {
                     completion(.failure(.decodingError(error)))
                 }
             }
         }
-        dataTask.resume()
+        task.resume()
     }
 }

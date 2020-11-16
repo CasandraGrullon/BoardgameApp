@@ -27,13 +27,14 @@ class GameDetailTableViewController: UITableViewController {
     @IBOutlet weak var rulesButton: UIButton!    
     
     private weak var flowLayout: UICollectionViewFlowLayout!
+    private var apiClient = APIClient<Reviews>()
     
     public var game: Game
-    public var reviews = [GameReview]() {
+    public var gameReviews = [GameReview]() {
         didSet {
             DispatchQueue.main.async {
                 self.reviewsCollectionView.reloadData()
-                if self.reviews.isEmpty {
+                if self.gameReviews.isEmpty {
                     self.reviewsCollectionView.backgroundView = EmptyView(title: "There are no reviews for this game yet", message: "")
                 } else {
                     self.reviewsCollectionView.reloadData()
@@ -56,7 +57,9 @@ class GameDetailTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureCollectionView()
-        uiAsync()
+        updateUI()
+        getGameReviews(gameId: self.game.id)
+        configureNavBar()
         checkCollections()
     }
     //MARK:- CollectionView Config
@@ -71,22 +74,17 @@ class GameDetailTableViewController: UITableViewController {
             flowLayout.estimatedItemSize = CGSize(width: w, height: 200)
         }
     }
-    //MARK:- added this method to add ui elements to main thread to avoid a crash
-    private func uiAsync() {
-        DispatchQueue.main.async {
-            self.updateUI()
-            self.getGameReviews(gameId: self.game.id)
-            self.configureNavBar()
-        }
-    }
     //MARK:- Fetch Game Reviews data
     private func getGameReviews(gameId: String) {
-        APIClient().fetchGameReviews(gameId: gameId) { [weak self] (result) in
+        apiClient.fetchResults(gameID: gameId) { [weak self] (result) in
             switch result {
             case .failure(let error):
                 print("unable to get user reviews \(error)")
-            case .success(let reviews):
-                self?.reviews = reviews.filter {$0.description != nil && $0.title != nil}.sorted {$0.date > $1.date}
+            case .success(let gameReviews):
+                DispatchQueue.main.async {
+                    self?.gameReviews = gameReviews.reviews
+                }
+                
             }
         }
     }
@@ -223,13 +221,13 @@ extension GameDetailTableViewController: UICollectionViewDelegateFlowLayout {
 }
 extension GameDetailTableViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return reviews.count
+        return gameReviews.count
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = reviewsCollectionView.dequeueReusableCell(withReuseIdentifier: "reviewCell", for: indexPath) as? ReviewCell else {
             fatalError("could not cast to review cell")
         }
-        let review = reviews[indexPath.row]
+        let review = gameReviews[indexPath.row]
         cell.configureCell(review: review)
         return cell
     }

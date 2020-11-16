@@ -15,6 +15,7 @@ class HomePageViewController: UIViewController {
     typealias Datasource = UICollectionViewDiffableDataSource< SectionKind, Game >
     private var dataSource: Datasource!
     private var searchController: UISearchController!
+    private var apiClient = APIClient<GameResults>()
     
     //MARK:- Activity Indicator spinner and subview
     private lazy var spinner: UIActivityIndicatorView = {
@@ -50,15 +51,15 @@ class HomePageViewController: UIViewController {
     }
     //MARK: Fetch Games API Data
     private func fetchGames(for query: String) {
-        APIClient().fetchGames(for: query) { [weak self] (result) in
+        apiClient.fetchResults(searchQuery: query, gameID: nil) { [weak self] (result) in
             switch result {
             case .failure(let error):
                 DispatchQueue.main.async {
                     self?.showAlert(title: "API Error", message: "\(error.localizedDescription)")
                 }
-            case .success(let games):
+            case .success(let gameResults):
                 DispatchQueue.main.async {
-                    self?.updateSnapshot(with: games)
+                    self?.updateSnapshot(with: gameResults.games)
                     self?.hideActivityIndicator(loadingView: self!.loadingView, spinner: self!.spinner)
                 }
             }
@@ -69,7 +70,7 @@ class HomePageViewController: UIViewController {
         var snapshot = dataSource.snapshot()
         snapshot.deleteAllItems()
         snapshot.appendSections([.main, .second, .third])
-
+        
         // seperating games into sections by recent, highly rated, and price
         let featured = games.filter {$0.yearPublished ?? 0 >= 2018}
         let mostPopular = games.filter {$0.yearPublished ?? 0 <= 2017 && $0.averageUserRating >= 3.8 }

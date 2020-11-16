@@ -15,6 +15,7 @@ class ExplorePageViewController: UIViewController {
     typealias Datasource = UICollectionViewDiffableDataSource< SectionKind, Game >
     private var dataSource: Datasource!
     private var searchController: UISearchController!
+    private var apiClient = APIClient<GameResults>()
     
     private var searchText = "" {
         didSet {
@@ -54,16 +55,16 @@ class ExplorePageViewController: UIViewController {
     }
     // MARK:- Fetch Games API data
     private func fetchGames(for query: String) {
-        APIClient().fetchGames(for: query) { [weak self] (result) in
+        apiClient.fetchResults(searchQuery: query, gameID: nil) { [weak self] (result) in
             switch result {
             case .failure(let error):
                 DispatchQueue.main.async {
-                    self?.showAlert(title: "API Error", message: "\(error.localizedDescription)")
+                    self?.showAlert(title: "API Error", message: "\(error)")
                 }
-            case .success(let games):
+            case .success(let gameResults):
                 DispatchQueue.main.async {
-                    self?.updateSnapshot(with: games)
-                    self?.games = games
+                    self?.updateSnapshot(with: gameResults.games)
+                    self?.games = gameResults.games
                     self?.hideActivityIndicator(loadingView: self!.loadingView, spinner: self!.spinner)
                 }
             }
