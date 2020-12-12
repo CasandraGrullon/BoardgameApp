@@ -82,7 +82,7 @@ class GameDetailTableViewController: UITableViewController {
                 print("unable to get user reviews \(error)")
             case .success(let gameReviews):
                 DispatchQueue.main.async {
-                    self?.gameReviews = gameReviews.reviews
+                    self?.gameReviews = gameReviews.reviews.filter {$0.description != nil}
                 }
                 
             }
