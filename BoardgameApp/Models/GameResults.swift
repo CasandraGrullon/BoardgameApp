@@ -24,7 +24,6 @@ struct Game: Codable, Hashable {
     let imageURL: String
     let thumbURL: String
     let price: String
-    let primaryPublisher: String?
     let averageUserRating: Double
     let rulesURL: String?
     
@@ -42,7 +41,6 @@ struct Game: Codable, Hashable {
         case imageURL = "image_url"
         case thumbURL = "thumb_url"
         case price
-        case primaryPublisher = "primary_publisher"
         case averageUserRating = "average_user_rating"
         case rulesURL = "rules_url"
     }
